@@ -1,11 +1,14 @@
-import { CategoryRepository } from "@/server/infra/repositories/category-repository";
-import { CategoryInputDTO, CategoryOutputDTO } from "../../dto/categoryDTO";
 import { Category } from "@/server/domain/entities/category";
+import { CategoryRepository } from "@/server/infra/database/repositories/category-repository";
+import {
+  CreateCategoryInputDTO,
+  CreateCategoryOutputDTO,
+} from "../../dto/categoryDTO";
 
 export class CreateCategoryUseCase {
   constructor(private categoryRepository: CategoryRepository) {}
 
-  async execute({ data }: CategoryInputDTO) {
+  async execute({ data }: CreateCategoryInputDTO) {
     const category = new Category(data);
 
     const { name } = category.data;
@@ -14,7 +17,7 @@ export class CreateCategoryUseCase {
       name,
     });
 
-    const response: CategoryOutputDTO = {
+    const response: CreateCategoryOutputDTO = {
       data: {
         id,
         name,
