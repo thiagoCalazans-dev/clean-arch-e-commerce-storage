@@ -1,17 +1,17 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { CreateCategoryUseCase } from "./create-category-use-case";
 import { InMemoryCategoryRepository } from "../../../infra/database/repositories/in-memory-repositories/category-in-memory-repository";
-import { FetchCategoriesUseCase } from "./fetchCategories";
+import { GetCategoriesUseCase } from "./get-categories-use-case";
 
 let repository: InMemoryCategoryRepository;
 let createCategoryUseCase: CreateCategoryUseCase;
-let sut: FetchCategoriesUseCase;
+let sut: GetCategoriesUseCase;
 
 describe("test fetchCategoriesUseCase", () => {
   beforeEach(async () => {
     repository = new InMemoryCategoryRepository();
     createCategoryUseCase = new CreateCategoryUseCase(repository);
-    sut = new FetchCategoriesUseCase(repository);
+    sut = new GetCategoriesUseCase(repository);
 
     await createCategoryUseCase.execute({
       data: { name: "john doe" },

@@ -4,6 +4,7 @@ import {
   CreateCategoryInputDTO,
   CreateCategoryOutputDTO,
 } from "../../dto/categoryDTO";
+import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 
 export class CreateCategoryUseCase {
   constructor(private categoryRepository: CategoryRepository) {}
@@ -13,17 +14,12 @@ export class CreateCategoryUseCase {
 
     const { name } = category.data;
 
-    const { id } = await this.categoryRepository.create({
+    const nameExists = await this.categoryRepository.findByName(name);
+
+    if (nameExists) throw new NameAlreadyExistError();
+
+    await this.categoryRepository.create({
       name,
     });
-
-    const response: CreateCategoryOutputDTO = {
-      data: {
-        id,
-        name,
-      },
-    };
-
-    return response;
   }
 }

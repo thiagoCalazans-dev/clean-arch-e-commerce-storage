@@ -8,6 +8,10 @@ export interface RepositoryCategory {
 }
 
 export interface CategoryRepository {
-  create: (data: RepositoryCreateCategory) => Promise<RepositoryCategory>;
+  create: (data: RepositoryCreateCategory) => Promise<void>;
+  update: (data: RepositoryCategory) => Promise<void>;
+  remove: (id: string) => Promise<void>;
   findMany: () => Promise<RepositoryCategory[]>;
+  findByName: (name: string) => Promise<RepositoryCategory | null>;
+  findById: (id: string) => Promise<RepositoryCategory | null>;
 }

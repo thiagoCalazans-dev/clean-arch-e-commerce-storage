@@ -6,13 +6,48 @@ import {
 } from "../category-repository";
 
 export class PrismaCategoryRepository implements CategoryRepository {
-  async create(data: RepositoryCreateCategory) {
-    const createdCategory = await prisma.category.create({
+  async update(data: RepositoryCategory) {
+    await prisma.category.update({
+      where: {
+        id: data.id,
+      },
       data: {
         name: data.name,
       },
     });
-    return createdCategory;
+  }
+  async remove(id: string) {
+    await prisma.category.delete({
+      where: {
+        id: id,
+      },
+    });
+  }
+
+  async findByName(name: string) {
+    const category = await prisma.category.findUnique({
+      where: {
+        name: name,
+      },
+    });
+    return category;
+  }
+  async findById(id: string) {
+    const category = await prisma.category.findUnique({
+      where: {
+        id,
+      },
+    });
+
+    return category;
+  }
+
+  async create(data: RepositoryCreateCategory) {
+    await prisma.category.create({
+      data: {
+        name: data.name,
+      },
+    });
   }
   async findMany() {
     const categories = prisma.category.findMany();

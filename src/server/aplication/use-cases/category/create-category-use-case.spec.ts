@@ -12,13 +12,25 @@ describe("test CreateCategory use case", () => {
   });
 
   it("should create a Category", async () => {
-    const newCategory = await sut.execute({
+    await sut.execute({
       data: { name: "john doe" },
     });
 
-    console.log(newCategory);
+    const createdCategory = await repository.findByName("john doe");
 
-    expect(newCategory.data.id).toBeDefined();
-    expect(newCategory.data.name).toBe("john doe");
+    expect(createdCategory!.id).toBeDefined();
+    expect(createdCategory!.name).toBe("john doe");
+  });
+
+  it("should not create a Category with an existent name", async () => {
+    await sut.execute({
+      data: { name: "john doe" },
+    });
+
+    await expect(() =>
+      sut.execute({
+        data: { name: "john doe" },
+      })
+    ).rejects.toThrowError();
   });
 });

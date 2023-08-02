@@ -1,6 +1,6 @@
 import { CategoryRepository } from "@/server/infra/database/repositories/category-repository";
 
-export class FetchCategoriesUseCase {
+export class GetCategoriesUseCase {
   constructor(private categoryRepository: CategoryRepository) {}
 
   async execute() {
