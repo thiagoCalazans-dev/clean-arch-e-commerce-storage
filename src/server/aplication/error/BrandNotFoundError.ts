@@ -1,5 +1,5 @@
 export class BrandNotFoundError extends Error {
   constructor() {
-    super("Category not found");
+    super("Brand not found");
   }
 }

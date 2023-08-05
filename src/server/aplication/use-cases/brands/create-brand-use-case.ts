@@ -7,15 +7,11 @@ export class CreateBrandUseCase {
   constructor(private brandRepository: BrandRepository) {}
 
   async execute({ data }: CreateBrandInputDTO) {
-    console.log(data);
     const brand = new Brand(data);
-    console.log(brand);
 
     const { name } = brand.data;
 
     const nameExists = await this.brandRepository.findByName(name);
-
-    console.log(nameExists);
 
     if (nameExists) throw new NameAlreadyExistError();
 

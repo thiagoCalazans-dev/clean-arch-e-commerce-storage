@@ -13,3 +13,10 @@ export async function PUT(
 ) {
   return await brandController.Put(request, params);
 }
+
+export async function DELETE(
+  request: Request,
+  { params }: { params: { brandId: string } }
+) {
+  return await brandController.Delete(request, params);
+}
