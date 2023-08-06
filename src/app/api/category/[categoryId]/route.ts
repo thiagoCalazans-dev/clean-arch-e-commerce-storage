@@ -1,4 +1,4 @@
-import { categoryController } from "@/server/infra/controller/category-controller";
+import { categoryController } from "@/server/adapters/controller/category-controller";
 
 export async function GET(
   request: Request,

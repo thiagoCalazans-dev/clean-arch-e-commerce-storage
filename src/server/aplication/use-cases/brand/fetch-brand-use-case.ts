@@ -1,4 +1,4 @@
-import { BrandRepository } from "@/server/infra/database/repositories/brand-repository";
+import { BrandRepository } from "@/server/adapters/database/repositories/brand-repository";
 import { BrandNotFoundError } from "../../error/BrandNotFoundError";
 
 export class FetchBrandUseCase {

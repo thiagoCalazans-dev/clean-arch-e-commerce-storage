@@ -41,7 +41,6 @@ export class InMemoryCategoryRepository implements CategoryRepository {
   }
 
   async update(data: RepositoryCategory): Promise<void> {
-    console.log(data);
     const index = this.categories.findIndex((item) => item.id === data.id);
     if (index !== -1) {
       this.categories[index] = data;

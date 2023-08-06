@@ -1,4 +1,4 @@
-import { CategoryRepository } from "@/server/infra/database/repositories/category-repository";
+import { CategoryRepository } from "@/server/adapters/database/repositories/category-repository";
 import { CategoryNotFoundError } from "../../error/CategoryNotFoundError";
 
 export class RemoveCategoryUseCase {

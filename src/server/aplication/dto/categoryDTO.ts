@@ -1,4 +1,4 @@
-import { Category } from "@/server/domain/entities/category";
+import { Category } from "@/server/enterprise/entities/category";
 
 export interface CreateCategoryInputDTO {
   data: {

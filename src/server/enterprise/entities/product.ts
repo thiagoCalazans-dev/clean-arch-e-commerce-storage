@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { IsRequiredError } from "../errors/isRequiredError";
 import { isCurrencyTypeValueError } from "../errors/isCurrencyTypeValueError";
-import { Currency } from "../value-objects/currency";
+import { Currency } from "../value-object/currency";
 
 interface ProductProps {
   name: string;
@@ -9,7 +9,7 @@ interface ProductProps {
   cost: number;
   description: string;
   trending?: boolean;
-  categoryID: string;
+  categoryId: string;
   brandId: string;
 }
 
@@ -17,7 +17,7 @@ export class Product {
   private _id: string;
   private _name: string;
   private _code: string;
-  private _cost: Currency;
+  private _cost: number;
   private _description: string;
   private _trending: boolean;
   private _categoryId: string;
@@ -35,13 +35,13 @@ export class Product {
     if (props.description.length < 1) throw new IsRequiredError("description");
     this._description = props.description;
 
-    if (props.categoryID.length < 1) throw new IsRequiredError("categoryID");
-    this._categoryId = props.categoryID;
+    if (props.categoryId.length < 1) throw new IsRequiredError("categoryID");
+    this._categoryId = props.categoryId;
 
     if (props.brandId.length < 1) throw new IsRequiredError("brandId");
     this._brandId = props.brandId;
 
-    this._cost = Currency.validateCurrencyType(props.cost);
+    this._cost = Currency.validate(props.cost);
     this._trending = props.trending || false;
   }
 
@@ -50,6 +50,10 @@ export class Product {
   }
   get name() {
     return this._name;
+  }
+
+  get code() {
+    return this._code;
   }
 
   get cost() {

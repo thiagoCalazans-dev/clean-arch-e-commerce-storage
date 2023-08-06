@@ -1,5 +1,5 @@
-import { Brand } from "@/server/domain/entities/brand";
-import { BrandRepository } from "@/server/infra/database/repositories/brand-repository";
+import { Brand } from "@/server/enterprise/entities/brand";
+import { BrandRepository } from "@/server/adapters/database/repositories/brand-repository";
 import { UpdateBrandInputDTO } from "../../dto/brandDTO";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 import { BrandNotFoundError } from "../../error/BrandNotFoundError";

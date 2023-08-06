@@ -1,4 +1,4 @@
-import { Color } from "@/server/domain/entities/color";
+import { Color } from "@/server/enterprise/entities/color";
 
 export interface CreateColorInputDTO {
   data: {

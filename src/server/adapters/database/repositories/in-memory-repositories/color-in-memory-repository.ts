@@ -46,7 +46,6 @@ export class InMemoryColorRepository implements ColorRepository {
   }
 
   async update(data: RepositoryColor): Promise<void> {
-    console.log(data);
     const index = this.colors.findIndex((item) => item.id === data.id);
     if (index !== -1) {
       this.colors[index] = data;

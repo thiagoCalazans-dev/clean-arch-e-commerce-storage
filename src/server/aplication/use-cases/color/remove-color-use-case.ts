@@ -1,4 +1,4 @@
-import { ColorRepository } from "@/server/infra/database/repositories/color-repository";
+import { ColorRepository } from "@/server/adapters/database/repositories/color-repository";
 import { ColorNotFoundError } from "../../error/ColorNotFoundError";
 
 export class RemoveColorUseCase {

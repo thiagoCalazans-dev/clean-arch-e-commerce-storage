@@ -1,4 +1,4 @@
-import { Size } from "@/server/domain/entities/size";
+import { Size } from "@/server/enterprise/entities/size";
 import { SizeRepository } from "@/server/infra/database/repositories/size-repository";
 import { UpdateSizeInputDTO } from "../../dto/sizeDTO";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";

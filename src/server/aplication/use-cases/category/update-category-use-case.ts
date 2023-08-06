@@ -1,5 +1,5 @@
-import { Category } from "@/server/domain/entities/category";
-import { CategoryRepository } from "@/server/infra/database/repositories/category-repository";
+import { Category } from "@/server/enterprise/entities/category";
+import { CategoryRepository } from "@/server/adapters/database/repositories/category-repository";
 import { UpdateCategoryInputDTO } from "../../dto/categoryDTO";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 import { CategoryNotFoundError } from "../../error/CategoryNotFoundError";

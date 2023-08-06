@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { CreateColorUseCase } from "./create-color-use-case";
-import { InMemoryColorRepository } from "../../../infra/database/repositories/in-memory-repositories/color-in-memory-repository";
+import { InMemoryColorRepository } from "../../../adapters/database/repositories/in-memory-repositories/color-in-memory-repository";
 import { ValueAlreadyExistError } from "../../error/ValueAlereadyExistError";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 

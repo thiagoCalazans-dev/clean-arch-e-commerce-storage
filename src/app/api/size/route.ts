@@ -1,4 +1,4 @@
-import { sizeController } from "@/server/infra/controller/size-controller";
+import { sizeController } from "@/server/adapters/controller/size-controller";
 
 export async function POST(request: Request) {
   return sizeController.Post(request);

@@ -1,4 +1,4 @@
-import { Brand } from "@/server/domain/entities/brand";
+import { Brand } from "@/server/enterprise/entities/brand";
 
 export interface CreateBrandInputDTO {
   data: {

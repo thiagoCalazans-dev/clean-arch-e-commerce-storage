@@ -1,4 +1,4 @@
-import { Size } from "@/server/domain/entities/size";
+import { Size } from "@/server/enterprise/entities/size";
 
 export interface CreateSizeInputDTO {
   data: {

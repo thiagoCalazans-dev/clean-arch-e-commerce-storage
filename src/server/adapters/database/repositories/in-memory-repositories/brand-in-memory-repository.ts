@@ -41,7 +41,6 @@ export class InMemoryBrandRepository implements BrandRepository {
   }
 
   async update(data: RepositoryBrand): Promise<void> {
-    console.log(data);
     const index = this.brands.findIndex((item) => item.id === data.id);
     if (index !== -1) {
       this.brands[index] = data;

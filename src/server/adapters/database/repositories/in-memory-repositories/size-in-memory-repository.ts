@@ -46,7 +46,6 @@ export class InMemorySizeRepository implements SizeRepository {
   }
 
   async update(data: RepositorySize): Promise<void> {
-    console.log(data);
     const index = this.sizes.findIndex((item) => item.id === data.id);
     if (index !== -1) {
       this.sizes[index] = data;

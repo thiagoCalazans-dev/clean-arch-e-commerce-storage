@@ -1,4 +1,4 @@
-import { brandController } from "@/server/infra/controller/brand-controller";
+import { brandController } from "@/server/adapters/controller/brand-controller";
 
 export async function GET(
   request: Request,

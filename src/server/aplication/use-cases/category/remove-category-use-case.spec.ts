@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { InMemoryCategoryRepository } from "../../../infra/database/repositories/in-memory-repositories/category-in-memory-repository";
+import { InMemoryCategoryRepository } from "../../../adapters/database/repositories/in-memory-repositories/category-in-memory-repository";
 import { RemoveCategoryUseCase } from "./remove-category-use-case";
 import { GetCategoriesUseCase } from "./get-categories-use-case";
 

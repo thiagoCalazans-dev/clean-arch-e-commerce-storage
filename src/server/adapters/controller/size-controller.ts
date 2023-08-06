@@ -1,24 +1,23 @@
 import { NextResponse } from "next/server";
 import { NameAlreadyExistError } from "@/server/aplication/error/NameAlreadyExistError";
-import { ColorNotFoundError } from "@/server/aplication/error/ColorNotFoundError";
+import { SizeNotFoundError } from "@/server/aplication/error/SizeNotFoundError";
 import {
-  makeFetchColorUseCase,
-  makeGetColorsUseCase,
-  makeCreateColorUseCase,
-  makeRemoveColorUseCase,
-  makeUpdateColorUseCase,
-} from "../factories/makeColorUseCase";
+  makeFetchSizeUseCase,
+  makeGetSizesUseCase,
+  makeCreateSizeUseCase,
+  makeRemoveSizeUseCase,
+  makeUpdateSizeUseCase,
+} from "../factories/makeSizeUseCase";
 import { ValueAlreadyExistError } from "@/server/aplication/error/ValueAlereadyExistError";
-import { IsRequiredError } from "@/server/domain/errors/isRequiredError";
-import { isHexadecimalColorValue } from "@/server/domain/errors/isHexadecimalColorValue";
+import { IsRequiredError } from "@/server/enterprise/errors/isRequiredError";
 
-class ColorController {
+class SizeController {
   async Get() {
     try {
-      const getColorsUseCase = makeGetColorsUseCase();
-      const colors = await getColorsUseCase.execute();
+      const getSizesUseCase = makeGetSizesUseCase();
+      const sizes = await getSizesUseCase.execute();
 
-      return NextResponse.json(colors, { status: 200 });
+      return NextResponse.json(sizes, { status: 200 });
     } catch (error) {
       return NextResponse.json(null, {
         status: 500,
@@ -30,19 +29,19 @@ class ColorController {
   async GetParams(
     _: Request,
     params: {
-      colorId: string;
+      sizeId: string;
     }
   ) {
-    const id = params.colorId;
+    const id = params.sizeId;
 
     try {
       console.log(id);
-      const fetchColorsUseCase = makeFetchColorUseCase();
-      const color = await fetchColorsUseCase.execute(id);
+      const fetchSizesUseCase = makeFetchSizeUseCase();
+      const size = await fetchSizesUseCase.execute(id);
 
-      return NextResponse.json(color, { status: 200 });
+      return NextResponse.json(size, { status: 200 });
     } catch (error) {
-      if (error instanceof ColorNotFoundError)
+      if (error instanceof SizeNotFoundError)
         return NextResponse.json(null, {
           status: 404,
           statusText: error.message,
@@ -59,12 +58,12 @@ class ColorController {
     const body = await request.json();
 
     try {
-      const createColorUseCase = makeCreateColorUseCase();
-      await createColorUseCase.execute(body);
+      const createSizeUseCase = makeCreateSizeUseCase();
+      await createSizeUseCase.execute(body);
 
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
-      if (error instanceof ColorNotFoundError)
+      if (error instanceof SizeNotFoundError)
         return NextResponse.json(null, {
           status: 404,
           statusText: error.message,
@@ -85,12 +84,6 @@ class ColorController {
       if (error instanceof IsRequiredError)
         return NextResponse.json(null, {
           status: 400,
-          statusText: error.message,
-        });
-
-      if (error instanceof isHexadecimalColorValue)
-        return NextResponse.json(null, {
-          status: 406,
           statusText: error.message,
         });
 
@@ -105,19 +98,19 @@ class ColorController {
   async Put(
     request: Request,
     params: {
-      colorId: string;
+      sizeId: string;
     }
   ) {
     const body = await request.json();
-    const id = params.colorId;
+    const id = params.sizeId;
 
     try {
-      const updateColorUseCase = makeUpdateColorUseCase();
-      await updateColorUseCase.execute(body, id);
+      const updateSizeUseCase = makeUpdateSizeUseCase();
+      await updateSizeUseCase.execute(body, id);
 
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
-      if (error instanceof ColorNotFoundError)
+      if (error instanceof SizeNotFoundError)
         return NextResponse.json(null, {
           status: 404,
           statusText: error.message,
@@ -141,12 +134,6 @@ class ColorController {
           statusText: error.message,
         });
 
-      if (error instanceof isHexadecimalColorValue)
-        return NextResponse.json(null, {
-          status: 406,
-          statusText: error.message,
-        });
-
       console.log(error);
       return NextResponse.json(null, {
         status: 500,
@@ -158,18 +145,18 @@ class ColorController {
   async Delete(
     _: Request,
     params: {
-      colorId: string;
+      sizeId: string;
     }
   ) {
-    const id = params.colorId;
+    const id = params.sizeId;
 
     try {
-      const removeColorUseCase = makeRemoveColorUseCase();
-      await removeColorUseCase.execute(id);
+      const removeSizeUseCase = makeRemoveSizeUseCase();
+      await removeSizeUseCase.execute(id);
 
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
-      if (error instanceof ColorNotFoundError)
+      if (error instanceof SizeNotFoundError)
         return NextResponse.json(null, {
           status: 404,
           statusText: error.message,
@@ -183,4 +170,4 @@ class ColorController {
   }
 }
 
-export const colorController = new ColorController();
+export const sizeController = new SizeController();

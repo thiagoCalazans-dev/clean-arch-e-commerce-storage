@@ -1,4 +1,4 @@
-import { colorController } from "@/server/infra/controller/color-controller";
+import { colorController } from "@/server/adapters/controller/color-controller";
 
 export async function GET(
   request: Request,

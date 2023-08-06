@@ -1,8 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { IsRequiredError } from "../errors/isRequiredError";
-import { Size } from "./size";
 import { Product } from "./product";
-import { isCurrencyTypeValueError } from "../errors/isCurrencyTypeValueError";
 
 describe("teste Product Entity rules", () => {
   it("should instance Product", () => {
@@ -12,7 +10,7 @@ describe("teste Product Entity rules", () => {
       cost: 12.67,
       description: "lorem ipsum dolor",
       trending: true,
-      categoryID: "qualquer um",
+      categoryId: "qualquer um",
       brandId: "qualquer dois",
     };
 
@@ -28,7 +26,7 @@ describe("teste Product Entity rules", () => {
       cost: 12.67,
       description: "lorem ipsum dolor",
       trending: true,
-      categoryID: "qualquer um",
+      categoryId: "qualquer um",
       brandId: "qualquer dois",
     };
 
@@ -44,7 +42,7 @@ describe("teste Product Entity rules", () => {
       cost: 12.67,
       description: "lorem ipsum dolor",
       trending: true,
-      categoryID: "qualquer um",
+      categoryId: "qualquer um",
       brandId: "qualquer dois",
     };
 
@@ -60,7 +58,7 @@ describe("teste Product Entity rules", () => {
       cost: 12.67,
       description: "",
       trending: true,
-      categoryID: "qualquer um",
+      categoryId: "qualquer um",
       brandId: "qualquer dois",
     };
 
@@ -76,7 +74,7 @@ describe("teste Product Entity rules", () => {
       cost: 12.67,
       description: "lorem ipsum dolor",
       trending: true,
-      categoryID: "",
+      categoryId: "",
       brandId: "qualquer dois",
     };
 
@@ -92,7 +90,7 @@ describe("teste Product Entity rules", () => {
       cost: 12.67,
       description: "lorem ipsum dolor",
       trending: true,
-      categoryID: "qualquer um",
+      categoryId: "qualquer um",
       brandId: "",
     };
 
@@ -107,42 +105,12 @@ describe("teste Product Entity rules", () => {
       code: "XXX-1000",
       cost: 12.67,
       description: "lorem ipsum dolor",
-      categoryID: "qualquer um",
+      categoryId: "qualquer um",
       brandId: "qualquer um",
     };
 
     const product = new Product(baseProduct);
 
     expect(product.trending).toBeFalsy();
-  });
-
-  it("should throw an error if cost has more then two decimals", async () => {
-    const baseProduct = {
-      name: "bikini",
-      code: "XXX-1000",
-      cost: 12.671,
-      description: "lorem ipsum dolor",
-      categoryID: "qualquer um",
-      brandId: "qualquer um",
-    };
-
-    await expect(() => {
-      const product = new Product(baseProduct);
-    }).toThrow(isCurrencyTypeValueError);
-  });
-
-  it("should throw an error if cost has negative type", async () => {
-    const baseProduct = {
-      name: "bikini",
-      code: "XXX-1000",
-      cost: -12.9,
-      description: "lorem ipsum dolor",
-      categoryID: "qualquer um",
-      brandId: "qualquer um",
-    };
-
-    await expect(() => {
-      const product = new Product(baseProduct);
-    }).toThrow(isCurrencyTypeValueError);
   });
 });

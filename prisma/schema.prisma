@@ -12,19 +12,21 @@ datasource db {
 }
 
 model Category {
-  id        String   @id @default(uuid())
-  name      String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        String    @id @default(uuid())
+  name      String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Product   Product[]
 
   @@map("category")
 }
 
 model Brand {
-  id        String   @id @default(uuid())
-  name      String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        String    @id @default(uuid())
+  name      String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Product   Product[]
 
   @@map("brand")
 }
@@ -47,4 +49,21 @@ model Size {
   updatedAt DateTime @updatedAt
 
   @@map("size")
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  code        String   @unique
+  cost        Decimal
+  description String
+  trending    Boolean  @default(false)
+  brand_id    String
+  brand       Brand    @relation(fields: [brand_id], references: [id])
+  category_id String
+  category    Category @relation(fields: [category_id], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("product")
 }

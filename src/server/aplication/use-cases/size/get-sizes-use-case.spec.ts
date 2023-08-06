@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { CreateSizeUseCase } from "./create-size-use-case";
-import { InMemorySizeRepository } from "../../../infra/database/repositories/in-memory-repositories/size-in-memory-repository";
+import { InMemorySizeRepository } from "../../../adapters/database/repositories/in-memory-repositories/size-in-memory-repository";
 import { GetSizesUseCase } from "./get-sizes-use-case";
 
 let repository: InMemorySizeRepository;
