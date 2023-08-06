@@ -89,12 +89,11 @@ class CategoryController {
     }
   ) {
     const body = await request.json();
-
-    console.log(body);
+    const id = params.categoryId;
 
     try {
       const updateCategoryUseCase = makeUpdateCategoryUseCase();
-      await updateCategoryUseCase.execute(body);
+      await updateCategoryUseCase.execute(body, id);
 
       return NextResponse.json(null, { status: 200 });
     } catch (error) {

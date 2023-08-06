@@ -25,7 +25,7 @@ export class Color {
       throw new isHexadecimalColorValue();
     }
 
-    this._value = props.value;
+    this._value = props.value.toUpperCase();
   }
 
   get data() {

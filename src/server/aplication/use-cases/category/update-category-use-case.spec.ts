@@ -19,9 +19,12 @@ describe("test UpdateCategory use case", () => {
     const categories = await getCategories.execute();
     const { id } = categories.data[0];
 
-    await sut.execute({
-      data: { id: id, name: "maria joana" },
-    });
+    await sut.execute(
+      {
+        data: { name: "maria joana" },
+      },
+      id
+    );
 
     expect(categories.data[0].name).toBe("maria joana");
   });
@@ -31,9 +34,12 @@ describe("test UpdateCategory use case", () => {
     const createdCategory = await repository.findByName("joao ninguem");
 
     await expect(() =>
-      sut.execute({
-        data: { name: "maria joana", id: createdCategory!.id },
-      })
+      sut.execute(
+        {
+          data: { name: "maria joana" },
+        },
+        createdCategory!.id
+      )
     ).rejects.toThrowError();
   });
 });

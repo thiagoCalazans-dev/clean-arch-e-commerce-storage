@@ -15,7 +15,6 @@ export interface CreateCategoryOutputDTO {
 
 export interface UpdateCategoryInputDTO {
   data: {
-    id: string;
     name: string;
   };
 }

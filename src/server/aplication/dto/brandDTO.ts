@@ -15,7 +15,6 @@ export interface CreateBrandOutputDTO {
 
 export interface UpdateBrandInputDTO {
   data: {
-    id: string;
     name: string;
   };
 }

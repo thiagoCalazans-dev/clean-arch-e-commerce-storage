@@ -20,9 +20,12 @@ describe("test UpdateBrand use case", () => {
     const categories = await getBrands.execute();
     const { id } = categories.data[0];
 
-    await sut.execute({
-      data: { id: id, name: "maria joana" },
-    });
+    await sut.execute(
+      {
+        data: { name: "maria joana" },
+      },
+      id
+    );
 
     expect(categories.data[0].name).toBe("maria joana");
   });
@@ -32,9 +35,12 @@ describe("test UpdateBrand use case", () => {
     const createdBrand = await repository.findByName("joao ninguem");
 
     await expect(() =>
-      sut.execute({
-        data: { name: "maria joana", id: createdBrand!.id },
-      })
+      sut.execute(
+        {
+          data: { name: "maria joana" },
+        },
+        createdBrand!.id
+      )
     ).rejects.toThrowError();
   });
 });

@@ -1,13 +1,13 @@
-import { Color } from "@/server/domain/entities/color";
+import { Size } from "@/server/domain/entities/size";
 
-export interface CreateColorInputDTO {
+export interface CreateSizeInputDTO {
   data: {
     name: string;
     value: string;
   };
 }
 
-export interface CreateColorOutputDTO {
+export interface CreateSizeOutputDTO {
   data: {
     id: string;
     name: string;
@@ -15,7 +15,7 @@ export interface CreateColorOutputDTO {
   };
 }
 
-export interface UpdateColorInputDTO {
+export interface UpdateSizeInputDTO {
   data: {
     name: string;
     value: string;
@@ -23,10 +23,10 @@ export interface UpdateColorInputDTO {
 }
 
 export interface FetchCategoriesOutputDTO {
-  data: Color[];
+  data: Size[];
 }
 
-export interface RemoveColorInputDTO {
+export interface RemoveSizeInputDTO {
   data: {
     id: string;
     name: string;

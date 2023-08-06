@@ -7,12 +7,8 @@ import { CategoryNotFoundError } from "../../error/CategoryNotFoundError";
 export class UpdateCategoryUseCase {
   constructor(private categoryRepository: CategoryRepository) {}
 
-  async execute({ data }: UpdateCategoryInputDTO) {
-    const props = {
-      name: data.name,
-    };
-
-    const category = new Category(props, data.id);
+  async execute({ data }: UpdateCategoryInputDTO, categoryId: string) {
+    const category = new Category(data, categoryId);
     const { id, name } = category.data;
 
     const nameExists = await this.categoryRepository.findByName(name);

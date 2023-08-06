@@ -7,12 +7,8 @@ import { BrandNotFoundError } from "../../error/BrandNotFoundError";
 export class UpdateBrandUseCase {
   constructor(private brandRepository: BrandRepository) {}
 
-  async execute({ data }: UpdateBrandInputDTO) {
-    const props = {
-      name: data.name,
-    };
-
-    const brand = new Brand(props, data.id);
+  async execute({ data }: UpdateBrandInputDTO, brandId: string) {
+    const brand = new Brand(data, brandId);
     const { id, name } = brand.data;
 
     const nameExists = await this.brandRepository.findByName(name);
