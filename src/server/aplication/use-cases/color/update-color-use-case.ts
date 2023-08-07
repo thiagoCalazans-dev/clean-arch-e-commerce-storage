@@ -3,7 +3,7 @@ import { ColorRepository } from "@/server/adapters/database/repositories/color-r
 import { UpdateColorInputDTO } from "../../dto/colorDTO";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 import { ColorNotFoundError } from "../../error/ColorNotFoundError";
-import { ValueAlreadyExistError } from "../../error/ValueAlereadyExistError";
+import { ValueAlreadyExistError } from "../../error/ValueAlreadyExistError";
 
 export class UpdateColorUseCase {
   constructor(private colorRepository: ColorRepository) {}

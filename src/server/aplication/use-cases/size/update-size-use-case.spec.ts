@@ -4,7 +4,7 @@ import { InMemorySizeRepository } from "../../../adapters/database/repositories/
 import { GetSizesUseCase } from "./get-sizes-use-case";
 import { UpdateSizeUseCase } from "./update-size-use-case";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
-import { ValueAlreadyExistError } from "../../error/ValueAlereadyExistError";
+import { ValueAlreadyExistError } from "../../error/ValueAlreadyExistError";
 
 let repository: InMemorySizeRepository;
 let sut: UpdateSizeUseCase;

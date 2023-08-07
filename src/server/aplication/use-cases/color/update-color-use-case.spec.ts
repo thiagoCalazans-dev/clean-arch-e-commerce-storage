@@ -4,7 +4,7 @@ import { InMemoryColorRepository } from "../../../adapters/database/repositories
 import { GetColorsUseCase } from "./get-colors-use-case";
 import { UpdateColorUseCase } from "./update-color-use-case";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
-import { ValueAlreadyExistError } from "../../error/ValueAlereadyExistError";
+import { ValueAlreadyExistError } from "../../error/ValueAlreadyExistError";
 
 let repository: InMemoryColorRepository;
 let sut: UpdateColorUseCase;

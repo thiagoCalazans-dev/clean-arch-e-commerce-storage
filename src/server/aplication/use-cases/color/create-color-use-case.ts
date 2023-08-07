@@ -2,7 +2,7 @@ import { Color } from "@/server/enterprise/entities/color";
 import { ColorRepository } from "@/server/adapters/database/repositories/color-repository";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 import { CreateColorInputDTO } from "../../dto/colorDTO";
-import { ValueAlreadyExistError } from "../../error/ValueAlereadyExistError";
+import { ValueAlreadyExistError } from "../../error/ValueAlreadyExistError";
 
 export class CreateColorUseCase {
   constructor(private colorRepository: ColorRepository) {}

@@ -12,22 +12,31 @@ export interface CreateProductInputDTO {
   };
 }
 
-export interface CreateProductOutputDTO {
+export interface ProductInputDTO {
   data: {
-    id: string;
     name: string;
-    value: string;
+    brandId: string;
+    categoryId: string;
+    code: string;
+    cost: number;
+    description: string;
+    trending: boolean;
   };
 }
 
 export interface UpdateProductInputDTO {
   data: {
     name: string;
-    value: string;
+    brandId: string;
+    categoryId: string;
+    code: string;
+    cost: number;
+    description: string;
+    trending: boolean;
   };
 }
 
-export interface FetchCategoriesOutputDTO {
+export interface GetProductsOutputDTO {
   data: Product[];
 }
 

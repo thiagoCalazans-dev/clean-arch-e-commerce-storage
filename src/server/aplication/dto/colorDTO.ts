@@ -7,14 +7,6 @@ export interface CreateColorInputDTO {
   };
 }
 
-export interface CreateColorOutputDTO {
-  data: {
-    id: string;
-    name: string;
-    value: string;
-  };
-}
-
 export interface UpdateColorInputDTO {
   data: {
     name: string;

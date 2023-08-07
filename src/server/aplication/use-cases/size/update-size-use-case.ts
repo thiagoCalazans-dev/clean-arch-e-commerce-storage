@@ -3,7 +3,7 @@ import { SizeRepository } from "@/server/infra/database/repositories/size-reposi
 import { UpdateSizeInputDTO } from "../../dto/sizeDTO";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 import { SizeNotFoundError } from "../../error/SizeNotFoundError";
-import { ValueAlreadyExistError } from "../../error/ValueAlereadyExistError";
+import { ValueAlreadyExistError } from "../../error/ValueAlreadyExistError";
 
 export class UpdateSizeUseCase {
   constructor(private sizeRepository: SizeRepository) {}
