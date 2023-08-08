@@ -32,38 +32,58 @@ model Brand {
 }
 
 model Color {
-  id        String   @id @default(uuid())
-  name      String   @unique
-  value     String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String        @id @default(uuid())
+  name        String        @unique
+  value       String        @unique
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  ProductItem ProductItem[]
 
   @@map("color")
 }
 
 model Size {
-  id        String   @id @default(uuid())
-  name      String   @unique
-  value     String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String        @id @default(uuid())
+  name        String        @unique
+  value       String        @unique
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  ProductItem ProductItem[]
 
   @@map("size")
 }
 
 model Product {
-  id          String   @id @default(uuid())
-  name        String   @unique
-  code        String   @unique
+  id          String        @id @default(uuid())
+  name        String        @unique
+  code        String        @unique
   cost        Decimal
   description String
-  trending    Boolean  @default(false)
+  trending    Boolean       @default(false)
   brand_id    String
-  brand       Brand    @relation(fields: [brand_id], references: [id])
+  brand       Brand         @relation(fields: [brand_id], references: [id])
   category_id String
-  category    Category @relation(fields: [category_id], references: [id])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  category    Category      @relation(fields: [category_id], references: [id])
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  ProductItem ProductItem[]
 
   @@map("product")
+}
+
+model ProductItem {
+  id         String   @id @default(uuid())
+  product    Product  @relation(fields: [product_id], references: [id])
+  product_id String
+  color      Color    @relation(fields: [color_id], references: [id])
+  color_id   String
+  size       Size     @relation(fields: [size_id], references: [id])
+  size_id    String
+  price      Decimal
+  descont    Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([product_id, size_id, color_id], name: "unique_contract")
+  @@map("product_item")
 }
