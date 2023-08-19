@@ -20,11 +20,20 @@ export const fetchBrandByIdReponseSchema = schema
   })
   .nullable();
 
-export const fetchBrandByIdParamsSchema = schema.string().uuid();
-
-export type fetchByIdParamsSchema = schema.infer<
+export type fetchBrandByIdReponse = schema.infer<
   typeof fetchBrandByIdReponseSchema
 >;
-export type fetchBrandByIdReponse = schema.infer<
+
+export const fetchBrandByIdParamsSchema = schema.string();
+
+export type fetchByIdParamsSchema = schema.infer<
   typeof fetchBrandByIdParamsSchema
+>;
+export const removeBrandByIdParamsSchema = schema.object({
+  brandId: schema.string(),
+  onError: schema.function().args(schema.string()).returns(schema.void()),
+});
+
+export type removeBrandByIdParams = schema.infer<
+  typeof removeBrandByIdParamsSchema
 >;

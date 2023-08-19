@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/client/components/ui/button";
 import {
@@ -19,12 +19,16 @@ import {
   Pencil2Icon,
   TrashIcon,
 } from "@radix-ui/react-icons";
+import { TableCell } from "@/client/components/ui/table";
+import { BrandActions } from "@/client/actions/brand-action";
+import { ToastHook } from "@/client/hook/toast-hook";
 
 interface CellActionProps {
   data: BrandsColumn;
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
+  const { onError, onSuccess } = ToastHook();
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -32,17 +36,18 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const onDeleteConfirm = async () => {
     try {
       setLoading(true);
-      await console.log(data.id);
+      await BrandActions.remove({ brandId: data.id, onError });
       setOpen(false);
       setLoading(false);
+      onSuccess("Brand deleted");
       router.refresh();
     } catch (error: Error | any) {
-      console.log(error.message);
+      onError(error.message);
     }
   };
 
   return (
-    <>
+    <div className="flex justify-end">
       <AlertModal
         isOpen={open}
         onClose={() => setOpen(false)}
@@ -71,6 +76,6 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    </>
+    </div>
   );
 };

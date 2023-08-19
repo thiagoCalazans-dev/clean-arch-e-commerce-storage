@@ -1,8 +1,8 @@
+import { BrandActions } from "@/client/actions/brand-action";
 import { BrandsClientPage } from "./client";
 
 export default async function BrandsPage() {
-  const reponse = await fetch("http://localhost:3000/api/brand");
-  const { data } = await reponse.json();
+  const { data } = await BrandActions.getAll();
 
   return (
     <div className="flex-col">

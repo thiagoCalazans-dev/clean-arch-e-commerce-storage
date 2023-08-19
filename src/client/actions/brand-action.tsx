@@ -1,12 +1,13 @@
 import { BASE_URL } from "../lib/utils";
 import {
+  Brand,
   fetchBrandByIdParamsSchema,
-  fetchBrandByIdReponse,
   fetchBrandByIdReponseSchema,
+  removeBrandByIdParams,
 } from "../schema/brand-schema";
 
 async function getAll() {
-  const response = await fetch(`${BASE_URL}/biddingTypes`, {
+  const response = await fetch(`${BASE_URL}/brand`, {
     next: {
       tags: ["biddingTypes"],
     },
@@ -22,11 +23,11 @@ async function fetchById(brandId: string) {
     console.log(parsedParams.error);
     return;
   }
-  const response = await fetch(`${BASE_URL}/biddingTypes/${brandId}`, {
+  const response = await fetch(`${BASE_URL}/brand/${brandId}`, {
     cache: "no-store",
   });
 
-  const json: fetchBrandByIdReponse = await response.json();
+  const json = await response.json();
 
   const parsedReponse = fetchBrandByIdReponseSchema.safeParse(json);
 
@@ -38,7 +39,37 @@ async function fetchById(brandId: string) {
   return parsedReponse.data;
 }
 
+async function create(brand: Brand) {
+  const body = {
+    data: brand,
+  };
+
+  const response = await fetch(`${BASE_URL}/brand`, {
+    method: "POST",
+    body: JSON.stringify(body),
+  });
+  const result = await response.json();
+  return result;
+}
+
+async function remove({ brandId, onError }: removeBrandByIdParams) {
+  const parsedParams = fetchBrandByIdParamsSchema.safeParse(brandId);
+
+  if (!parsedParams.success) {
+    onError(parsedParams.error.message);
+    return;
+  }
+
+  const response = await fetch(`${BASE_URL}/brand/${brandId}`, {
+    method: "DELETE",
+  });
+  const json = await response.json();
+  return json || null;
+}
+
 export const BrandActions = {
+  create,
   getAll,
   fetchById,
+  remove,
 };

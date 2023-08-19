@@ -14,6 +14,7 @@ import {
 import { Brand, BrandSchema } from "@/client/schema/brand-schema";
 import { useToast } from "../ui/use-toast";
 import { useRouter } from "next/navigation";
+import { BrandActions } from "@/client/actions/brand-action";
 
 interface BrandFormProps {
   initialData: Brand | null;
@@ -33,9 +34,10 @@ export function BrandForm({ initialData }: BrandFormProps) {
   const { isSubmitting } = form.formState;
 
   async function onSubmit(formValues: Brand) {
+    console.log(formValues);
     try {
       if (initialData) {
-        const update = await console.log("update", formValues);
+        await console.log("update", formValues);
         toast({
           title: "Brand Updated",
           description: new Date().toDateString(),
@@ -43,9 +45,9 @@ export function BrandForm({ initialData }: BrandFormProps) {
         await router.prefetch("/brands");
         return;
       }
-      const create = await console.log("create", formValues);
+      await BrandActions.create(formValues);
       toast({
-        title: "Bidding Type Created",
+        title: "Brand Created",
         description: new Date().toDateString(),
       });
       form.reset();

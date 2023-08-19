@@ -8,6 +8,7 @@ import {
   makeRemoveBrandUseCase,
   makeUpdateBrandUseCase,
 } from "../factories/makeBrandUseCase";
+import { revalidateTag } from "next/cache";
 
 class BrandController {
   async Get() {
@@ -33,7 +34,6 @@ class BrandController {
     const id = params.brandId;
 
     try {
-      console.log(id);
       const fetchBrandsUseCase = makeFetchBrandUseCase();
       const brand = await fetchBrandsUseCase.execute(id);
 
@@ -75,6 +75,7 @@ class BrandController {
           statusText: error.message,
         });
 
+      revalidateTag("brands");
       console.log(error);
       return NextResponse.json(null, {
         status: 500,
@@ -110,6 +111,7 @@ class BrandController {
           statusText: error.message,
         });
 
+      revalidateTag("brands");
       console.log(error);
       return NextResponse.json(null, {
         status: 500,
@@ -138,6 +140,7 @@ class BrandController {
           statusText: error.message,
         });
 
+      revalidateTag("brands");
       return NextResponse.json(null, {
         status: 500,
         statusText: "Something went wrong!",
