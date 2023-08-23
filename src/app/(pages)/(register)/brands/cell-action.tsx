@@ -19,16 +19,15 @@ import {
   Pencil2Icon,
   TrashIcon,
 } from "@radix-ui/react-icons";
-import { TableCell } from "@/client/components/ui/table";
-import { BrandActions } from "@/client/actions/brand-action";
-import { ToastHook } from "@/client/hook/toast-hook";
+import { BrandActions } from "@/client/actions/brand-actions";
+import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
 
 interface CellActionProps {
   data: BrandsColumn;
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
-  const { onError, onSuccess } = ToastHook();
+  const { onError, onSuccess } = useOnResponseStatus();
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -43,6 +42,8 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       router.refresh();
     } catch (error: Error | any) {
       onError(error.message);
+    } finally {
+      setOpen(false);
     }
   };
 

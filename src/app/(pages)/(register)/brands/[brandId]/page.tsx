@@ -1,4 +1,4 @@
-import { BrandActions } from "@/client/actions/brand-action";
+import { BrandActions } from "@/client/actions/brand-actions";
 import { BrandForm } from "@/client/components/forms/brand-form";
 import { Heading } from "@/client/components/ui/heading";
 import { Separator } from "@/client/components/ui/separator";

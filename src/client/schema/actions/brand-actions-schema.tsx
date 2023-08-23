@@ -1,28 +1,17 @@
-import schema from "../lib/schema";
+import schema from "../../lib/schema";
 
 export const BrandSchema = schema.object({
   id: schema.string(),
   name: schema.string().min(3),
-  updatedAt: schema.string(),
-  createdAt: schema.string(),
 });
 
 export type Brand = schema.infer<typeof BrandSchema>;
 
-export const fetchBrandByIdReponseSchema = schema
-  .object({
-    data: schema.object({
-      id: schema.string().uuid(),
-      name: schema.string(),
-      updatedAt: schema.string(),
-      createdAt: schema.string(),
-    }),
-  })
-  .nullable();
+export const CreateBrandSchema = schema.object({
+  name: schema.string().min(3),
+});
 
-export type fetchBrandByIdReponse = schema.infer<
-  typeof fetchBrandByIdReponseSchema
->;
+export type CreateBrand = schema.infer<typeof CreateBrandSchema>;
 
 export const fetchBrandByIdParamsSchema = schema.string();
 

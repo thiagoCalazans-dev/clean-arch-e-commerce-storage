@@ -1,7 +1,7 @@
 "use client";
-import { useToast } from "../components/ui/use-toast";
+import { useToast } from "./use-toast";
 
-export function ToastHook() {
+export function useOnResponseStatus() {
   const { toast } = useToast();
 
   function onSuccess(title: string) {

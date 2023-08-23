@@ -9,6 +9,7 @@ import {
   makeUpdateBrandUseCase,
 } from "../factories/makeBrandUseCase";
 import { revalidateTag } from "next/cache";
+import { BrandAlreadyUsedError } from "@/server/aplication/error/BrandAlreadyUsedError";
 
 class BrandController {
   async Get() {
@@ -61,6 +62,7 @@ class BrandController {
       const createBrandUseCase = makeCreateBrandUseCase();
       await createBrandUseCase.execute(body);
 
+      revalidateTag("brands");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof BrandNotFoundError)
@@ -75,7 +77,6 @@ class BrandController {
           statusText: error.message,
         });
 
-      revalidateTag("brands");
       console.log(error);
       return NextResponse.json(null, {
         status: 500,
@@ -97,6 +98,7 @@ class BrandController {
       const updateBrandUseCase = makeUpdateBrandUseCase();
       await updateBrandUseCase.execute(body, id);
 
+      revalidateTag("brands");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof BrandNotFoundError)
@@ -111,7 +113,6 @@ class BrandController {
           statusText: error.message,
         });
 
-      revalidateTag("brands");
       console.log(error);
       return NextResponse.json(null, {
         status: 500,
@@ -131,7 +132,7 @@ class BrandController {
     try {
       const removeBrandUseCase = makeRemoveBrandUseCase();
       await removeBrandUseCase.execute(id);
-
+      revalidateTag("brands");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof BrandNotFoundError)
@@ -140,7 +141,12 @@ class BrandController {
           statusText: error.message,
         });
 
-      revalidateTag("brands");
+      if (error instanceof BrandAlreadyUsedError)
+        return NextResponse.json(null, {
+          status: 422,
+          statusText: error.message,
+        });
+
       return NextResponse.json(null, {
         status: 500,
         statusText: "Something went wrong!",

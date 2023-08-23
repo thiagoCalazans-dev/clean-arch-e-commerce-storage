@@ -11,49 +11,45 @@ import {
   FormLabel,
   FormMessage,
 } from "@/client/components/ui/form";
-import { Brand, BrandSchema } from "@/client/schema/brand-schema";
-import { useToast } from "../ui/use-toast";
+import {
+  Brand,
+  FormBrandSchema,
+} from "@/client/schema/forms/brand-form-schema";
 import { useRouter } from "next/navigation";
-import { BrandActions } from "@/client/actions/brand-action";
+import { BrandActions } from "@/client/actions/brand-actions";
+import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
 
 interface BrandFormProps {
   initialData: Brand | null;
 }
 
 export function BrandForm({ initialData }: BrandFormProps) {
-  const { toast } = useToast();
+  const { onError, onSuccess } = useOnResponseStatus();
   const router = useRouter();
 
   const form = useForm<Brand>({
-    resolver: zodResolver(BrandSchema),
+    resolver: zodResolver(FormBrandSchema),
     defaultValues: initialData || {
       name: "",
     },
   });
 
-  const { isSubmitting } = form.formState;
+  const { isSubmitting, errors } = form.formState;
 
   async function onSubmit(formValues: Brand) {
-    console.log(formValues);
     try {
       if (initialData) {
-        await console.log("update", formValues);
-        toast({
-          title: "Brand Updated",
-          description: new Date().toDateString(),
-        });
+        await BrandActions.update(formValues);
+        onSuccess("Brand Updated");
         await router.prefetch("/brands");
         return;
       }
       await BrandActions.create(formValues);
-      toast({
-        title: "Brand Created",
-        description: new Date().toDateString(),
-      });
+      onSuccess("Brand Created");
       form.reset();
       router.prefetch("/brands");
-    } catch (error) {
-      console.log(error);
+    } catch (error: Error | any) {
+      onError(error.message);
     }
   }
 

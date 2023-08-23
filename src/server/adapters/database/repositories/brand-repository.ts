@@ -14,4 +14,5 @@ export interface BrandRepository {
   findMany: () => Promise<RepositoryBrand[]>;
   findByName: (name: string) => Promise<RepositoryBrand | null>;
   findById: (id: string) => Promise<RepositoryBrand | null>;
+  findBrandinInRelationships: (brandId: string) => Promise<boolean>;
 }

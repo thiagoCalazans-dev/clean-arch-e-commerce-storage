@@ -1,4 +1,4 @@
-import { BrandActions } from "@/client/actions/brand-action";
+import { BrandActions } from "@/client/actions/brand-actions";
 import { BrandsClientPage } from "./client";
 
 export default async function BrandsPage() {
