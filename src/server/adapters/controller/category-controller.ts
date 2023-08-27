@@ -8,6 +8,7 @@ import {
   makeRemoveCategoryUseCase,
   makeUpdateCategoryUseCase,
 } from "../factories/makeCategoryUseCase";
+import { revalidateTag } from "next/cache";
 
 class CategoryController {
   async Get() {
@@ -61,6 +62,7 @@ class CategoryController {
       const createCategoryUseCase = makeCreateCategoryUseCase();
       await createCategoryUseCase.execute(body);
 
+      revalidateTag("categories");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof CategoryNotFoundError)
@@ -94,7 +96,7 @@ class CategoryController {
     try {
       const updateCategoryUseCase = makeUpdateCategoryUseCase();
       await updateCategoryUseCase.execute(body, id);
-
+      revalidateTag("categories");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof CategoryNotFoundError)
@@ -128,7 +130,7 @@ class CategoryController {
     try {
       const removeCategoryUseCase = makeRemoveCategoryUseCase();
       await removeCategoryUseCase.execute(id);
-
+      revalidateTag("categories");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof CategoryNotFoundError)

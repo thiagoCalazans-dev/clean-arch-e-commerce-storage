@@ -18,10 +18,8 @@ export const fetchBrandByIdParamsSchema = schema.string();
 export type fetchByIdParamsSchema = schema.infer<
   typeof fetchBrandByIdParamsSchema
 >;
-export const removeBrandByIdParamsSchema = schema.object({
-  brandId: schema.string(),
-  onError: schema.function().args(schema.string()).returns(schema.void()),
-});
+
+export const removeBrandByIdParamsSchema = schema.string();
 
 export type removeBrandByIdParams = schema.infer<
   typeof removeBrandByIdParamsSchema

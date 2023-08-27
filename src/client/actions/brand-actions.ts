@@ -6,6 +6,7 @@ import {
   CreateBrandSchema,
   fetchBrandByIdParamsSchema,
   removeBrandByIdParams,
+  removeBrandByIdParamsSchema,
 } from "../schema/actions/brand-actions-schema";
 import { BrandHttp } from "../gateways/brands-http";
 
@@ -54,8 +55,8 @@ async function create(brand: CreateBrand) {
   await brandHttp.Post(body);
 }
 
-async function remove(brandId: string) {
-  const parsedParams = fetchBrandByIdParamsSchema.safeParse(brandId);
+async function remove(brandId: removeBrandByIdParams) {
+  const parsedParams = removeBrandByIdParamsSchema.safeParse(brandId);
 
   if (!parsedParams.success) {
     throw new Error(parsedParams.error.message);

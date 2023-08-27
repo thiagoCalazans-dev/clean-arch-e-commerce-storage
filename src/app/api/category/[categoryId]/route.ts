@@ -13,3 +13,10 @@ export async function PUT(
 ) {
   return await categoryController.Put(request, params);
 }
+
+export async function DELETE(
+  request: Request,
+  { params }: { params: { categoryId: string } }
+) {
+  return await categoryController.Delete(request, params);
+}

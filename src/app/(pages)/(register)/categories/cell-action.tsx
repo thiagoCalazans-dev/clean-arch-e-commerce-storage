@@ -13,17 +13,17 @@ import {
 } from "@/client/components/ui/dropdown-menu";
 import { AlertModal } from "@/client/components/alert-modal";
 
-import { BrandsColumn } from "./columns";
+import { CategoriesColumn } from "./columns";
 import {
   DotsHorizontalIcon,
   Pencil2Icon,
   TrashIcon,
 } from "@radix-ui/react-icons";
-import { BrandActions } from "@/client/actions/brand-actions";
+import { CategoryActions } from "@/client/actions/category-actions";
 import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
 
 interface CellActionProps {
-  data: BrandsColumn;
+  data: CategoriesColumn;
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -35,8 +35,8 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const onDeleteConfirm = async () => {
     try {
       setLoading(true);
-      await BrandActions.remove(data.id);
-      onSuccess("Brand deleted");
+      await CategoryActions.remove(data.id);
+      onSuccess("Category deleted");
       router.refresh();
     } catch (error: Error | any) {
       onError(error.message);
@@ -64,7 +64,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem
-            onClick={() => window.location.assign(`/brands/${data.id}`)}
+            onClick={() => window.location.assign(`/categories/${data.id}`)}
           >
             <Pencil2Icon className="mr-2 h-4 w-4" /> Update
           </DropdownMenuItem>
