@@ -1,4 +1,3 @@
-import { BASE_URL } from "../lib/utils";
 import {
   Category,
   CategorySchema,

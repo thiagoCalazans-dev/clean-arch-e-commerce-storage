@@ -5,9 +5,4 @@ export const FormCategorySchema = schema.object({
   name: schema.string().min(3),
 });
 
-export type Category = {
-  id: string;
-  name: string;
-};
-
 export type FormCategory = schema.infer<typeof FormCategorySchema>;

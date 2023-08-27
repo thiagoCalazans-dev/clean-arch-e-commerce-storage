@@ -12,6 +12,7 @@ import {
 import { IsRequiredError } from "@/server/enterprise/errors/isRequiredError";
 import { isHexadecimalColorValue } from "@/server/enterprise/errors/isHexadecimalColorValue";
 import { ValueAlreadyExistError } from "@/server/aplication/error/ValueAlreadyExistError";
+import { revalidateTag } from "next/cache";
 
 class ColorController {
   async Get() {
@@ -62,7 +63,7 @@ class ColorController {
     try {
       const createColorUseCase = makeCreateColorUseCase();
       await createColorUseCase.execute(body);
-
+      revalidateTag("colors");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof ColorNotFoundError)
@@ -115,7 +116,7 @@ class ColorController {
     try {
       const updateColorUseCase = makeUpdateColorUseCase();
       await updateColorUseCase.execute(body, id);
-
+      revalidateTag("colors");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof ColorNotFoundError)
@@ -167,7 +168,7 @@ class ColorController {
     try {
       const removeColorUseCase = makeRemoveColorUseCase();
       await removeColorUseCase.execute(id);
-
+      revalidateTag("colors");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof ColorNotFoundError)

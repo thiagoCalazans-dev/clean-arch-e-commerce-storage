@@ -8,8 +8,10 @@ import {
   makeRemoveSizeUseCase,
   makeUpdateSizeUseCase,
 } from "../factories/makeSizeUseCase";
-import { ValueAlreadyExistError } from "@/server/aplication/error/ValueAlereadyExistError";
+
 import { IsRequiredError } from "@/server/enterprise/errors/isRequiredError";
+import { revalidateTag } from "next/cache";
+import { ValueAlreadyExistError } from "@/server/aplication/error/ValueAlreadyExistError";
 
 class SizeController {
   async Get() {
@@ -60,7 +62,7 @@ class SizeController {
     try {
       const createSizeUseCase = makeCreateSizeUseCase();
       await createSizeUseCase.execute(body);
-
+      revalidateTag("sizes");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof SizeNotFoundError)
@@ -107,7 +109,7 @@ class SizeController {
     try {
       const updateSizeUseCase = makeUpdateSizeUseCase();
       await updateSizeUseCase.execute(body, id);
-
+      revalidateTag("sizes");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof SizeNotFoundError)
@@ -153,7 +155,7 @@ class SizeController {
     try {
       const removeSizeUseCase = makeRemoveSizeUseCase();
       await removeSizeUseCase.execute(id);
-
+      revalidateTag("sizes");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof SizeNotFoundError)

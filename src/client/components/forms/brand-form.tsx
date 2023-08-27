@@ -11,13 +11,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/client/components/ui/form";
-import {
-  Brand,
-  FormBrandSchema,
-} from "@/client/schema/forms/brand-form-schema";
+import { FormBrandSchema } from "@/client/schema/forms/brand-form-schema";
 import { useRouter } from "next/navigation";
 import { BrandActions } from "@/client/actions/brand-actions";
 import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
+import { Brand } from "@/client/schema/actions/brand-actions-schema";
 
 interface BrandFormProps {
   initialData: Brand | null;
