@@ -16,7 +16,7 @@ export const columns: ColumnDef<SizesColumn>[] = [
   },
   {
     accessorKey: "value",
-    header: "Hex-value",
+    header: "value",
   },
   {
     id: "actions",

@@ -1,3 +1,6 @@
+import { BrandRepository, RepositoryBrand } from "./brand-repository";
+import { RepositoryCategory } from "./category-repository";
+
 export interface RepositoryCreateProduct {
   name: string;
   brandId: string;
@@ -12,7 +15,9 @@ export interface RepositoryProduct {
   id: string;
   name: string;
   brandId: string;
+  brand?: RepositoryBrand;
   categoryId: string;
+  category?: RepositoryCategory;
   code: string;
   cost: number;
   description: string;

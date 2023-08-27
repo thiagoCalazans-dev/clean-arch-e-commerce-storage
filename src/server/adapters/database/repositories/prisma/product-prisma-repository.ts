@@ -114,12 +114,19 @@ export class PrismaProductRepository implements ProductRepository {
   }
 
   async findMany() {
-    const products = await prisma.product.findMany();
+    const products = await prisma.product.findMany({
+      include: {
+        brand: true,
+        category: true,
+      },
+    });
     const productsMapped = products.map((product) => {
       return {
         id: product.id,
         brandId: product.brand_id,
+        brand: product.brand,
         categoryId: product.category_id,
+        category: product.category,
         code: product.code,
         cost: Number(product.cost),
         description: product.description,

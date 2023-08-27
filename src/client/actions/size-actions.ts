@@ -1,4 +1,4 @@
-import { SizeHttp } from "../gateways/size-http";
+import { SizeHttp } from "../gateways/sizes-http";
 
 import {
   Size,
