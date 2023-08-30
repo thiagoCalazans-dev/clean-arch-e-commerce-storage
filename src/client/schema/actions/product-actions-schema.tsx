@@ -10,7 +10,7 @@ export const ProductSchema = schema.object({
   categoryId: schema.string(),
   category: CategorySchema.optional(),
   code: schema.string(),
-  cost: schema.string(),
+  cost: schema.coerce.string(),
   description: schema.string(),
   trending: schema.boolean().default(false),
 });

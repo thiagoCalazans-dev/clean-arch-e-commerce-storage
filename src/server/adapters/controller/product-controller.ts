@@ -11,6 +11,7 @@ import {
 import { CodeAlreadyExistError } from "@/server/aplication/error/CodeAlreadyExistError";
 import { BrandNotFoundError } from "@/server/aplication/error/BrandNotFoundError";
 import { CategoryNotFoundError } from "@/server/aplication/error/CategoryNotFoundError";
+import { revalidateTag } from "next/cache";
 
 class ProductController {
   async Get() {
@@ -60,7 +61,7 @@ class ProductController {
     try {
       const createProductUseCase = makeCreateProductUseCase();
       await createProductUseCase.execute(body);
-
+      revalidateTag("products");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof ProductNotFoundError)
@@ -111,7 +112,7 @@ class ProductController {
     try {
       const updateProductUseCase = makeUpdateProductUseCase();
       await updateProductUseCase.execute(body, id);
-
+      revalidateTag("products");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof ProductNotFoundError)
@@ -162,7 +163,7 @@ class ProductController {
     try {
       const removeProductUseCase = makeRemoveProductUseCase();
       await removeProductUseCase.execute(id);
-
+      revalidateTag("products");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof ProductNotFoundError)
