@@ -1,5 +1,6 @@
 import { BrandRepository, RepositoryBrand } from "./brand-repository";
 import { RepositoryCategory } from "./category-repository";
+import { RepositoryProductItem } from "./product-item-repository";
 
 export interface RepositoryCreateProduct {
   name: string;
@@ -22,6 +23,7 @@ export interface RepositoryProduct {
   cost: number;
   description: string;
   trending: boolean;
+  productItem?: RepositoryProductItem[];
 }
 
 export interface ProductRepository {
@@ -32,4 +34,7 @@ export interface ProductRepository {
   findByName: (name: string) => Promise<RepositoryProduct | null>;
   findByCode: (code: string) => Promise<RepositoryProduct | null>;
   findById: (id: string) => Promise<RepositoryProduct | null>;
+  findProductWithItems: (
+    productId: string
+  ) => Promise<RepositoryProduct | null>;
 }

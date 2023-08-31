@@ -99,6 +99,63 @@ export class PrismaProductRepository implements ProductRepository {
     return parsedProduct;
   }
 
+  async findProductWithItems(productId: string) {
+    const product = await prisma.product.findUnique({
+      where: {
+        id: productId,
+      },
+      include: {
+        ProductItem: {
+          include: {
+            color: true,
+            size: true,
+          },
+        },
+      },
+    });
+
+    if (!product) return null;
+
+    const productItemMapped = product.ProductItem.map((item) => {
+      const colorMapped = {
+        id: item.color.id,
+        name: item.color.name,
+        value: item.color.value,
+      };
+
+      const sizeMapped = {
+        id: item.size.id,
+        name: item.size.name,
+        value: item.size.value,
+      };
+
+      return {
+        id: item.id,
+        productId: item.product_id,
+        colorId: item.color_id,
+        color: colorMapped,
+        sizeId: item.size_id,
+        size: sizeMapped,
+        price: Number(item.price),
+        descount: item.descont,
+      };
+    });
+
+    const parsedProduct: RepositoryProduct = {
+      id: product.id,
+      brandId: product.brand_id,
+      categoryId: product.category_id,
+      code: product.code,
+      cost: Number(product.cost),
+      description: product.description,
+      name: product.name,
+      trending: product.trending,
+      productItem: productItemMapped,
+    };
+
+    return parsedProduct;
+  }
+
   async create(data: RepositoryCreateProduct) {
     await prisma.product.create({
       data: {

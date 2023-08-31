@@ -7,13 +7,13 @@ import {
   PutProductParams,
 } from "../schema/gateway/product-item-gateway-schema";
 
-export class ProductHttp {
+export class ProductItemHttp {
   constructor() {}
 
-  async Get({ productId }: GetParams) {
-    const response = await fetch(`${BASE_URL}/product/${productId}/`, {
+  async Get(productId: string) {
+    const response = await fetch(`${BASE_URL}/product/${productId}/item`, {
       next: {
-        tags: ["products-items"],
+        tags: [`${productId}-items`],
       },
     });
     const json = await response.json();

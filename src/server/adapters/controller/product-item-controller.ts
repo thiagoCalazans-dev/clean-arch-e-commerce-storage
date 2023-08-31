@@ -10,8 +10,39 @@ import { SizeNotFoundError } from "@/server/aplication/error/SizeNotFoundError";
 import { isPercentageError } from "@/server/enterprise/errors/isPercentageError";
 import { isCurrencyTypeValueError } from "@/server/enterprise/errors/isCurrencyTypeValueError";
 import { CreateProductItemInputDTO } from "@/server/aplication/dto/product-item-dto";
+import {
+  makeFetchProductUseCase,
+  makeFetchProductWithItemsUseCase,
+} from "../factories/makeProductUseCase";
 
 class ProductItemController {
+  async Get(
+    _: Request,
+    params: {
+      productId: string;
+    }
+  ) {
+    const id = params.productId;
+
+    try {
+      const fetchProductsWithItemsUseCase = makeFetchProductWithItemsUseCase();
+      const product = await fetchProductsWithItemsUseCase.execute(id);
+
+      return NextResponse.json(product, { status: 200 });
+    } catch (error) {
+      if (error instanceof ProductNotFoundError)
+        return NextResponse.json(null, {
+          status: 404,
+          statusText: error.message,
+        });
+
+      return NextResponse.json(null, {
+        status: 500,
+        statusText: "Something went wrong!",
+      });
+    }
+  }
+
   async GetParams(
     _: Request,
     params: {

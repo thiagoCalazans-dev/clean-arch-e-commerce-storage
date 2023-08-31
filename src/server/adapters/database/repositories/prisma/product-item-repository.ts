@@ -46,6 +46,10 @@ export class PrismaProductItemRepository implements ProductItemRepository {
       where: {
         id: id,
       },
+      include: {
+        size: true,
+        color: true,
+      },
     });
 
     if (!item) return null;
@@ -57,6 +61,8 @@ export class PrismaProductItemRepository implements ProductItemRepository {
       productId: item.product_id,
       sizeId: item.size_id,
       descount: item.descont,
+      size: item.size,
+      color: item.color,
     };
 
     return parsedProduct;
@@ -67,15 +73,33 @@ export class PrismaProductItemRepository implements ProductItemRepository {
       where: {
         product_id: productId,
       },
+      include: {
+        color: true,
+        size: true,
+      },
     });
 
     const itemsMapped = items.map((item) => {
+      const colorMapped = {
+        id: item.color.id,
+        name: item.color.name,
+        value: item.color.value,
+      };
+
+      const sizeMapped = {
+        id: item.size.id,
+        name: item.size.name,
+        value: item.size.value,
+      };
+
       return {
         id: item.id,
         price: Number(item.price),
         colorId: item.color_id,
+        color: colorMapped,
         productId: item.product_id,
         sizeId: item.size_id,
+        size: sizeMapped,
         descount: item.descont,
       };
     });

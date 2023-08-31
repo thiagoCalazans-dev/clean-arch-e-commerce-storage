@@ -6,6 +6,7 @@ import { RemoveProductUseCase } from "@/server/aplication/use-cases/product/remo
 import { GetProductsUseCase } from "@/server/aplication/use-cases/product/get-products-use-case";
 import { FetchProductUseCase } from "@/server/aplication/use-cases/product/fetch-product-use-case";
 import { UpdateProductUseCase } from "@/server/aplication/use-cases/product/update-product-use-case";
+import { FetchProductsWithItemsUseCase } from "@/server/aplication/use-cases/product/fetch-product-with-items-use-case";
 
 export function makeCreateProductUseCase() {
   const productRepository = new PrismaProductRepository();
@@ -38,6 +39,13 @@ export function makeGetProductsUseCase() {
 export function makeFetchProductUseCase() {
   const productRepository = new PrismaProductRepository();
   const usecase = new FetchProductUseCase(productRepository);
+
+  return usecase;
+}
+
+export function makeFetchProductWithItemsUseCase() {
+  const productRepository = new PrismaProductRepository();
+  const usecase = new FetchProductsWithItemsUseCase(productRepository);
 
   return usecase;
 }
