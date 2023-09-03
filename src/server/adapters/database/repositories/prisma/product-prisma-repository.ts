@@ -5,6 +5,7 @@ import {
   RepositoryCreateProduct,
   RepositoryProduct,
 } from "../product-repository";
+import { ItemIndicator } from "@radix-ui/react-dropdown-menu";
 
 export class PrismaProductRepository implements ProductRepository {
   async update(data: RepositoryProduct) {
@@ -109,6 +110,7 @@ export class PrismaProductRepository implements ProductRepository {
           include: {
             color: true,
             size: true,
+            ProductImages: true,
           },
         },
       },
@@ -129,6 +131,14 @@ export class PrismaProductRepository implements ProductRepository {
         value: item.size.value,
       };
 
+      const productImagesMapped = item.ProductImages.map((item) => {
+        return {
+          id: item.id,
+          productItemId: item.product_item_id,
+          url: item.url,
+        };
+      });
+
       return {
         id: item.id,
         productId: item.product_id,
@@ -138,6 +148,7 @@ export class PrismaProductRepository implements ProductRepository {
         size: sizeMapped,
         price: Number(item.price),
         descount: item.descont,
+        productImages: productImagesMapped,
       };
     });
 

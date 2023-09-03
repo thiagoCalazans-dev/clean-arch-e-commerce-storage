@@ -3,7 +3,7 @@ import { ProductRepository } from "@/server/adapters/database/repositories/produ
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 
 import { CodeAlreadyExistError } from "../../error/CodeAlreadyExistError";
-import { CreateProductInputDTO } from "../../dto/ProductDTO";
+import { CreateProductInputDTO } from "../../dto/productDTO";
 import { BrandRepository } from "@/server/adapters/database/repositories/brand-repository";
 import { CategoryRepository } from "@/server/adapters/database/repositories/category-repository";
 import { BrandNotFoundError } from "../../error/BrandNotFoundError";

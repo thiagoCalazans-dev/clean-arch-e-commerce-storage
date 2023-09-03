@@ -12,8 +12,6 @@ import {
   DropdownMenuTrigger,
 } from "@/client/components/ui/dropdown-menu";
 import { AlertModal } from "@/client/components/alert-modal";
-
-import { ProductsColumn } from "./columns";
 import {
   DotsHorizontalIcon,
   Pencil2Icon,
@@ -23,7 +21,9 @@ import { ProductActions } from "@/client/actions/product-actions";
 import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
 
 interface CellActionProps {
-  data: ProductsColumn;
+  data: {
+    id: string;
+  };
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {

@@ -58,6 +58,11 @@ export function Navbar() {
             <NavigationMenuLink className="w-full">Products</NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/galery" legacyBehavior passHref>
+            <NavigationMenuLink className="w-full">Galery</NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   );

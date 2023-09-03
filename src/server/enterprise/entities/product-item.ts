@@ -28,10 +28,10 @@ export class ProductItem {
     if (props.productId.length < 1) throw new IsRequiredError("name");
     this._productId = props.productId;
 
-    if (props.sizeId.length < 1) throw new IsRequiredError("name");
+    if (props.sizeId.length < 1) throw new IsRequiredError("size");
     this._sizeId = props.sizeId;
 
-    if (props.colorId.length < 1) throw new IsRequiredError("code");
+    if (props.colorId.length < 1) throw new IsRequiredError("color");
     this._colorId = props.colorId;
 
     this._price = Currency.validate(props.price);

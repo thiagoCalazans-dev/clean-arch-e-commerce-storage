@@ -1,5 +1,5 @@
 import { ProductRepository } from "@/server/adapters/database/repositories/product-repository";
-import { GetProductsOutputDTO } from "../../dto/ProductDTO";
+import { GetProductsOutputDTO } from "../../dto/productDTO";
 
 export class GetProductsUseCase {
   constructor(private productRepository: ProductRepository) {}
