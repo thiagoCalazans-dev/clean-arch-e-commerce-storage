@@ -6,7 +6,6 @@ describe("teste Product Entity rules", () => {
   it("should instance Product", () => {
     const baseProduct = {
       name: "bikini",
-      code: "CMD-111",
       cost: 12.67,
       description: "lorem ipsum dolor",
       trending: true,
@@ -22,23 +21,6 @@ describe("teste Product Entity rules", () => {
   it("should throw an error if name does not exists", async () => {
     const baseProduct = {
       name: "",
-      code: "CMD-111",
-      cost: 12.67,
-      description: "lorem ipsum dolor",
-      trending: true,
-      categoryId: "qualquer um",
-      brandId: "qualquer dois",
-    };
-
-    await expect(() => {
-      const product = new Product(baseProduct);
-    }).toThrow(IsRequiredError);
-  });
-
-  it("should throw an error if code does not exists", async () => {
-    const baseProduct = {
-      name: "bikini",
-      code: "",
       cost: 12.67,
       description: "lorem ipsum dolor",
       trending: true,

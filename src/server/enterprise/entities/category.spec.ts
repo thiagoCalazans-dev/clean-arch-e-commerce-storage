@@ -6,7 +6,7 @@ describe("teste Category Entity rules", () => {
   it("should instance Categoty", () => {
     const category = new Category({ name: "John Doe" });
 
-    expect(category.data.name).toBeDefined();
+    expect(category.name).toBeDefined();
   });
 
   it("should throw an error if name does not exists", async () => {

@@ -42,7 +42,6 @@ describe("test UpdateProduct use case", () => {
       name: "product",
       brandId: brandId,
       categoryId: categoryId,
-      code: "XXX-9999",
       cost: 12.0,
       description: "description",
       trending: true,
@@ -59,7 +58,6 @@ describe("test UpdateProduct use case", () => {
           name: "product updated",
           brandId: brandId,
           categoryId: categoryId,
-          code: "XXX-9999",
           cost: 12.0,
           description: "description",
           trending: true,
@@ -81,7 +79,6 @@ describe("test UpdateProduct use case", () => {
       name: "product2",
       brandId: brandId,
       categoryId: categoryId,
-      code: "XXX-1111",
       cost: 12.0,
       description: "description",
       trending: true,
@@ -94,7 +91,6 @@ describe("test UpdateProduct use case", () => {
             name: "product2",
             brandId: brandId,
             categoryId: categoryId,
-            code: "XXX-9988",
             cost: 12.0,
             description: "description",
             trending: true,
@@ -105,35 +101,6 @@ describe("test UpdateProduct use case", () => {
     ).rejects.toBeInstanceOf(NameAlreadyExistError);
   });
 
-  it("should not create a Product with an existent code", async () => {
-    await productRepository.create({
-      name: "product2",
-      brandId: brandId,
-      categoryId: categoryId,
-      code: "XXX-1111",
-      cost: 12.0,
-      description: "description",
-      trending: true,
-    });
-
-    await expect(() =>
-      sut.execute(
-        {
-          data: {
-            name: "product",
-            brandId: brandId,
-            categoryId: categoryId,
-            code: "XXX-1111",
-            cost: 12.0,
-            description: "description",
-            trending: true,
-          },
-        },
-        productId
-      )
-    ).rejects.toBeInstanceOf(CodeAlreadyExistError);
-  });
-
   it("should not update a Product with an inexistent brand", async () => {
     await expect(() =>
       sut.execute(
@@ -142,7 +109,6 @@ describe("test UpdateProduct use case", () => {
             name: "product",
             brandId: "inexistentBrandID",
             categoryId: categoryId,
-            code: "XXX-9999",
             cost: 12.0,
             description: "description",
             trending: true,
@@ -160,7 +126,6 @@ describe("test UpdateProduct use case", () => {
             name: "product",
             brandId: brandId,
             categoryId: "inexistentCateogryID",
-            code: "XXX-9999",
             cost: 12.0,
             description: "description",
             trending: true,

@@ -5,11 +5,15 @@ import { Separator } from "@/client/components/ui/separator";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/client/components/ui/card";
 import { ProductImages } from "./image";
 import { CellAction } from "./cell-action";
+import { CreateProductItemModal } from "@/client/components/modal/create-product-item-modal";
+import { SizeActions } from "@/client/actions/size-actions";
+import { ColorActions } from "@/client/actions/color-actions";
 
 export default async function ProductsPage({
   params,
@@ -19,24 +23,33 @@ export default async function ProductsPage({
   const { data } = await ProductItemActions.fetchItemsByProduct(
     params.productId
   );
-  console.log(data);
+
+  const { data: size } = await SizeActions.getAll();
+  const { data: color } = await ColorActions.getAll();
 
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
         <div className="flex items-center justify-between">
           <Heading
-            title={`Products items (${data.productItem.length})`}
-            description="Manage your products items"
+            title={`${data.name} `}
+            description={`items (${data.productItem.length})`}
           />
-          <Button>Add new</Button>
+          <CreateProductItemModal
+            color={color}
+            size={size}
+            productId={params.productId}
+          />
         </div>
         <Separator />
         {data.productItem.map((item: any) => {
           return (
             <Card key={item.id}>
               <CardHeader className="flex-row items-center justify-between">
-                <CardTitle>Item: XXXX-@@@@</CardTitle>
+                <div>
+                  <CardTitle></CardTitle>
+                  <CardDescription>{data.code}</CardDescription>
+                </div>
                 <CellAction data={data} />
               </CardHeader>
               <CardContent className="grid grid-cols-2">

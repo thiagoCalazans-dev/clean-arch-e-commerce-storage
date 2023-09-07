@@ -10,7 +10,7 @@ export class CreateColorUseCase {
   async execute({ data }: CreateColorInputDTO) {
     const color = new Color(data);
 
-    const { name, value } = color.data;
+    const { name, value } = color;
 
     const nameExists = await this.colorRepository.findByName(name);
 

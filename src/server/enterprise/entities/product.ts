@@ -5,7 +5,6 @@ import { Currency } from "../value-object/currency";
 
 interface ProductProps {
   name: string;
-  code: string;
   cost: number;
   description: string;
   trending?: boolean;
@@ -14,65 +13,30 @@ interface ProductProps {
 }
 
 export class Product {
-  private _id: string;
-  private _name: string;
-  private _code: string;
-  private _cost: number;
-  private _description: string;
-  private _trending: boolean;
-  private _categoryId: string;
-  private _brandId: string;
+  readonly id: string;
+  readonly name: string;
+  readonly cost: number;
+  readonly description: string;
+  readonly trending: boolean;
+  readonly categoryId: string;
+  readonly brandId: string;
 
   constructor(props: ProductProps, id?: string) {
-    this._id = id ?? randomUUID();
+    this.id = id ?? randomUUID();
 
     if (props.name.length < 1) throw new IsRequiredError("name");
-    this._name = props.name;
-
-    if (props.code.length < 1) throw new IsRequiredError("code");
-    this._code = props.code;
+    this.name = props.name;
 
     if (props.description.length < 1) throw new IsRequiredError("description");
-    this._description = props.description;
+    this.description = props.description;
 
     if (props.categoryId.length < 1) throw new IsRequiredError("categoryID");
-    this._categoryId = props.categoryId;
+    this.categoryId = props.categoryId;
 
     if (props.brandId.length < 1) throw new IsRequiredError("brandId");
-    this._brandId = props.brandId;
+    this.brandId = props.brandId;
 
-    this._cost = Currency.validate(props.cost);
-    this._trending = props.trending || false;
-  }
-
-  get id() {
-    return this._id;
-  }
-  get name() {
-    return this._name;
-  }
-
-  get code() {
-    return this._code;
-  }
-
-  get cost() {
-    return this._cost;
-  }
-
-  get description() {
-    return this._description;
-  }
-
-  get trending() {
-    return this._trending;
-  }
-
-  get brandId() {
-    return this._brandId;
-  }
-
-  get categoryId() {
-    return this._categoryId;
+    this.cost = Currency.validate(props.cost);
+    this.trending = props.trending || false;
   }
 }

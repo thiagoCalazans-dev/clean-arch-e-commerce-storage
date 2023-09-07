@@ -48,7 +48,6 @@ describe("test CreateProducItem use case suite", () => {
       name: "product",
       brandId: brandId,
       categoryId: categoryId,
-      code: "XXX-9999",
       cost: 12.0,
       description: "description",
       trending: true,
@@ -71,6 +70,7 @@ describe("test CreateProducItem use case suite", () => {
     const productItem = {
       data: {
         productId,
+        code: "XXX-9999",
         colorId,
         sizeId,
         price: 12.98,
@@ -93,6 +93,7 @@ describe("test CreateProducItem use case suite", () => {
       sut.execute({
         data: {
           productId: "inexistent",
+          code: "XXX-9999",
           colorId,
           sizeId,
           price: 12.98,
@@ -107,6 +108,7 @@ describe("test CreateProducItem use case suite", () => {
       sut.execute({
         data: {
           productId,
+          code: "XXX-9999",
           colorId: "none",
           sizeId,
           price: 12.98,
@@ -121,6 +123,7 @@ describe("test CreateProducItem use case suite", () => {
       sut.execute({
         data: {
           productId,
+          code: "XXX-9999",
           colorId,
           sizeId: "none",
           price: 12.98,

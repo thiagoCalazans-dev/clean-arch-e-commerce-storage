@@ -25,19 +25,23 @@ import { Checkbox } from "../ui/checkbox";
 import {
   FormProductItem,
   FormProductItemSchema,
-} from "@/client/schema/forms/prodct-item-form";
+} from "@/client/schema/forms/product-item-form";
 import { ProductItem } from "@/client/schema/actions/product-item-actions-schema";
 import { Color } from "@/client/schema/actions/color-actions-schema";
 import { Size } from "@/client/schema/actions/size-actions-schema";
 import { ProductItemActions } from "@/client/actions/product-items-actions";
 
-interface ProductFormProps {
+interface ProductItemFormProps {
   productId: string;
   size: Size[];
   color: Color[];
 }
 
-export function ProductForm({ productId, size, color }: ProductFormProps) {
+export function ProductItemForm({
+  productId,
+  size,
+  color,
+}: ProductItemFormProps) {
   const { onError, onSuccess } = useOnResponseStatus();
   const router = useRouter();
 
@@ -46,20 +50,24 @@ export function ProductForm({ productId, size, color }: ProductFormProps) {
     defaultValues: {
       colorId: "",
       sizeId: "",
-      price: "",
+      price: 0,
       descount: 0,
+      code: "",
     },
   });
 
   const { isSubmitting, errors } = form.formState;
 
+  console.log(errors);
+
   async function onSubmit(formValues: FormProductItem) {
     try {
-      await ProductItemActions.create(formValues);
       const product = {
         ...formValues,
         productId: productId,
-      };
+      };  
+      await ProductItemActions.create(product);
+
       onSuccess("Product Created");
       form.reset();
       router.prefetch("/products");
@@ -73,12 +81,30 @@ export function ProductForm({ productId, size, color }: ProductFormProps) {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full">
         <FormField
           control={form.control}
+          name="code"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Code</FormLabel>
+              <FormControl>
+                <Input disabled={isSubmitting} placeholder="Type" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="price"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Price</FormLabel>
               <FormControl>
-                <Input disabled={isSubmitting} placeholder="Type" {...field} />
+                <Input
+                  disabled={isSubmitting}
+                  placeholder="Type"
+                  type="number"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -89,9 +115,14 @@ export function ProductForm({ productId, size, color }: ProductFormProps) {
           name="descount"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Code</FormLabel>
+              <FormLabel>Descount</FormLabel>
               <FormControl>
-                <Input disabled={isSubmitting} placeholder="Type" {...field} />
+                <Input
+                  disabled={isSubmitting}
+                  placeholder=""
+                  type="number"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

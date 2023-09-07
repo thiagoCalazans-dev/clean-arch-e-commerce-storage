@@ -17,14 +17,11 @@ export class CreateProductUseCase {
   ) {}
 
   async execute({ data }: CreateProductInputDTO) {
-    const { name, brandId, categoryId, code, cost, description, trending } =
+    const { name, brandId, categoryId, cost, description, trending } =
       new Product(data);
 
     const nameExists = await this.productRepository.findByName(name);
     if (nameExists) throw new NameAlreadyExistError();
-
-    const codeExists = await this.productRepository.findByCode(code);
-    if (codeExists) throw new CodeAlreadyExistError();
 
     const categoryExists = await this.categoryRepository.findById(categoryId);
     if (!categoryExists) throw new CategoryNotFoundError();
@@ -36,7 +33,6 @@ export class CreateProductUseCase {
       name,
       brandId,
       categoryId,
-      code,
       cost,
       description,
       trending,

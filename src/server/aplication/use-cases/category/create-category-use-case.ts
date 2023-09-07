@@ -12,7 +12,7 @@ export class CreateCategoryUseCase {
   async execute({ data }: CreateCategoryInputDTO) {
     const category = new Category(data);
 
-    const { name } = category.data;
+    const { name } = category;
 
     const nameExists = await this.categoryRepository.findByName(name);
 

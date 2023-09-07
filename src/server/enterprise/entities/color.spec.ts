@@ -7,7 +7,7 @@ describe("teste Color Entity rules", () => {
   it("should instance Categoty", () => {
     const color = new Color({ name: "John Doe", value: "#FFFFFF" });
 
-    expect(color.data.name).toBeDefined();
+    expect(color.name).toBeDefined();
   });
 
   it("should throw an error if name does not exists", async () => {

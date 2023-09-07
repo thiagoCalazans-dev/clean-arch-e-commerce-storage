@@ -43,7 +43,6 @@ describe("test CreateProduct use case", () => {
         name: "product",
         brandId: brandId,
         categoryId: categoryId,
-        code: "XXX-9999",
         cost: 12.0,
         description: "description",
         trending: true,
@@ -62,7 +61,6 @@ describe("test CreateProduct use case", () => {
         name: "product",
         brandId: brandId,
         categoryId: categoryId,
-        code: "XXX-9999",
         cost: 12.0,
         description: "description",
         trending: true,
@@ -75,7 +73,6 @@ describe("test CreateProduct use case", () => {
           name: "product",
           brandId: brandId,
           categoryId: categoryId,
-          code: "XXX-9988",
           cost: 12.0,
           description: "description",
           trending: true,
@@ -84,33 +81,6 @@ describe("test CreateProduct use case", () => {
     ).rejects.toBeInstanceOf(NameAlreadyExistError);
   });
 
-  it("should not create a Product with an existent code", async () => {
-    await sut.execute({
-      data: {
-        name: "product",
-        brandId: brandId,
-        categoryId: categoryId,
-        code: "XXX-9999",
-        cost: 12.0,
-        description: "description",
-        trending: true,
-      },
-    });
-
-    await expect(() =>
-      sut.execute({
-        data: {
-          name: "product2",
-          brandId: brandId,
-          categoryId: categoryId,
-          code: "XXX-9999",
-          cost: 12.0,
-          description: "description",
-          trending: true,
-        },
-      })
-    ).rejects.toBeInstanceOf(CodeAlreadyExistError);
-  });
   it("should not create a Product with an inexistent brand", async () => {
     await expect(() =>
       sut.execute({
@@ -118,7 +88,6 @@ describe("test CreateProduct use case", () => {
           name: "product2",
           brandId: "inexistent",
           categoryId: categoryId,
-          code: "XXX-9999",
           cost: 12.0,
           description: "description",
           trending: true,
@@ -133,7 +102,6 @@ describe("test CreateProduct use case", () => {
           name: "product2",
           brandId: brandId,
           categoryId: "inexistent",
-          code: "XXX-9999",
           cost: 12.0,
           description: "description",
           trending: true,

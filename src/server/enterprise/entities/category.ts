@@ -6,21 +6,14 @@ interface CategoryProps {
 }
 
 export class Category {
-  private id: string;
-  private _name: string;
+  readonly id: string;
+  readonly name: string;
 
   constructor(props: CategoryProps, id?: string) {
     this.id = id ?? randomUUID();
 
     if (props.name.length <= 1) throw new IsRequiredError("name");
 
-    this._name = props.name;
-  }
-
-  get data() {
-    return {
-      id: this.id,
-      name: this._name,
-    };
+    this.name = props.name;
   }
 }

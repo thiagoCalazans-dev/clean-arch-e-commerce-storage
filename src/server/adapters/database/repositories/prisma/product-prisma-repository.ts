@@ -17,7 +17,6 @@ export class PrismaProductRepository implements ProductRepository {
         name: data.name,
         brand_id: data.brandId,
         category_id: data.categoryId,
-        code: data.code,
         cost: data.cost,
         trending: data.trending,
         description: data.description,
@@ -32,28 +31,6 @@ export class PrismaProductRepository implements ProductRepository {
     });
   }
 
-  async findByCode(code: string) {
-    const product = await prisma.product.findUnique({
-      where: {
-        code: code,
-      },
-    });
-
-    if (!product) return null;
-
-    const parsedProduct: RepositoryProduct = {
-      id: product.id,
-      brandId: product.brand_id,
-      categoryId: product.category_id,
-      code: product.code,
-      cost: Number(product.cost),
-      description: product.description,
-      name: product.name,
-      trending: product.trending,
-    };
-
-    return parsedProduct;
-  }
   async findByName(name: string) {
     const product = await prisma.product.findUnique({
       where: {
@@ -67,7 +44,6 @@ export class PrismaProductRepository implements ProductRepository {
       id: product.id,
       brandId: product.brand_id,
       categoryId: product.category_id,
-      code: product.code,
       cost: Number(product.cost),
       description: product.description,
       name: product.name,
@@ -90,7 +66,6 @@ export class PrismaProductRepository implements ProductRepository {
       id: product.id,
       brandId: product.brand_id,
       categoryId: product.category_id,
-      code: product.code,
       cost: Number(product.cost),
       description: product.description,
       name: product.name,
@@ -142,6 +117,7 @@ export class PrismaProductRepository implements ProductRepository {
       return {
         id: item.id,
         productId: item.product_id,
+        code: item.code,
         colorId: item.color_id,
         color: colorMapped,
         sizeId: item.size_id,
@@ -156,7 +132,6 @@ export class PrismaProductRepository implements ProductRepository {
       id: product.id,
       brandId: product.brand_id,
       categoryId: product.category_id,
-      code: product.code,
       cost: Number(product.cost),
       description: product.description,
       name: product.name,
@@ -173,7 +148,6 @@ export class PrismaProductRepository implements ProductRepository {
         name: data.name,
         brand_id: data.brandId,
         category_id: data.categoryId,
-        code: data.code,
         cost: data.cost,
         trending: data.trending,
         description: data.description,
@@ -195,7 +169,6 @@ export class PrismaProductRepository implements ProductRepository {
         brand: product.brand,
         categoryId: product.category_id,
         category: product.category,
-        code: product.code,
         cost: Number(product.cost),
         description: product.description,
         name: product.name,

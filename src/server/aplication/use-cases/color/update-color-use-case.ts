@@ -15,7 +15,7 @@ export class UpdateColorUseCase {
     };
 
     const color = new Color(props, id);
-    const { name, value } = color.data;
+    const { name, value } = color;
 
     const nameExists = await this.colorRepository.findByName(name);
 

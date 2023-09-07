@@ -1,9 +1,10 @@
 import { Size } from "@/server/enterprise/entities/size";
-import { SizeRepository } from "@/server/infra/database/repositories/size-repository";
+
 import { UpdateSizeInputDTO } from "../../dto/sizeDTO";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 import { SizeNotFoundError } from "../../error/SizeNotFoundError";
 import { ValueAlreadyExistError } from "../../error/ValueAlreadyExistError";
+import { SizeRepository } from "@/server/adapters/database/repositories/size-repository";
 
 export class UpdateSizeUseCase {
   constructor(private sizeRepository: SizeRepository) {}
@@ -15,7 +16,7 @@ export class UpdateSizeUseCase {
     };
 
     const size = new Size(props, id);
-    const { name, value } = size.data;
+    const { name, value } = size;
 
     const nameExists = await this.sizeRepository.findByName(name);
 

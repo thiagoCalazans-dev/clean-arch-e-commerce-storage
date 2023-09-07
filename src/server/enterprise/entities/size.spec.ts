@@ -6,7 +6,7 @@ describe("teste Size Entity rules", () => {
   it("should instance Categoty", () => {
     const size = new Size({ name: "Large", value: "L" });
 
-    expect(size.data.name).toBeDefined();
+    expect(size.name).toBeDefined();
   });
 
   it("should throw an error if name does not exists", async () => {

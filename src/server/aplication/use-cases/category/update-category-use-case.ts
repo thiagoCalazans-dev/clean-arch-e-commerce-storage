@@ -9,7 +9,7 @@ export class UpdateCategoryUseCase {
 
   async execute({ data }: UpdateCategoryInputDTO, categoryId: string) {
     const category = new Category(data, categoryId);
-    const { id, name } = category.data;
+    const { id, name } = category;
 
     const nameExists = await this.categoryRepository.findByName(name);
 

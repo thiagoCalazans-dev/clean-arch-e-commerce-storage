@@ -74,13 +74,7 @@ class ProductController {
         return NextResponse.json(null, {
           status: 400,
           statusText: error.message,
-        });
-
-      if (error instanceof CodeAlreadyExistError)
-        return NextResponse.json(null, {
-          status: 400,
-          statusText: error.message,
-        });
+        });    
 
       if (error instanceof BrandNotFoundError)
         return NextResponse.json(null, {

@@ -1,3 +1,4 @@
+import { Item } from "@radix-ui/react-dropdown-menu";
 import { prisma } from "../../prismadb";
 import {
   ProductItemRepository,
@@ -10,6 +11,7 @@ export class PrismaProductItemRepository implements ProductItemRepository {
     await prisma.productItem.create({
       data: {
         price: data.price,
+        code: data.code,
         color_id: data.colorId,
         product_id: data.productId,
         size_id: data.sizeId,
@@ -56,6 +58,7 @@ export class PrismaProductItemRepository implements ProductItemRepository {
 
     const parsedProduct: RepositoryProductItem = {
       id: item.id,
+      code: item.code,
       price: Number(item.price),
       colorId: item.color_id,
       productId: item.product_id,
@@ -63,6 +66,28 @@ export class PrismaProductItemRepository implements ProductItemRepository {
       descount: item.descont,
       size: item.size,
       color: item.color,
+    };
+
+    return parsedProduct;
+  }
+
+  async findByCode(code: string) {
+    const item = await prisma.productItem.findUnique({
+      where: {
+        code: code,
+      },
+    });
+
+    if (!item) return null;
+
+    const parsedProduct: RepositoryProductItem = {
+      id: item.id,
+      code: item.code,
+      price: Number(item.price),
+      colorId: item.color_id,
+      productId: item.product_id,
+      sizeId: item.size_id,
+      descount: item.descont,
     };
 
     return parsedProduct;
@@ -94,6 +119,7 @@ export class PrismaProductItemRepository implements ProductItemRepository {
 
       return {
         id: item.id,
+        code: item.code,
         price: Number(item.price),
         colorId: item.color_id,
         color: colorMapped,

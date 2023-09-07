@@ -43,8 +43,7 @@ export function ProductForm({
     defaultValues: initialData || {
       name: "",
       brandId: "",
-      categoryId: "",
-      code: "",
+      categoryId: "",    
       cost: "",
       description: "",
       trending: false,
@@ -85,20 +84,7 @@ export function ProductForm({
               <FormMessage />
             </FormItem>
           )}
-        />
-        <FormField
-          control={form.control}
-          name="code"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Code</FormLabel>
-              <FormControl>
-                <Input disabled={isSubmitting} placeholder="Type" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        />      
         <FormField
           control={form.control}
           name="cost"

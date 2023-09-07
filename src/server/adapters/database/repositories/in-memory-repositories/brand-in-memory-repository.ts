@@ -48,4 +48,8 @@ export class InMemoryBrandRepository implements BrandRepository {
     }
     throw new Error();
   }
+
+  async findBrandinInRelationships(id: string) {
+    return false;
+  }
 }

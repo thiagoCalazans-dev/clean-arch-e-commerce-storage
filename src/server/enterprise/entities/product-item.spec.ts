@@ -9,6 +9,7 @@ describe("teste Product Entity rules", () => {
   it("should instance Product", () => {
     const baseProductItem = {
       productId: "productId",
+      code: "CMD-111",
       sizeId: "sizeId",
       colorId: "colorId",
       price: 13.67,
@@ -25,6 +26,7 @@ describe("teste Product Entity rules", () => {
       productId: "",
       sizeId: "sizeId",
       colorId: "colorId",
+      code: "CMD-111",
       price: 13.67,
       descount: 10,
     };
@@ -37,7 +39,23 @@ describe("teste Product Entity rules", () => {
   it("should throw an error if sizeId does not exists", async () => {
     const baseProductItem = {
       productId: "productId",
+      code: "CMD-111",
       sizeId: "",
+      colorId: "colorId",
+      price: 13.67,
+      descount: 10,
+    };
+
+    await expect(() => {
+      const product = new ProductItem(baseProductItem);
+    }).toThrow(IsRequiredError);
+  });
+
+  it("should throw an error if code does not exists", async () => {
+    const baseProductItem = {
+      productId: "productId",
+      sizeId: "sizeId",
+      code: "",
       colorId: "colorId",
       price: 13.67,
       descount: 10,
@@ -53,6 +71,7 @@ describe("teste Product Entity rules", () => {
       productId: "productId",
       sizeId: "sizeId",
       colorId: "",
+      code: "CMD-111",
       price: 13.67,
       descount: 10,
     };
@@ -67,6 +86,7 @@ describe("teste Product Entity rules", () => {
       productId: "productId",
       sizeId: "sizeId",
       colorId: "colorId",
+      code: "CMD-111",
       price: -1,
       descount: 10,
     };
@@ -76,11 +96,12 @@ describe("teste Product Entity rules", () => {
     }).toThrow(isCurrencyTypeValueError);
   });
 
-  it("should throw an error if Price does not exists", async () => {
+  it("should throw an error if descount > 100", async () => {
     const baseProductItem = {
       productId: "productId",
       sizeId: "sizeId",
       colorId: "colorId",
+      code: "CMD-111",
       price: 10,
       descount: 1000,
     };

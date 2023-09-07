@@ -53,7 +53,6 @@ model Size {
 model Product {
   id          String        @id @default(uuid())
   name        String        @unique
-  code        String        @unique
   cost        Decimal
   description String
   trending    Boolean       @default(false)
@@ -70,6 +69,7 @@ model Product {
 
 model ProductItem {
   id            String          @id @default(uuid())
+  code          String          @unique
   product       Product         @relation(fields: [product_id], references: [id])
   product_id    String
   color         Color           @relation(fields: [color_id], references: [id])

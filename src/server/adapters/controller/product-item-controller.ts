@@ -14,6 +14,7 @@ import {
   makeFetchProductUseCase,
   makeFetchProductWithItemsUseCase,
 } from "../factories/makeProductUseCase";
+import { CodeAlreadyExistError } from "@/server/aplication/error/CodeAlreadyExistError";
 
 class ProductItemController {
   async Get(
@@ -91,6 +92,12 @@ class ProductItemController {
       if (error instanceof ProductNotFoundError)
         return NextResponse.json(null, {
           status: 404,
+          statusText: error.message,
+        });
+
+      if (error instanceof CodeAlreadyExistError)
+        return NextResponse.json(null, {
+          status: 400,
           statusText: error.message,
         });
 

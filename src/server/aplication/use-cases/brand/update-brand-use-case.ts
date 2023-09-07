@@ -9,7 +9,7 @@ export class UpdateBrandUseCase {
 
   async execute({ data }: UpdateBrandInputDTO, brandId: string) {
     const brand = new Brand(data, brandId);
-    const { id, name } = brand.data;
+    const { id, name } = brand;
 
     const nameExists = await this.brandRepository.findByName(name);
 

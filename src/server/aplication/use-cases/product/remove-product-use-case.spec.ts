@@ -32,7 +32,6 @@ describe("test RemoveProduct use case", () => {
       name: "product",
       brandId: brandId,
       categoryId: categoryId,
-      code: "XXX-9999",
       cost: 12.0,
       description: "description",
       trending: true,

@@ -40,7 +40,6 @@ describe("test CreateProducItem use case suite", () => {
       name: "product",
       brandId: brandId,
       categoryId: categoryId,
-      code: "XXX-9999",
       cost: 12.0,
       description: "description",
       trending: true,
@@ -64,6 +63,7 @@ describe("test CreateProducItem use case suite", () => {
       sizeId,
       price: 12.98,
       descount: 0,
+      code: "XXX-9999",
     };
 
     productItemRepository.create(item);

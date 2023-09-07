@@ -7,27 +7,19 @@ interface SizeProps {
 }
 
 export class Size {
-  private id: string;
-  private _name: string;
-  private _value: string;
+  readonly id: string;
+  readonly name: string;
+  readonly value: string;
 
   constructor(props: SizeProps, id?: string) {
     this.id = id ?? randomUUID();
 
     if (props.name.length <= 1) throw new IsRequiredError("name");
 
-    this._name = props.name;
+    this.name = props.name;
 
     if (props.value.length < 1) throw new IsRequiredError("value");
 
-    this._value = props.value.toUpperCase();
-  }
-
-  get data() {
-    return {
-      id: this.id,
-      name: this._name,
-      value: this._value,
-    };
+    this.value = props.value.toUpperCase();
   }
 }

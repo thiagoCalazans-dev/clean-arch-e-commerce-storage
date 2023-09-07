@@ -15,7 +15,6 @@ export type ProductsColumn = {
     id: string;
     name: string;
   };
-  code: string;
   cost: string;
   trending: boolean;
 };
@@ -24,10 +23,6 @@ export const columns: ColumnDef<ProductsColumn>[] = [
   {
     accessorKey: "name",
     header: "Name",
-  },
-  {
-    accessorKey: "code",
-    header: "Code",
   },
   {
     accessorKey: "cost",

@@ -8,7 +8,7 @@ describe("teste Brand Entity rules", () => {
       name: "John Doe",
     });
 
-    expect(brand.data.name).toBeDefined();
+    expect(brand.name).toBeDefined();
   });
 
   it("should throw an error if name does not exists", async () => {
