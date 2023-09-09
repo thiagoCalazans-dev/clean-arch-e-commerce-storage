@@ -10,18 +10,22 @@ async function fetchItemsByProduct(productId: string) {
   return productItemHttp.Get(productId);
 }
 
-async function create(item: CreateProductItem) {
+async function create(item: CreateProductItem, productId: string) {
+
   const parsedParams = CreateProductItemSchema.safeParse(item);
 
   if (!parsedParams.success) {
     throw new Error(parsedParams.error.message);
   }
 
+
   const body = {
-    data: item,
+    data: parsedParams.data,
   };
 
-  await productItemHttp.Post(body);
+
+
+  await productItemHttp.Post(body, productId);
 }
 
 export const ProductItemActions = {

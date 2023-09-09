@@ -8,13 +8,6 @@ export async function GET(
   return await productController.GetParams(request, params);
 }
 
-export async function POST(
-  request: Request,
-  { params }: { params: { productId: string } }
-) {
-  return productItemController.Post(request, params);
-}
-
 export async function PUT(
   request: Request,
   { params }: { params: { productId: string } }

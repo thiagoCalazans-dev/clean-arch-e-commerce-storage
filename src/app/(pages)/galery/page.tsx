@@ -6,36 +6,20 @@ import { Input } from "@/client/components/ui/input";
 import { Heading } from "@/client/components/ui/heading";
 
 import { Separator } from "@/client/components/ui/separator";
-import { UploadPhotoModal } from "./upload-photo-modal";
+import { UploadPhotoModal } from "../../../client/components/modal/upload-photo-modal";
 import { ClientGallery } from "./clientGallery";
+import { ImageAction } from "@/client/actions/image.actions";
 
 export default async function GaleryPage() {
-  const { data: images, error } = await supabase.storage
-    .from("Delmar Photos")
-    .list();
-
-  if (error) {
-    console.error("Erro ao listar objetos no armazenamento:", error.message);
-    return;
-  }
-
-  const data = images.map((object) => {
-    const fileName = object.name;
-    const publicUrl = supabase.storage
-      .from("Delmar Photos")
-      .getPublicUrl(fileName);
-    return {
-      id: object.id,
-      name: object.name,
-      url: publicUrl.data.publicUrl,
-    };
-  });
+  const { data } = await ImageAction.getAll();
 
   if (!data.length) {
     return (
-      <Card className="flex justify-center items-center h-28 w-full">
-        No images
-      </Card>
+      <section className="flex flex-col justify-center items-center h-full p-8">
+        <Card className="flex w-full justify-center items-center h-96">
+          No images
+        </Card>
+      </section>
     );
   }
 
@@ -44,8 +28,8 @@ export default async function GaleryPage() {
       <div className="flex-1 space-y-4 py-8 pt-6">
         <div className="flex items-center justify-between">
           <Heading
-            title={`Galery items (${data.length})`}
-            description="Manage your products items"
+            title={`Galery (${data.length})`}
+            description="Manage your images"
           />
           <UploadPhotoModal />
         </div>

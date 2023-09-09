@@ -79,6 +79,7 @@ class ProductItemController {
     }
   ) {
     const body: CreateProductItemInputDTO = await request.json();
+    console.log(body);
 
     if (params.productId !== body.data.productId)
       throw new Error("wrong productId parameters");

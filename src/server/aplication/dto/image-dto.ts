@@ -1,6 +1,6 @@
 export interface CreateProductImageInputDTO {
   data: {
-    productItemId: string;
+    name: string;
     url: string;
   };
 }

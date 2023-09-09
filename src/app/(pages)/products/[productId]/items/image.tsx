@@ -11,11 +11,9 @@ interface ProductImagesProps {
 }
 
 export function ProductImages({ data }: ProductImagesProps) {
-  console.log(data);
-
   if (!data.length) {
     return (
-      <Card className="flex justify-center items-center h-28 w-full">
+      <Card className="flex justify-center items-center w-full h-24 lg:h-full">
         No images
       </Card>
     );
@@ -24,7 +22,7 @@ export function ProductImages({ data }: ProductImagesProps) {
   return data.map((item) => (
     <div
       key={item.id}
-      className="relative w-28 h-28 shadow overflow-hidden rounded-xl"
+      className="relative w-full h-full shadow overflow-hidden rounded-xl"
     >
       <Image fill src={item.url} alt="bikini photo" />
     </div>

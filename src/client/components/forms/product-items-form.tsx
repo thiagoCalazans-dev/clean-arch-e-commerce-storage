@@ -58,15 +58,14 @@ export function ProductItemForm({
 
   const { isSubmitting, errors } = form.formState;
 
-  console.log(errors);
-
   async function onSubmit(formValues: FormProductItem) {
     try {
       const product = {
         ...formValues,
         productId: productId,
-      };  
-      await ProductItemActions.create(product);
+      };
+      console.log(product);
+      await ProductItemActions.create(product, productId);
 
       onSuccess("Product Created");
       form.reset();

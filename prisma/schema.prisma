@@ -68,30 +68,40 @@ model Product {
 }
 
 model ProductItem {
-  id            String          @id @default(uuid())
-  code          String          @unique
-  product       Product         @relation(fields: [product_id], references: [id])
+  id            String         @id @default(uuid())
+  code          String         @unique
+  product       Product        @relation(fields: [product_id], references: [id])
   product_id    String
-  color         Color           @relation(fields: [color_id], references: [id])
+  color         Color          @relation(fields: [color_id], references: [id])
   color_id      String
-  size          Size            @relation(fields: [size_id], references: [id])
+  size          Size           @relation(fields: [size_id], references: [id])
   size_id       String
   price         Decimal
-  descont       Int             @default(0)
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-  ProductImages ProductImages[]
+  descont       Int            @default(0)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  ProductImages ProductImage[]
 
   @@index([product_id, size_id, color_id], name: "unique_contract")
   @@map("product_item")
 }
 
-model ProductImages {
+model ProductImage {
   id              String      @id @default(uuid())
-  url             String
+  image           Image       @relation(fields: [images_url], references: [url])
   product_item    ProductItem @relation(fields: [product_item_id], references: [id])
   product_item_id String
+  images_url      String
 
-  @@index([product_item_id, url], name: "unique_image_contract")
-  @@map("product_images")
+  @@index([product_item_id, images_url], name: "unique_image_contract")
+  @@map("product_image")
+}
+
+model Image {
+  id            String         @id @default(uuid())
+  name          String
+  url           String         @unique
+  ProductImages ProductImage[]
+
+  @@map("image")
 }

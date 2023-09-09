@@ -9,7 +9,7 @@ export const ProductItemSchema = schema.object({
   colorId: schema.string(),
   price: schema.coerce.number().positive(),
   code: schema.string(),
-  descount: schema.number().min(0).max(100).default(0),
+  descount: schema.coerce.number().min(0).max(100).default(0),
 });
 
 export type ProductItem = schema.infer<typeof ProductItemSchema>;
@@ -19,8 +19,8 @@ export const CreateProductItemSchema = schema.object({
   sizeId: schema.string(),
   price: schema.coerce.number().positive(),
   colorId: schema.string(),
-
-  descount: schema.number().min(0).max(100).default(0),
+  code: schema.string(),
+  descount: schema.coerce.number().min(0).max(100).default(0),
 });
 
 export type CreateProductItem = schema.infer<typeof CreateProductItemSchema>;

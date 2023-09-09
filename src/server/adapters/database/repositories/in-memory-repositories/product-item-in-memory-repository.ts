@@ -30,6 +30,11 @@ export class InMemoryProductItemRepository implements ProductItemRepository {
     return item || null;
   }
 
+  async findByCode(code: string) {
+    const item = this.productsItems.find((item) => item.code === code);
+    return item || null;
+  }
+
   async remove(id: string): Promise<void> {
     const index = this.productsItems.findIndex((item) => item.id === id);
     if (index !== -1) {

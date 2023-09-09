@@ -22,7 +22,7 @@ export function CreateProductItemModal({
   const [modalState, setModalState] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  function onClose() {
+  function closeModal() {
     setModalState(false);
   }
 
@@ -40,10 +40,10 @@ export function CreateProductItemModal({
         Add Item
       </Button>
       <Modal
-        title="Are you sure?"
-        description="This action cannot be undone."
+        title="Product items"
+        description="create a new item."
         isOpen={modalState}
-        onClose={onClose}
+        onClose={closeModal}
       >
         <ProductItemForm color={color} size={size} productId={productId} />
       </Modal>

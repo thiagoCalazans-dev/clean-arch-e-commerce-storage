@@ -14,7 +14,7 @@ describe("test Get ColorsUseCase", () => {
     sut = new GetColorsUseCase(repository);
 
     await createColorUseCase.execute({
-      data: { name: "john doe", value: "#FFFFFF" },
+      data: { name: "john doe", value: "#999999" },
     });
   });
 
