@@ -13,16 +13,6 @@ import { ImageAction } from "@/client/actions/image.actions";
 export default async function GaleryPage() {
   const { data } = await ImageAction.getAll();
 
-  if (!data.length) {
-    return (
-      <section className="flex flex-col justify-center items-center h-full p-8">
-        <Card className="flex w-full justify-center items-center h-96">
-          No images
-        </Card>
-      </section>
-    );
-  }
-
   return (
     <section className="flex flex-col px-8">
       <div className="flex-1 space-y-4 py-8 pt-6">
@@ -35,7 +25,13 @@ export default async function GaleryPage() {
         </div>
         <Separator />
       </div>
-      <ClientGallery data={data} />
+      {!data.length ? (
+        <Card className="flex w-full justify-center items-center h-96">
+          No images
+        </Card>
+      ) : (
+        <ClientGallery data={data} />
+      )}
     </section>
   );
 }

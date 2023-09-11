@@ -9,6 +9,8 @@ export class FetchProductsWithItemsUseCase {
       productId
     );
 
+    console.log(productItem);
+
     if (!productItem) throw new ProductNotFoundError();
 
     const output = {

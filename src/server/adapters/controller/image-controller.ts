@@ -47,15 +47,16 @@ class ImageController {
   async Delete(
     _: Request,
     params: {
-      colorId: string;
+      imageId: string;
     }
   ) {
-    const id = params.colorId;
+    const id = params.imageId;
+    console.log(id);
 
     try {
       const removeImageUseCase = makeRemoveImageUseCase();
       await removeImageUseCase.execute(id);
-      revalidateTag("colors");
+      revalidateTag("images");
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
       if (error instanceof ImageNotFoundError)

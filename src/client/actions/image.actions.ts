@@ -1,6 +1,10 @@
 import { ImageHttp } from "../gateways/image-https";
 import { supabase } from "../lib/supabse";
-import { CreateImageParamsSchema } from "../schema/actions/image-actions-schema";
+import {
+  CreateImageParamsSchema,
+  RemoveImageByIdParams,
+  removeImageByIdParamsSchema,
+} from "../schema/actions/image-actions-schema";
 import { FormImage, InputFile } from "../schema/forms/image-form-schema";
 
 const imageHttp = new ImageHttp();
@@ -9,11 +13,8 @@ async function getAll() {
   return imageHttp.Get();
 }
 
-async function create(formImage: FormImage, inputFile: InputFile) {
-  const parsedParams = CreateImageParamsSchema.safeParse({
-    formImage,
-    inputFile,
-  });
+async function create(inputFile: InputFile) {
+  const parsedParams = CreateImageParamsSchema.safeParse(inputFile);
 
   if (!parsedParams.success) {
     console.log(parsedParams.error.message);
@@ -21,7 +22,7 @@ async function create(formImage: FormImage, inputFile: InputFile) {
 
   const { error } = await supabase.storage
     .from("Delmar Photos")
-    .upload(`${inputFile.name}.${inputFile.format}`, inputFile.file, {
+    .upload(inputFile.name, inputFile.file, {
       cacheControl: "3600",
       upsert: false,
     });
@@ -32,11 +33,11 @@ async function create(formImage: FormImage, inputFile: InputFile) {
 
   const { data } = await supabase.storage
     .from("Delmar Photos")
-    .getPublicUrl(`${inputFile.name}.${inputFile.format}`);
+    .getPublicUrl(inputFile.name);
 
   const body = {
     data: {
-      name: formImage.name,
+      name: inputFile.name,
       url: data.publicUrl,
     },
   };
@@ -44,7 +45,18 @@ async function create(formImage: FormImage, inputFile: InputFile) {
   await imageHttp.Post(body);
 }
 
+async function remove(imageId: RemoveImageByIdParams) {
+  const parsedParams = removeImageByIdParamsSchema.safeParse(imageId);
+
+  if (!parsedParams.success) {
+    throw new Error(parsedParams.error.message);
+  }
+
+  await imageHttp.Delete(imageId);
+}
+
 export const ImageAction = {
   create,
   getAll,
+  remove,
 };

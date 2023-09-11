@@ -88,10 +88,22 @@ export class PrismaProductRepository implements ProductRepository {
             ProductImages: true,
           },
         },
+        brand: true,
+        category: true,
       },
     });
 
     if (!product) return null;
+
+    const brandMapped = {
+      id: product.brand.id,
+      name: product.brand.name,
+    };
+
+    const categoryMapped = {
+      id: product.category.id,
+      name: product.category.name,
+    };
 
     const productItemMapped = product.ProductItem.map((item) => {
       const colorMapped = {
@@ -130,7 +142,9 @@ export class PrismaProductRepository implements ProductRepository {
 
     const parsedProduct: RepositoryProduct = {
       id: product.id,
+      brand: brandMapped,
       brandId: product.brand_id,
+      category: categoryMapped,
       categoryId: product.category_id,
       cost: Number(product.cost),
       description: product.description,

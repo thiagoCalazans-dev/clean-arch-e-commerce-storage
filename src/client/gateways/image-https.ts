@@ -26,4 +26,18 @@ export class ImageHttp {
 
     await response.json();
   }
+
+  async Delete(imageId: string) {
+    const response = await fetch(`${BASE_URL}/image/${imageId}`, {
+      method: "DELETE",
+    });
+
+    console.log(response);
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    const json = await response.json();
+    return json || null;
+  }
 }

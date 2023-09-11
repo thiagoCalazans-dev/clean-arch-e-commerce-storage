@@ -27,6 +27,8 @@ export default async function ProductsPage({
   const { data: size } = await SizeActions.getAll();
   const { data: color } = await ColorActions.getAll();
 
+  console.log(data);
+
   return (
     <div className="flex flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
@@ -35,6 +37,7 @@ export default async function ProductsPage({
             title={`${data.name} `}
             description={`items (${data.productItem.length})`}
           />
+
           <CreateProductItemModal
             color={color}
             size={size}

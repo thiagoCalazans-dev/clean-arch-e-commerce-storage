@@ -16,14 +16,8 @@ export const CreateImageParamsSchema = schema.object({
 
 export type CreateImage = schema.infer<typeof CreateImageParamsSchema>;
 
-export const fetchColorByIdParamsSchema = schema.string();
+export const removeImageByIdParamsSchema = schema.string();
 
-export type fetchByIdParamsSchema = schema.infer<
-  typeof fetchColorByIdParamsSchema
->;
-
-export const removeColorByIdParamsSchema = schema.string();
-
-export type removeColorByIdParams = schema.infer<
-  typeof removeColorByIdParamsSchema
+export type RemoveImageByIdParams = schema.infer<
+  typeof removeImageByIdParamsSchema
 >;

@@ -64,7 +64,7 @@ export function ProductItemForm({
         ...formValues,
         productId: productId,
       };
-      console.log(product);
+
       await ProductItemActions.create(product, productId);
 
       onSuccess("Product Created");

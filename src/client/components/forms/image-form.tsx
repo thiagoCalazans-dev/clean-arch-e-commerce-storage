@@ -25,34 +25,31 @@ export function ImageForm() {
   const [inputFile, setInputFile] = useState({
     name: "",
     file: "",
-    format: "",
   });
   const router = useRouter();
 
   async function onFileInputChange(event: any) {
-    const formFileName = event.target.files[0].name;
+    const fileName = event.target.files[0].name;
     setInputFile({
       file: event.target.files[0],
-      name: formFileName.split(".")[0],
-      format: formFileName.split(".")[1],
+      name: fileName,
     });
   }
 
-  const form = useForm<FormImage>({
-    resolver: zodResolver(FormImageSchema),
-    defaultValues: {
-      name: "",
-    },
-  });
+  const form = useForm();
 
   const { isSubmitting, errors } = form.formState;
 
-  async function onSubmit(formValues: FormImage) {
+  async function onSubmit() {
     try {
-      await ImageAction.create(formValues, inputFile);
-      //   onSuccess("Color Created");
-      //   form.reset();
-      //   router.prefetch("/colors");
+      await ImageAction.create(inputFile);
+      onSuccess("Image Created");
+      form.reset();
+      router.prefetch("/images");
+      setInputFile({
+        name: "",
+        file: "",
+      });
     } catch (error: Error | any) {
       onError(error.message);
     }
@@ -61,19 +58,6 @@ export function ImageForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input disabled={isSubmitting} placeholder="Type" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <FormItem>
           <FormLabel>Image file</FormLabel>
           <FormControl>

@@ -21,14 +21,10 @@ export class ProductItemHttp {
   }
 
   async Post(data: PostProductParams, productId: string) {
-    console.log(data);
-
     const response = await fetch(`${BASE_URL}/product/${productId}/item`, {
       method: "POST",
       body: JSON.stringify(data),
     });
-
-    console.log(response);
 
     if (!response.ok) {
       throw new Error(response.statusText);

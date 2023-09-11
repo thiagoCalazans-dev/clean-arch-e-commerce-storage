@@ -17,6 +17,7 @@ import { ProductsColumn } from "./columns";
 import {
   DotsHorizontalIcon,
   Pencil2Icon,
+  ReaderIcon,
   TrashIcon,
 } from "@radix-ui/react-icons";
 import { ProductActions } from "@/client/actions/product-actions";
@@ -64,9 +65,9 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem
-            onClick={() => window.location.assign(`/products/${data.id}`)}
+            onClick={() => window.location.assign(`/products/${data.id}/items`)}
           >
-            <Pencil2Icon className="mr-2 h-4 w-4" /> Update
+            <ReaderIcon className="mr-2 h-4 w-4" /> Items
           </DropdownMenuItem>
           <DropdownMenuItem
             className="text-red-500"

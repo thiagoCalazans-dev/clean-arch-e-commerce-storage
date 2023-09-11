@@ -9,7 +9,6 @@ export type FormImage = schema.infer<typeof FormImageSchema>;
 
 export const InputFileSchema = schema.object({
   name: schema.string().min(3),
-  format: schema.string().min(3),
   file: schema.string().min(3),
 });
 
