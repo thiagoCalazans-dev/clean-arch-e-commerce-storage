@@ -6,18 +6,18 @@ describe("teste Product Image rules", () => {
   it("should instance ProductImage", () => {
     const baseProductImage = {
       productItemId: "productImageId",
-      url: "URL:/asiudhauisdhasui",
+      imageUrl: "URL:/asiudhauisdhasui",
     };
 
     const productImage = new ProductImage(baseProductImage);
 
-    expect(productImage.url).toBe("URL:/asiudhauisdhasui");
+    expect(productImage.imageUrl).toBe("URL:/asiudhauisdhasui");
   });
 
   it("should throw an error if productImageId does not exists", async () => {
     const baseProductImage = {
       productItemId: "",
-      url: "URL:/asiudhauisdhasui",
+      imageUrl: "URL:/asiudhauisdhasui",
     };
 
     await expect(() => {
@@ -28,7 +28,7 @@ describe("teste Product Image rules", () => {
   it("should throw an error if url does not exists", async () => {
     const baseProductImage = {
       productItemId: "productImageId",
-      url: "",
+      imageUrl: "",
     };
 
     await expect(() => {

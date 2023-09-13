@@ -88,12 +88,12 @@ model ProductItem {
 
 model ProductImage {
   id              String      @id @default(uuid())
-  image           Image       @relation(fields: [images_url], references: [url])
+  image           Image       @relation(fields: [image_url], references: [url])
   product_item    ProductItem @relation(fields: [product_item_id], references: [id])
   product_item_id String
-  images_url      String
+  image_url       String
 
-  @@index([product_item_id, images_url], name: "unique_image_contract")
+  @@index([product_item_id, image_url], name: "unique_image_contract")
   @@map("product_image")
 }
 

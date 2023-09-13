@@ -2,13 +2,13 @@ import { randomUUID } from "node:crypto";
 import { IsRequiredError } from "../errors/isRequiredError";
 
 interface ProductImageProps {
-  url: string;
+  imageUrl: string;
   productItemId: string;
 }
 
 export class ProductImage {
   readonly productItemId: string;
-  readonly url: string;
+  readonly imageUrl: string;
 
   constructor(private props: ProductImageProps, readonly id?: string) {
     this.id = id ?? randomUUID();
@@ -17,7 +17,7 @@ export class ProductImage {
       throw new IsRequiredError("productItemId");
     this.productItemId = props.productItemId;
 
-    if (props.url.length < 1) throw new IsRequiredError("size");
-    this.url = props.url;
+    if (props.imageUrl.length < 1) throw new IsRequiredError("size");
+    this.imageUrl = props.imageUrl;
   }
 }

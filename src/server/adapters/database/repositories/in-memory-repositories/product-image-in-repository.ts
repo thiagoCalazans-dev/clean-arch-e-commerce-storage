@@ -6,7 +6,7 @@ import {
 } from "../produt-image-repository";
 
 export class InMemoryProductImageRepository implements ProductImageRepository {
-  public images: RepositoryProductImage[] = [];
+  public product_images: RepositoryProductImage[] = [];
 
   async create(data: RepositoryCreateProductImage) {
     const id = randomUUID();
@@ -15,13 +15,21 @@ export class InMemoryProductImageRepository implements ProductImageRepository {
       id,
     };
 
-    this.images.push(image);
+    this.product_images.push(image);
+  }
+
+  async findProductImage(productItemId: string, imageUrl: string) {
+    const item = this.product_images.find(
+      (item) =>
+        item.product_item_id === productItemId && item.image_url === imageUrl
+    );
+    return item || null;
   }
 
   async remove(id: string): Promise<void> {
-    const index = this.images.findIndex((item) => item.id === id);
+    const index = this.product_images.findIndex((item) => item.id === id);
     if (index !== -1) {
-      this.images.splice(index, 1);
+      this.product_images.splice(index, 1);
     }
     return;
   }

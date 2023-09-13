@@ -70,6 +70,11 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
             <ReaderIcon className="mr-2 h-4 w-4" /> Items
           </DropdownMenuItem>
           <DropdownMenuItem
+            onClick={() => window.location.assign(`/products/${data.id}`)}
+          >
+            <Pencil2Icon className="mr-2 h-4 w-4" /> Update
+          </DropdownMenuItem>
+          <DropdownMenuItem
             className="text-red-500"
             onClick={() => setOpen(true)}
           >

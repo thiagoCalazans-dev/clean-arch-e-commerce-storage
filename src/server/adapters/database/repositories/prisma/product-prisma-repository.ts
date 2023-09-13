@@ -1,11 +1,9 @@
-import { ProductNotFoundError } from "@/server/aplication/error/ProductNotFoundError";
 import { prisma } from "../../prismadb";
 import {
   ProductRepository,
   RepositoryCreateProduct,
   RepositoryProduct,
 } from "../product-repository";
-import { ItemIndicator } from "@radix-ui/react-dropdown-menu";
 
 export class PrismaProductRepository implements ProductRepository {
   async update(data: RepositoryProduct) {
@@ -122,7 +120,6 @@ export class PrismaProductRepository implements ProductRepository {
         return {
           id: item.id,
           productItemId: item.product_item_id,
-          url: item.url,
         };
       });
 

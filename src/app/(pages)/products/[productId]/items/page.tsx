@@ -14,6 +14,8 @@ import { CellAction } from "./cell-action";
 import { CreateProductItemModal } from "@/client/components/modal/create-product-item-modal";
 import { SizeActions } from "@/client/actions/size-actions";
 import { ColorActions } from "@/client/actions/color-actions";
+import { CreateProductImageModal } from "@/client/components/modal/create-product-image-modal";
+import { TrashIcon } from "@radix-ui/react-icons";
 
 export default async function ProductsPage({
   params,
@@ -26,8 +28,6 @@ export default async function ProductsPage({
 
   const { data: size } = await SizeActions.getAll();
   const { data: color } = await ColorActions.getAll();
-
-  console.log(data);
 
   return (
     <div className="flex flex-col">
@@ -45,15 +45,17 @@ export default async function ProductsPage({
           />
         </div>
         <Separator />
-        <section className="grid md:grid-cols-2 gap-4 ">
+        <section className="grid md:grid-cols-4 gap-4 ">
           {data.productItem.map((item: any) => {
             return (
               <Card key={item.id}>
-                <CardContent className="grid gap-2 lg:grid-cols-2">
+                <CardContent className="grid gap-2 ">
                   <div>
                     <CardHeader className="flex-row items-center justify-between">
                       <CardTitle className="uppercase">{item.code}</CardTitle>
-                      <CellAction data={data} />
+                      <Button type="button" variant="destructive">
+                        <TrashIcon />
+                      </Button>
                     </CardHeader>
 
                     <div className="flex flex-col justify-evenly">
@@ -76,6 +78,10 @@ export default async function ProductsPage({
                   <div className="flex-1 flex space-y-1.5 pt-6  items-center relative h-full  overflow-x-auto gap-2">
                     <ProductImages data={item.productImages} />
                   </div>
+                  <CreateProductImageModal
+                    productId={params.productId}
+                    productItemId={item.id}
+                  />
                 </CardContent>
               </Card>
             );

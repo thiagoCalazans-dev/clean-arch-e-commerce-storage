@@ -14,11 +14,13 @@ import {
 import { AlertModal } from "@/client/components/alert-modal";
 import {
   DotsHorizontalIcon,
+  ImageIcon,
   Pencil2Icon,
   TrashIcon,
 } from "@radix-ui/react-icons";
 import { ProductActions } from "@/client/actions/product-actions";
 import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
+import { CreateProductImageModal } from "@/client/components/modal/create-product-image-modal";
 
 interface CellActionProps {
   data: {
@@ -64,10 +66,8 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem
-            onClick={() => window.location.assign(`/products/${data.id}`)}
-          >
-            <Pencil2Icon className="mr-2 h-4 w-4" /> Update
-          </DropdownMenuItem>
+            onClick={() => console.log(`abriu`)}
+          ></DropdownMenuItem>
           <DropdownMenuItem
             className="text-red-500"
             onClick={() => setOpen(true)}

@@ -13,7 +13,7 @@ interface ProductImagesProps {
 export function ProductImages({ data }: ProductImagesProps) {
   if (!data.length) {
     return (
-      <Card className="flex justify-center items-center w-full h-24 lg:h-full">
+      <Card className="flex justify-center items-center w-full lg:min-h-[8rem]">
         No images
       </Card>
     );
