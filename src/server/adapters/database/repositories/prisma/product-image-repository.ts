@@ -25,6 +25,15 @@ export class PrismaProductImageRepository implements ProductImageRepository {
     });
   }
 
+  async findById(id: string) {
+    const image = await prisma.productImage.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    return image;
+  }
+
   async remove(id: string) {
     await prisma.productItem.delete({
       where: {

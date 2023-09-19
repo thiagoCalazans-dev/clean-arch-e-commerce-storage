@@ -7,13 +7,14 @@ export class ProductImageHttp {
   async Post(body: PostProductImageParams, productId: string) {
     const { data } = body;
 
-    const response = await fetch(
-      `${BASE_URL}/product/${productId}/item/${data.productItemId}/image}`,
-      {
-        method: "POST",
-        body: JSON.stringify(body),
-      }
-    );
+    const url = `${BASE_URL}/product/${productId}/item/${data.productItemId}/image}`;
+
+    console.log(url);
+
+    const response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(body),
+    });
 
     if (!response.ok) {
       throw new Error(response.statusText);

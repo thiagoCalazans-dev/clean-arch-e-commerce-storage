@@ -12,6 +12,7 @@ export interface RepositoryProductImage {
 export interface ProductImageRepository {
   create: (data: RepositoryCreateProductImage) => Promise<void>;
   remove: (id: string) => Promise<void>;
+  findById: (id: string) => Promise<RepositoryProductImage | null>;
   findProductImage: (
     productItemId: string,
     ImageUrl: string

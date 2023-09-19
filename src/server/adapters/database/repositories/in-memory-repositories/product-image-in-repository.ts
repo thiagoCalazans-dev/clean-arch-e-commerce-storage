@@ -26,6 +26,11 @@ export class InMemoryProductImageRepository implements ProductImageRepository {
     return item || null;
   }
 
+  async findById(id: string): Promise<RepositoryProductImage | null> {
+    const products = this.product_images.find((item) => item.id === id);
+    return products || null;
+  }
+
   async remove(id: string): Promise<void> {
     const index = this.product_images.findIndex((item) => item.id === id);
     if (index !== -1) {

@@ -51,6 +51,7 @@ export function ProductImageForm({
         productItemId: productItemId,
       };
 
+      console.log(productImage, productId);
       await ProductImageActions.create(productImage, productId);
 
       onSuccess("Product Created");

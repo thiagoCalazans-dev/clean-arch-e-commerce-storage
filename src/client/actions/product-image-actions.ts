@@ -7,6 +7,8 @@ import {
 const productImageHttp = new ProductImageHttp();
 
 async function create(item: CreateProductImage, productId: string) {
+  console.log(item);
+
   const parsedParams = CreateProductImageSchema.safeParse(item);
 
   if (!parsedParams.success) {
@@ -16,6 +18,8 @@ async function create(item: CreateProductImage, productId: string) {
   const body = {
     data: parsedParams.data,
   };
+
+  console.log(body);
   await productImageHttp.Post(body, productId);
 }
 
