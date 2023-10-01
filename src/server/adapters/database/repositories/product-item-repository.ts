@@ -1,4 +1,5 @@
 import { RepositoryColor } from "./color-repository";
+import { RepositoryProductImage } from "./produt-image-repository";
 import { RepositorySize } from "./size-repository";
 
 export interface RepositoryCreateProductItem {
@@ -20,6 +21,7 @@ export interface RepositoryProductItem {
   size?: RepositorySize;
   price: number;
   descount: number;
+  productImages: RepositoryProductImage[];
 }
 
 export interface ProductItemRepository {

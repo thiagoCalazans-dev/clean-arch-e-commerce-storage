@@ -13,6 +13,8 @@ export class ProductImage {
   constructor(private props: ProductImageProps, readonly id?: string) {
     this.id = id ?? randomUUID();
 
+    console.log(props);
+
     if (props.productItemId.length < 1)
       throw new IsRequiredError("productItemId");
     this.productItemId = props.productItemId;

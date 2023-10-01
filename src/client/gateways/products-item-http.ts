@@ -1,4 +1,4 @@
-import { BASE_URL } from "../lib/utils";
+import { env } from "../schema/env";
 import {
   GetParams,
   GetByIdParams,
@@ -11,20 +11,26 @@ export class ProductItemHttp {
   constructor() {}
 
   async Get(productId: string) {
-    const response = await fetch(`${BASE_URL}/product/${productId}/item`, {
-      next: {
-        tags: [`${productId}-items`],
-      },
-    });
+    const response = await fetch(
+      `${env.API_BASE_URL}/product/${productId}/item`,
+      {
+        next: {
+          tags: [`${productId}-items`],
+        },
+      }
+    );
     const json = await response.json();
     return json;
   }
 
   async Post(data: PostProductParams, productId: string) {
-    const response = await fetch(`${BASE_URL}/product/${productId}/item`, {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      `${env.API_BASE_URL}/product/${productId}/item`,
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+      }
+    );
 
     if (!response.ok) {
       throw new Error(response.statusText);
@@ -34,7 +40,7 @@ export class ProductItemHttp {
   }
 
   async GetById(productId: GetByIdParams) {
-    const response = await fetch(`${BASE_URL}/product/${productId}`, {
+    const response = await fetch(`${env.API_BASE_URL}/product/${productId}`, {
       cache: "no-store",
     });
 
@@ -50,10 +56,13 @@ export class ProductItemHttp {
   }
 
   async Put(body: PutProductParams) {
-    const response = await fetch(`${BASE_URL}/product/${body.data.id}`, {
-      method: "PUT",
-      body: JSON.stringify(body),
-    });
+    const response = await fetch(
+      `${env.API_BASE_URL}/product/${body.data.id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(body),
+      }
+    );
 
     if (!response.ok) {
       throw new Error(response.statusText);
@@ -63,10 +72,13 @@ export class ProductItemHttp {
     return result;
   }
 
-  async Delete(productId: string) {
-    const response = await fetch(`${BASE_URL}/product/${productId}`, {
-      method: "DELETE",
-    });
+  async Delete(productId: string, productItemId: string) {
+    const response = await fetch(
+      `${env.API_BASE_URL}/product/${productId}/item/${productItemId}`,
+      {
+        method: "DELETE",
+      }
+    );
 
     if (!response.ok) {
       throw new Error(response.statusText);

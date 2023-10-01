@@ -5,6 +5,7 @@ import {
   makeRemoveProductItemUseCase,
 } from "../factories/makeProductImageUseCase";
 import { ProductNotFoundError } from "@/server/aplication/error/ProductNotFoundError";
+import { IsRequiredError } from "@/server/enterprise/errors/isRequiredError";
 
 export class ProductImageController {
   static async Post(
@@ -14,6 +15,8 @@ export class ProductImageController {
     }
   ) {
     const body: CreateProductImageInputDTO = await request.json();
+
+    console.log(body);
 
     if (params.itemId !== body.data.productItemId)
       return NextResponse.json(null, {
@@ -27,6 +30,18 @@ export class ProductImageController {
 
       return NextResponse.json(null, { status: 200 });
     } catch (error) {
+      if (error instanceof ProductNotFoundError)
+        return NextResponse.json(null, {
+          status: 404,
+          statusText: error.message,
+        });
+
+      if (error instanceof IsRequiredError)
+        return NextResponse.json(null, {
+          status: 404,
+          statusText: error.message,
+        });
+
       if (error instanceof ProductNotFoundError)
         return NextResponse.json(null, {
           status: 404,

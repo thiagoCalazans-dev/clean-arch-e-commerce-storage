@@ -1,5 +1,5 @@
 import { ImageHttp } from "../gateways/image-https";
-import { supabase } from "../lib/supabse";
+import { supabase } from "../lib/supabase";
 import {
   CreateImageParamsSchema,
   RemoveImageByIdParams,

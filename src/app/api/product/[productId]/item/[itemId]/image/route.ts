@@ -5,6 +5,7 @@ export async function POST(
   request: Request,
   { params }: { params: { itemId: string } }
 ) {
+  console.log(params);
   return ProductImageController.Post(request, params);
 }
 

@@ -1,3 +1,4 @@
+import { string } from "zod";
 import schema from "../../lib/schema";
 import { BrandSchema } from "./brand-actions-schema";
 import { CategorySchema } from "./category-actions-schema";
@@ -31,7 +32,10 @@ export type fetchProductItemByIdParams = schema.infer<
   typeof fetchProductItemByIdParamsSchema
 >;
 
-export const removeProductItemByIdParamsSchema = schema.string();
+export const removeProductItemByIdParamsSchema = schema.object({
+  productId: string(),
+  productItemId: string(),
+})
 
 export type removeProductItemByIdParams = schema.infer<
   typeof removeProductItemByIdParamsSchema

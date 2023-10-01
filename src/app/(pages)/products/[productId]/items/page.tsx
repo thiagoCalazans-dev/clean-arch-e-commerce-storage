@@ -10,12 +10,11 @@ import {
   CardTitle,
 } from "@/client/components/ui/card";
 import { ProductImages } from "./image";
-import { CellAction } from "./cell-action";
 import { CreateProductItemModal } from "@/client/components/modal/create-product-item-modal";
 import { SizeActions } from "@/client/actions/size-actions";
 import { ColorActions } from "@/client/actions/color-actions";
 import { CreateProductImageModal } from "@/client/components/modal/create-product-image-modal";
-import { TrashIcon } from "@radix-ui/react-icons";
+import { DeleteProductItemButton } from "@/client/components/buttons/remove-product-item-button";
 
 export default async function ProductsPage({
   params,
@@ -25,6 +24,8 @@ export default async function ProductsPage({
   const { data } = await ProductItemActions.fetchItemsByProduct(
     params.productId
   );
+
+  console.log(data);
 
   const { data: size } = await SizeActions.getAll();
   const { data: color } = await ColorActions.getAll();
@@ -53,9 +54,11 @@ export default async function ProductsPage({
                   <div>
                     <CardHeader className="flex-row items-center justify-between">
                       <CardTitle className="uppercase">{item.code}</CardTitle>
-                      <Button type="button" variant="destructive">
-                        <TrashIcon />
-                      </Button>
+                      <DeleteProductItemButton
+                        productId={data.id}
+                        productItemId={item.id}
+                        name={item.code}
+                      />
                     </CardHeader>
 
                     <div className="flex flex-col justify-evenly">
@@ -75,7 +78,7 @@ export default async function ProductsPage({
                       </p>
                     </div>
                   </div>
-                  <div className="flex-1 flex space-y-1.5 pt-6  items-center relative h-full  overflow-x-auto gap-2">
+                  <div className="flex-1 grid grid-cols-3 space-y-1.5 pt-6  items-center relative h-full  overflow-x-auto gap-2">
                     <ProductImages data={item.productImages} />
                   </div>
                   <CreateProductImageModal

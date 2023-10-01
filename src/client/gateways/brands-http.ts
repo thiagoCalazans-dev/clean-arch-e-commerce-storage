@@ -1,4 +1,4 @@
-import { BASE_URL } from "../lib/utils";
+import { env } from "../schema/env";
 import {
   GetByIdReponseSchema,
   GetByIdParams,
@@ -10,7 +10,7 @@ export class BrandHttp {
   constructor() {}
 
   async Post(data: PostBrandParams) {
-    const response = await fetch(`${BASE_URL}/brand`, {
+    const response = await fetch(`${env.API_BASE_URL}/brand`, {
       method: "POST",
       body: JSON.stringify(data),
     });
@@ -23,7 +23,7 @@ export class BrandHttp {
   }
 
   async GetById(brandId: GetByIdParams) {
-    const response = await fetch(`${BASE_URL}/brand/${brandId}`, {
+    const response = await fetch(`${env.API_BASE_URL}/brand/${brandId}`, {
       cache: "no-store",
     });
 
@@ -39,7 +39,7 @@ export class BrandHttp {
   }
 
   async Get() {
-    const response = await fetch(`${BASE_URL}/brand`, {
+    const response = await fetch(`${env.API_BASE_URL}/brand`, {
       next: {
         tags: ["brands"],
       },
@@ -49,7 +49,7 @@ export class BrandHttp {
   }
 
   async Put(body: PutBrandParams) {
-    const response = await fetch(`${BASE_URL}/brand/${body.data.id}`, {
+    const response = await fetch(`${env.API_BASE_URL}/brand/${body.data.id}`, {
       method: "PUT",
       body: JSON.stringify(body),
     });
@@ -63,7 +63,7 @@ export class BrandHttp {
   }
 
   async Delete(brandId: string) {
-    const response = await fetch(`${BASE_URL}/brand/${brandId}`, {
+    const response = await fetch(`${env.API_BASE_URL}/brand/${brandId}`, {
       method: "DELETE",
     });
 

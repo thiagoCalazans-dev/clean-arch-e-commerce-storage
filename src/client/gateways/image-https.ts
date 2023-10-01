@@ -1,11 +1,11 @@
-import { BASE_URL } from "../lib/utils";
+import { env } from "../schema/env";
 import { PostImageParams } from "../schema/gateway/image-gateway-schema";
 
 export class ImageHttp {
   constructor() {}
 
   async Get() {
-    const response = await fetch(`${BASE_URL}/image`, {
+    const response = await fetch(`${env.API_BASE_URL}/image`, {
       next: {
         tags: ["images"],
       },
@@ -15,7 +15,7 @@ export class ImageHttp {
   }
 
   async Post(data: PostImageParams) {
-    const response = await fetch(`${BASE_URL}/image`, {
+    const response = await fetch(`${env.API_BASE_URL}/image`, {
       method: "POST",
       body: JSON.stringify(data),
     });
@@ -28,7 +28,7 @@ export class ImageHttp {
   }
 
   async Delete(imageId: string) {
-    const response = await fetch(`${BASE_URL}/image/${imageId}`, {
+    const response = await fetch(`${env.API_BASE_URL}/image/${imageId}`, {
       method: "DELETE",
     });
 

@@ -12,6 +12,8 @@ export class CreateProductImageUseCase {
     private productImageRepository: ProductImageRepository
   ) {}
   async execute({ data }: CreateProductImageInputDTO) {
+    console.log(data);
+
     const { productItemId, imageUrl } = new ProductImage(data);
 
     console.log("productID:", productItemId);

@@ -5,8 +5,8 @@ export interface RepositoryCreateProductImage {
 
 export interface RepositoryProductImage {
   id: string;
-  product_item_id: string;
-  image_url: string;
+  productItemId: string;
+  imageUrl: string;
 }
 
 export interface ProductImageRepository {

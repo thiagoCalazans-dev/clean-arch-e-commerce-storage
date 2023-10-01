@@ -36,13 +36,13 @@ export function ProductImageForm({
   const form = useForm<FormProductImage>({
     resolver: zodResolver(FormProductImageSchema),
     defaultValues: {
-      image_url: "",
+      imageUrl: "",
     },
   });
 
   const { isSubmitting, errors } = form.formState;
 
-  const imageUrl = form.watch("image_url");
+  const imageUrl = form.watch("imageUrl");
 
   async function onSubmit(formValues: FormProductImage) {
     try {
@@ -71,7 +71,7 @@ export function ProductImageForm({
         >
           <FormField
             control={form.control}
-            name="image_url"
+            name="imageUrl"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Url</FormLabel>

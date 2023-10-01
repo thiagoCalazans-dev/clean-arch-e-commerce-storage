@@ -1,4 +1,4 @@
-import { BASE_URL } from "../lib/utils";
+import { env } from "../schema/env";
 import {
   GetByIdReponseSchema,
   GetByIdParams,
@@ -10,7 +10,7 @@ export class ProductHttp {
   constructor() {}
 
   async Get() {
-    const response = await fetch(`${BASE_URL}/product`, {
+    const response = await fetch(`${env.API_BASE_URL}/product`, {
       next: {
         tags: ["products"],
       },
@@ -20,7 +20,7 @@ export class ProductHttp {
   }
 
   async Post(data: PostProductParams) {
-    const response = await fetch(`${BASE_URL}/product`, {
+    const response = await fetch(`${env.API_BASE_URL}/product`, {
       method: "POST",
       body: JSON.stringify(data),
     });
@@ -33,7 +33,7 @@ export class ProductHttp {
   }
 
   async GetById(productId: GetByIdParams) {
-    const response = await fetch(`${BASE_URL}/product/${productId}`, {
+    const response = await fetch(`${env.API_BASE_URL}/product/${productId}`, {
       cache: "no-store",
     });
 
@@ -49,10 +49,13 @@ export class ProductHttp {
   }
 
   async Put(body: PutProductParams) {
-    const response = await fetch(`${BASE_URL}/product/${body.data.id}`, {
-      method: "PUT",
-      body: JSON.stringify(body),
-    });
+    const response = await fetch(
+      `${env.API_BASE_URL}/product/${body.data.id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(body),
+      }
+    );
 
     if (!response.ok) {
       throw new Error(response.statusText);
@@ -63,7 +66,7 @@ export class ProductHttp {
   }
 
   async Delete(productId: string) {
-    const response = await fetch(`${BASE_URL}/product/${productId}`, {
+    const response = await fetch(`${env.API_BASE_URL}/product/${productId}`, {
       method: "DELETE",
     });
 

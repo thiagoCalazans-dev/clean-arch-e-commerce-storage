@@ -1,4 +1,3 @@
-import { Item } from "@radix-ui/react-dropdown-menu";
 import { prisma } from "../../prismadb";
 import {
   ProductItemRepository,
@@ -51,12 +50,21 @@ export class PrismaProductItemRepository implements ProductItemRepository {
       include: {
         size: true,
         color: true,
+        ProductImages: true,
       },
     });
 
     if (!item) return null;
 
-    const parsedProduct: RepositoryProductItem = {
+    const productImagesMapped = item.ProductImages.map((image) => {
+      return {
+        id: image.id,
+        productItemId: image.product_item_id,
+        imageUrl: image.image_url,
+      };
+    });
+
+    const parsedProduct = {
       id: item.id,
       code: item.code,
       price: Number(item.price),
@@ -66,6 +74,7 @@ export class PrismaProductItemRepository implements ProductItemRepository {
       descount: item.descont,
       size: item.size,
       color: item.color,
+      productImages: productImagesMapped,
     };
 
     return parsedProduct;
@@ -76,11 +85,22 @@ export class PrismaProductItemRepository implements ProductItemRepository {
       where: {
         code: code,
       },
+      include: {
+        ProductImages: true,
+      },
     });
 
     if (!item) return null;
 
-    const parsedProduct: RepositoryProductItem = {
+    const productImagesMapped = item.ProductImages.map((image) => {
+      return {
+        id: image.id,
+        productItemId: image.product_item_id,
+        imageUrl: image.image_url,
+      };
+    });
+
+    const parsedProduct = {
       id: item.id,
       code: item.code,
       price: Number(item.price),
@@ -88,6 +108,7 @@ export class PrismaProductItemRepository implements ProductItemRepository {
       productId: item.product_id,
       sizeId: item.size_id,
       descount: item.descont,
+      productImages: productImagesMapped,
     };
 
     return parsedProduct;
@@ -101,6 +122,7 @@ export class PrismaProductItemRepository implements ProductItemRepository {
       include: {
         color: true,
         size: true,
+        ProductImages: true,
       },
     });
 
@@ -117,6 +139,14 @@ export class PrismaProductItemRepository implements ProductItemRepository {
         value: item.size.value,
       };
 
+      const productImagesMapped = item.ProductImages.map((image) => {
+        return {
+          id: image.id,
+          productItemId: image.product_item_id,
+          imageUrl: image.image_url,
+        };
+      });
+
       return {
         id: item.id,
         code: item.code,
@@ -127,6 +157,7 @@ export class PrismaProductItemRepository implements ProductItemRepository {
         sizeId: item.size_id,
         size: sizeMapped,
         descount: item.descont,
+        productImages: productImagesMapped,
       };
     });
     return itemsMapped;

@@ -1,4 +1,4 @@
-import { BASE_URL } from "../lib/utils";
+import { env } from "../schema/env";
 import { PostProductImageParams } from "../schema/gateway/product-image-gateway-schema";
 
 export class ProductImageHttp {
@@ -7,7 +7,9 @@ export class ProductImageHttp {
   async Post(body: PostProductImageParams, productId: string) {
     const { data } = body;
 
-    const url = `${BASE_URL}/product/${productId}/item/${data.productItemId}/image}`;
+    console.log(data);
+
+    const url = `${env.API_BASE_URL}/product/${productId}/item/${data.productItemId}/image`;
 
     console.log(url);
 

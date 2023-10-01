@@ -1,4 +1,4 @@
-import { supabase } from "@/client/lib/supabse";
+import { supabase } from "@/client/lib/supabase";
 
 export class ImageStorage {
   constructor() {}

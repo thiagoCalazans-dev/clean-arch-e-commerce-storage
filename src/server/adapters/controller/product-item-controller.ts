@@ -10,10 +10,7 @@ import { SizeNotFoundError } from "@/server/aplication/error/SizeNotFoundError";
 import { isPercentageError } from "@/server/enterprise/errors/isPercentageError";
 import { isCurrencyTypeValueError } from "@/server/enterprise/errors/isCurrencyTypeValueError";
 import { CreateProductItemInputDTO } from "@/server/aplication/dto/product-item-dto";
-import {
-  makeFetchProductUseCase,
-  makeFetchProductWithItemsUseCase,
-} from "../factories/makeProductUseCase";
+import { makeFetchProductWithItemsUseCase } from "../factories/makeProductUseCase";
 import { CodeAlreadyExistError } from "@/server/aplication/error/CodeAlreadyExistError";
 
 class ProductItemController {

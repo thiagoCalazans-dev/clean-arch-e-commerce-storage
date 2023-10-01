@@ -5,14 +5,14 @@ import { CategorySchema } from "./category-actions-schema";
 export const ProductImageSchema = schema.object({
   id: schema.string(),
   productId: schema.string(),
-  image_url: schema.string(),
+  imageUrl: schema.string(),
 });
 
 export type ProductImage = schema.infer<typeof ProductImageSchema>;
 
 export const CreateProductImageSchema = schema.object({
   productItemId: schema.string(),
-  image_url: schema.string(),
+  imageUrl: schema.string(),
 });
 
 export type CreateProductImage = schema.infer<typeof CreateProductImageSchema>;

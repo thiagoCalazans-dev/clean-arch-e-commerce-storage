@@ -120,6 +120,7 @@ export class PrismaProductRepository implements ProductRepository {
         return {
           id: item.id,
           productItemId: item.product_item_id,
+          imageUrl: item.image_url,
         };
       });
 

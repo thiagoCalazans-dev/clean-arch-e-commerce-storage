@@ -1,4 +1,4 @@
-import { BASE_URL } from "../lib/utils";
+import { env } from "../schema/env";
 import {
   GetByIdReponseSchema,
   GetByIdParams,
@@ -10,7 +10,7 @@ export class SizeHttp {
   constructor() {}
 
   async Get() {
-    const response = await fetch(`${BASE_URL}/size`, {
+    const response = await fetch(`${env.API_BASE_URL}/size`, {
       next: {
         tags: ["sizes"],
       },
@@ -20,7 +20,7 @@ export class SizeHttp {
   }
 
   async Post(data: PostSizeParams) {
-    const response = await fetch(`${BASE_URL}/size`, {
+    const response = await fetch(`${env.API_BASE_URL}/size`, {
       method: "POST",
       body: JSON.stringify(data),
     });
@@ -33,7 +33,7 @@ export class SizeHttp {
   }
 
   async GetById(sizeId: GetByIdParams) {
-    const response = await fetch(`${BASE_URL}/size/${sizeId}`, {
+    const response = await fetch(`${env.API_BASE_URL}/size/${sizeId}`, {
       cache: "no-store",
     });
 
@@ -49,7 +49,7 @@ export class SizeHttp {
   }
 
   async Put(body: PutSizeParams) {
-    const response = await fetch(`${BASE_URL}/size/${body.data.id}`, {
+    const response = await fetch(`${env.API_BASE_URL}/size/${body.data.id}`, {
       method: "PUT",
       body: JSON.stringify(body),
     });
@@ -63,7 +63,7 @@ export class SizeHttp {
   }
 
   async Delete(sizeId: string) {
-    const response = await fetch(`${BASE_URL}/size/${sizeId}`, {
+    const response = await fetch(`${env.API_BASE_URL}/size/${sizeId}`, {
       method: "DELETE",
     });
 

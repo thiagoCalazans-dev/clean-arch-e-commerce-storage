@@ -1,4 +1,4 @@
-import { BASE_URL } from "../lib/utils";
+import { env } from "../schema/env";
 import {
   GetByIdReponseSchema,
   GetByIdParams,
@@ -10,7 +10,7 @@ export class CategoryHttp {
   constructor() {}
 
   async Post(data: PostCategoryParams) {
-    const response = await fetch(`${BASE_URL}/category`, {
+    const response = await fetch(`${env.API_BASE_URL}/category`, {
       method: "POST",
       body: JSON.stringify(data),
     });
@@ -23,7 +23,7 @@ export class CategoryHttp {
   }
 
   async GetById(categoryId: GetByIdParams) {
-    const response = await fetch(`${BASE_URL}/category/${categoryId}`, {
+    const response = await fetch(`${env.API_BASE_URL}/category/${categoryId}`, {
       cache: "no-store",
     });
 
@@ -39,7 +39,7 @@ export class CategoryHttp {
   }
 
   async Get() {
-    const response = await fetch(`${BASE_URL}/category`, {
+    const response = await fetch(`${env.API_BASE_URL}/category`, {
       next: {
         tags: ["categories"],
       },
@@ -49,10 +49,13 @@ export class CategoryHttp {
   }
 
   async Put(body: PutCategoryParams) {
-    const response = await fetch(`${BASE_URL}/category/${body.data.id}`, {
-      method: "PUT",
-      body: JSON.stringify(body),
-    });
+    const response = await fetch(
+      `${env.API_BASE_URL}/category/${body.data.id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(body),
+      }
+    );
 
     if (!response.ok) {
       throw new Error(response.statusText);
@@ -63,7 +66,7 @@ export class CategoryHttp {
   }
 
   async Delete(categoryId: string) {
-    const response = await fetch(`${BASE_URL}/category/${categoryId}`, {
+    const response = await fetch(`${env.API_BASE_URL}/category/${categoryId}`, {
       method: "DELETE",
     });
 

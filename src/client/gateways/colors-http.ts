@@ -1,16 +1,16 @@
-import { BASE_URL } from "../lib/utils";
 import {
   GetByIdReponseSchema,
   GetByIdParams,
   PostColorParams,
   PutColorParams,
 } from "../schema/gateway/color-gateway-schema";
+import { env } from "../schema/env";
 
 export class ColorHttp {
   constructor() {}
 
   async Get() {
-    const response = await fetch(`${BASE_URL}/color`, {
+    const response = await fetch(`${env.API_BASE_URL}/color`, {
       next: {
         tags: ["colors"],
       },
@@ -20,7 +20,7 @@ export class ColorHttp {
   }
 
   async Post(data: PostColorParams) {
-    const response = await fetch(`${BASE_URL}/color`, {
+    const response = await fetch(`${env.API_BASE_URL}/color`, {
       method: "POST",
       body: JSON.stringify(data),
     });
@@ -33,7 +33,7 @@ export class ColorHttp {
   }
 
   async GetById(colorId: GetByIdParams) {
-    const response = await fetch(`${BASE_URL}/color/${colorId}`, {
+    const response = await fetch(`${env.API_BASE_URL}/color/${colorId}`, {
       cache: "no-store",
     });
 
@@ -49,7 +49,7 @@ export class ColorHttp {
   }
 
   async Put(body: PutColorParams) {
-    const response = await fetch(`${BASE_URL}/color/${body.data.id}`, {
+    const response = await fetch(`${env.API_BASE_URL}/color/${body.data.id}`, {
       method: "PUT",
       body: JSON.stringify(body),
     });
@@ -63,7 +63,7 @@ export class ColorHttp {
   }
 
   async Delete(colorId: string) {
-    const response = await fetch(`${BASE_URL}/color/${colorId}`, {
+    const response = await fetch(`${env.API_BASE_URL}/color/${colorId}`, {
       method: "DELETE",
     });
 
