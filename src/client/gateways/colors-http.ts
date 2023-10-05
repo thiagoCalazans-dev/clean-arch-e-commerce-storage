@@ -14,6 +14,7 @@ export class ColorHttp {
       next: {
         tags: ["colors"],
       },
+      cache: "no-cache",
     });
     const json = await response.json();
     return json;

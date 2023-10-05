@@ -43,6 +43,7 @@ export class CategoryHttp {
       next: {
         tags: ["categories"],
       },
+      cache: "no-cache",
     });
     const json = await response.json();
     return json;

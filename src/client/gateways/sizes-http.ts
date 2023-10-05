@@ -14,6 +14,7 @@ export class SizeHttp {
       next: {
         tags: ["sizes"],
       },
+      cache: "no-cache"
     });
     const json = await response.json();
     return json;
