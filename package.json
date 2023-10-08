@@ -26,6 +26,7 @@
     "@radix-ui/react-toast": "^1.1.4",
     "@radix-ui/react-tooltip": "^1.0.6",
     "@supabase/supabase-js": "^2.33.1",
+    "@tanstack/react-query": "^4.36.1",
     "@tanstack/react-table": "^8.9.3",
     "@types/node": "20.4.5",
     "@types/react": "18.2.17",
@@ -36,9 +37,9 @@
     "cmdk": "^0.2.0",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
-    "next": "13.4.12",
+    "next": "^13.5.4",
     "next-themes": "^0.2.1",
-    "postcss": "8.4.27",
+    "postcss": "^8.4.31",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.4",
@@ -50,6 +51,7 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^4.36.1",
     "prisma": "^5.1.1",
     "vitest": "^0.33.0"
   }

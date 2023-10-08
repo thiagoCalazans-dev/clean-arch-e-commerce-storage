@@ -4,19 +4,15 @@ import {
   GetByIdParams,
   PostSizeParams,
   PutSizeParams,
+  GetSize,
 } from "../schema/gateway/size-gateway-schema";
 
 export class SizeHttp {
   constructor() {}
 
   async Get() {
-    const response = await fetch(`${env.API_BASE_URL}/size`, {
-      next: {
-        tags: ["sizes"],
-      },
-      cache: "no-cache"
-    });
-    const json = await response.json();
+    const response = await fetch(`${env.API_BASE_URL}/size`);
+    const json: GetSize = await response.json();
     return json;
   }
 

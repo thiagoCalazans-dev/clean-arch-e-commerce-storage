@@ -5,6 +5,10 @@ export type PostSizeParams = {
   data: CreateSize;
 };
 
+export type GetSize = {
+  data: Size[];
+};
+
 export type PutSizeParams = {
   data: Size;
 };
