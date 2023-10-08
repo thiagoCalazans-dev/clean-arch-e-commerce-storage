@@ -16,7 +16,7 @@ export class CreateProductItemUseCase {
     private sizeRepository: SizeRepository
   ) {}
   async execute({ data }: CreateProductItemInputDTO) {
-    const { colorId, descount, price, sizeId, productId, code } =
+    const { colorId, descount, price, sizeId, productId, code, id } =
       new ProductItem(data);
 
     // const codeExists = await this.productRepository.findByCode(code);
@@ -32,6 +32,7 @@ export class CreateProductItemUseCase {
     if (!sizeExists) throw new SizeNotFoundError();
 
     await this.productItemRepository.create({
+      id,
       code,
       productId,
       colorId,

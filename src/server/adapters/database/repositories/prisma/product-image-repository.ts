@@ -14,7 +14,15 @@ export class PrismaProductImageRepository implements ProductImageRepository {
       },
     });
 
-    return productImage;
+    if (!productImage) return null;
+
+    const mappedProductImage = {
+      id: productImage.id,
+      productItemId: productImage.product_item_id,
+      imageUrl: productImage.image_url,
+    };
+
+    return mappedProductImage;
   }
   async create(data: RepositoryCreateProductImage) {
     await prisma.productImage.create({
@@ -26,12 +34,20 @@ export class PrismaProductImageRepository implements ProductImageRepository {
   }
 
   async findById(id: string) {
-    const image = await prisma.productImage.findUnique({
+    const productImage = await prisma.productImage.findUnique({
       where: {
         id: id,
       },
     });
-    return image;
+
+    if (!productImage) return null;
+
+    const mappedProductImage = {
+      id: productImage.id,
+      productItemId: productImage.product_item_id,
+      imageUrl: productImage.image_url,
+    };
+    return mappedProductImage;
   }
 
   async remove(id: string) {

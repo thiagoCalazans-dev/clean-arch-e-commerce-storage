@@ -1,8 +1,4 @@
-import { supabase } from "@/client/lib/supabse";
-
 import { Card } from "@/client/components/ui/card";
-
-import { Input } from "@/client/components/ui/input";
 import { Heading } from "@/client/components/ui/heading";
 
 import { Separator } from "@/client/components/ui/separator";

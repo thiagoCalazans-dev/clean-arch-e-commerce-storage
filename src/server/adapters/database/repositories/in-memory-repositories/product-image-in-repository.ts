@@ -9,10 +9,14 @@ export class InMemoryProductImageRepository implements ProductImageRepository {
   public product_images: RepositoryProductImage[] = [];
 
   async create(data: RepositoryCreateProductImage) {
+    const productItemId = data.product_item_id;
+    const imageUrl = data.image_url;
+
     const id = randomUUID();
     const image = {
-      ...data,
       id,
+      productItemId,
+      imageUrl,
     };
 
     this.product_images.push(image);
@@ -21,7 +25,7 @@ export class InMemoryProductImageRepository implements ProductImageRepository {
   async findProductImage(productItemId: string, imageUrl: string) {
     const item = this.product_images.find(
       (item) =>
-        item.product_item_id === productItemId && item.image_url === imageUrl
+        item.productItemId === productItemId && item.imageUrl === imageUrl
     );
     return item || null;
   }
