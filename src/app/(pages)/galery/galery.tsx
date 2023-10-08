@@ -20,7 +20,7 @@ interface ClientGallertProps {
   }[];
 }
 
-export function ClientGallery({ data }: ClientGallertProps) {
+export function Gallery({ data }: ClientGallertProps) {
   const [inputValue, setInputValue] = useState("");
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
