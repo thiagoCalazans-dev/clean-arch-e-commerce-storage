@@ -11,11 +11,13 @@ import { useQuery } from "@tanstack/react-query";
 import { BrandActions } from "@/client/actions/brand-actions";
 
 export default function BrandsPage() {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["brands"],
     queryFn: BrandActions.getAll,
   });
   const router = useRouter();
+
+  console.log(error);
 
   return (
     <div className="flex-col">

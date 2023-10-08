@@ -10,7 +10,10 @@ export class BrandHttp {
   constructor() {}
 
   async Post(data: PostBrandParams) {
-    const response = await fetch(`${env.API_BASE_URL}/brand`, {
+    const URL = `${env.API_BASE_URL}/brand`;
+    console.log(URL);
+
+    const response = await fetch(URL, {
       method: "POST",
       body: JSON.stringify(data),
     });
