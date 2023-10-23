@@ -14,19 +14,23 @@ import {
 
 const cadastros = [
   {
-    title: "Brands",
-    href: "/brands",
-  },
-  {
-    title: "Categories",
+    title: "Categorias",
     href: "/categories",
   },
   {
-    title: "Colors",
+    title: "Cores",
     href: "/colors",
   },
   {
-    title: "Sizes",
+    title: "Marcas",
+    href: "/brands",
+  },
+  {
+    title: "Produtos",
+    href: "/products",
+  },
+  {
+    title: "Tamanhos",
     href: "/sizes",
   },
 ];
@@ -53,16 +57,11 @@ export function Navbar() {
         </NavigationMenuContent>
       </NavigationMenuItem>
       <NavigationMenuList>
-        <NavigationMenuItem>
-          <Link href="/products" legacyBehavior passHref>
-            <NavigationMenuLink className="w-full">Products</NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <Link href="/galery" legacyBehavior passHref>
             <NavigationMenuLink className="w-full">Galery</NavigationMenuLink>
           </Link>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
       </NavigationMenuList>
     </NavigationMenu>
   );

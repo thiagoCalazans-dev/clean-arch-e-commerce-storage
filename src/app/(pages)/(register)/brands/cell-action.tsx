@@ -21,6 +21,8 @@ import {
 } from "@radix-ui/react-icons";
 import { BrandActions } from "@/client/actions/brand-actions";
 import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
+import { useMutation } from "@tanstack/react-query";
+import { queryClient } from "@/client/lib/tanstack-query";
 
 interface CellActionProps {
   data: BrandsColumn;
@@ -30,19 +32,22 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const { onError, onSuccess } = useOnResponseStatus();
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
+
+  const { mutate: deleteBrand, isLoading } = useMutation({
+    mutationFn: (data: string) => BrandActions.remove(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["brands"] });
+    },
+  });
 
   const onDeleteConfirm = async () => {
     try {
-      setLoading(true);
-      await BrandActions.remove(data.id);
+      await deleteBrand(data.id);
       onSuccess("Brand deleted");
-      router.refresh();
     } catch (error: Error | any) {
       onError(error.message);
     } finally {
       setOpen(false);
-      setLoading(false);
     }
   };
 
@@ -52,7 +57,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         isOpen={open}
         onClose={() => setOpen(false)}
         onConfirm={onDeleteConfirm}
-        loading={loading}
+        loading={isLoading}
       />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

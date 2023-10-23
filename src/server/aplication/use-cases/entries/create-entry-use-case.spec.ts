@@ -6,7 +6,7 @@ import { CreateProductUseCase } from "../product/create-product-use-case";
 import { InMemorySizeRepository } from "@/server/adapters/database/repositories/in-memory-repositories/size-in-memory-repository";
 import { InMemoryColorRepository } from "@/server/adapters/database/repositories/in-memory-repositories/color-in-memory-repository";
 import { InMemoryProductItemRepository } from "@/server/adapters/database/repositories/in-memory-repositories/product-item-in-memory-repository";
-import { CreateProductItemUseCase } from "./create-product-item-use-case";
+import { CreateProductItemUseCase } from "./create-entry-use-case";
 import { ProductNotFoundError } from "../../error/ProductNotFoundError";
 import { ColorNotFoundError } from "../../error/ColorNotFoundError";
 import { SizeNotFoundError } from "../../error/SizeNotFoundError";

@@ -25,8 +25,6 @@ export default async function ProductsPage({
     params.productId
   );
 
-  console.log(data);
-
   const { data: size } = await SizeActions.getAll();
   const { data: color } = await ColorActions.getAll();
 

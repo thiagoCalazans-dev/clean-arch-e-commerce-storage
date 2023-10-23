@@ -1,5 +1,3 @@
-import { ProductItem } from "@/server/enterprise/entities/product-item";
-import { CreateProductItemInputDTO } from "../../dto/product-item-dto";
 import { ProductItemRepository } from "@/server/adapters/database/repositories/product-item-repository";
 import { ColorNotFoundError } from "../../error/ColorNotFoundError";
 import { ColorRepository } from "@/server/adapters/database/repositories/color-repository";
@@ -7,6 +5,9 @@ import { SizeRepository } from "@/server/adapters/database/repositories/size-rep
 import { ProductRepository } from "@/server/adapters/database/repositories/product-repository";
 import { ProductNotFoundError } from "../../error/ProductNotFoundError";
 import { SizeNotFoundError } from "../../error/SizeNotFoundError";
+import { Entry } from "@/server/enterprise/entities/entry";
+import { CreateEntryInputDTO } from "../../dto/entry-dto";
+import { CodeAlreadyExistError } from "../../error/CodeAlreadyExistError";
 
 export class CreateProductItemUseCase {
   constructor(
@@ -15,12 +16,14 @@ export class CreateProductItemUseCase {
     private colorRepository: ColorRepository,
     private sizeRepository: SizeRepository
   ) {}
-  async execute({ data }: CreateProductItemInputDTO) {
-    const { colorId, descount, price, sizeId, productId, code, id } =
-      new ProductItem(data);
+  async execute({ data }: CreateEntryInputDTO) {
+    const { colorId, descount, price, sizeId, productId, code, id, quantity } =
+      new Entry(data);
 
-    // const codeExists = await this.productRepository.findByCode(code);
-    // if (codeExists) throw new CodeAlreadyExistError();
+    const codeExists = await this.productItemRepository.findByCode(code);
+    if (codeExists) throw new CodeAlreadyExistError();
+
+    //TO-DO:  caso ja tenha produto com o mesmo tamanho e cor, nao deixar lancar com um codigo diferente.
 
     const productExists = await this.productRepository.findById(productId);
     if (!productExists) throw new ProductNotFoundError();
@@ -39,6 +42,7 @@ export class CreateProductItemUseCase {
       sizeId,
       descount,
       price,
+      quantity,
     });
   }
 }

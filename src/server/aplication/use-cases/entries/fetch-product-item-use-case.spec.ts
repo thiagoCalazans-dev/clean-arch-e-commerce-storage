@@ -5,7 +5,7 @@ import { InMemoryCategoryRepository } from "@/server/adapters/database/repositor
 import { InMemoryProductItemRepository } from "@/server/adapters/database/repositories/in-memory-repositories/product-item-in-memory-repository";
 import { InMemorySizeRepository } from "@/server/adapters/database/repositories/in-memory-repositories/size-in-memory-repository";
 import { InMemoryColorRepository } from "@/server/adapters/database/repositories/in-memory-repositories/color-in-memory-repository";
-import { CreateProductItemUseCase } from "./create-product-item-use-case";
+import { CreateProductItemUseCase } from "./create-entry-use-case";
 import { FetchProductItemUseCase } from "./fetch-product-item-use-case";
 
 let sut: FetchProductItemUseCase;
