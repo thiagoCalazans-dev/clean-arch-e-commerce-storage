@@ -1,4 +1,4 @@
-export interface CreateEntryInputDTO {
+export interface CreateProductItemInputDTO {
   data: {
     productId: string;
     code: string;
@@ -6,6 +6,5 @@ export interface CreateEntryInputDTO {
     sizeId: string;
     price: number;
     descount: number;
-    quantity: number;
   };
 }

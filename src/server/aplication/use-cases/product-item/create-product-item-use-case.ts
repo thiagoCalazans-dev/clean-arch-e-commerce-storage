@@ -5,9 +5,10 @@ import { SizeRepository } from "@/server/adapters/database/repositories/size-rep
 import { ProductRepository } from "@/server/adapters/database/repositories/product-repository";
 import { ProductNotFoundError } from "../../error/ProductNotFoundError";
 import { SizeNotFoundError } from "../../error/SizeNotFoundError";
-import { Entry } from "@/server/enterprise/entities/entry";
-import { CreateEntryInputDTO } from "../../dto/entry-dto";
+import { ProductItem } from "@/server/enterprise/entities/product-item";
+
 import { CodeAlreadyExistError } from "../../error/CodeAlreadyExistError";
+import { CreateProductItemInputDTO } from "../../dto/product-item-dto";
 
 export class CreateProductItemUseCase {
   constructor(
@@ -16,9 +17,9 @@ export class CreateProductItemUseCase {
     private colorRepository: ColorRepository,
     private sizeRepository: SizeRepository
   ) {}
-  async execute({ data }: CreateEntryInputDTO) {
-    const { colorId, descount, price, sizeId, productId, code, id, quantity } =
-      new Entry(data);
+  async execute({ data }: CreateProductItemInputDTO) {
+    const { colorId, descount, price, sizeId, productId, code, id } =
+      new ProductItem(data);
 
     const codeExists = await this.productItemRepository.findByCode(code);
     if (codeExists) throw new CodeAlreadyExistError();
@@ -42,7 +43,6 @@ export class CreateProductItemUseCase {
       sizeId,
       descount,
       price,
-      quantity,
     });
   }
 }

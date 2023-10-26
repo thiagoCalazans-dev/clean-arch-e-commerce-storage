@@ -57,11 +57,11 @@ export function Navbar() {
         </NavigationMenuContent>
       </NavigationMenuItem>
       <NavigationMenuList>
-        {/* <NavigationMenuItem>
-          <Link href="/galery" legacyBehavior passHref>
-            <NavigationMenuLink className="w-full">Galery</NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem> */}
+        <NavigationMenuItem>
+          <NavigationMenuLink href="/storage" className="w-full">
+            Estoque
+          </NavigationMenuLink>
+        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   );

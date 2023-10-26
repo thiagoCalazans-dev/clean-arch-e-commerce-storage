@@ -32,9 +32,9 @@ describe("test RemoveProduct use case", () => {
       name: "product",
       brandId: brandId,
       categoryId: categoryId,
-      cost: 12.0,
+   
       description: "description",
-      trending: true,
+  
     });
 
     const product = await productRepository.findByName("product");

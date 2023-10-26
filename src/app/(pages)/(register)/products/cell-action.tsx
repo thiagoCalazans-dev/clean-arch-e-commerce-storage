@@ -48,7 +48,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   };
 
   return (
-    <div className="flex justify-end">
+    <div className="">
       <AlertModal
         isOpen={open}
         onClose={() => setOpen(false)}

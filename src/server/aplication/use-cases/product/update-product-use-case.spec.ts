@@ -42,9 +42,7 @@ describe("test UpdateProduct use case", () => {
       name: "product",
       brandId: brandId,
       categoryId: categoryId,
-      cost: 12.0,
       description: "description",
-      trending: true,
     });
 
     const product = await productRepository.findByName("product");
@@ -58,9 +56,8 @@ describe("test UpdateProduct use case", () => {
           name: "product updated",
           brandId: brandId,
           categoryId: categoryId,
-          cost: 12.0,
+
           description: "description",
-          trending: true,
         },
       },
       productId
@@ -79,9 +76,7 @@ describe("test UpdateProduct use case", () => {
       name: "product2",
       brandId: brandId,
       categoryId: categoryId,
-      cost: 12.0,
       description: "description",
-      trending: true,
     });
 
     await expect(() =>
@@ -91,9 +86,7 @@ describe("test UpdateProduct use case", () => {
             name: "product2",
             brandId: brandId,
             categoryId: categoryId,
-            cost: 12.0,
             description: "description",
-            trending: true,
           },
         },
         productId
@@ -109,9 +102,7 @@ describe("test UpdateProduct use case", () => {
             name: "product",
             brandId: "inexistentBrandID",
             categoryId: categoryId,
-            cost: 12.0,
             description: "description",
-            trending: true,
           },
         },
         productId
@@ -126,9 +117,7 @@ describe("test UpdateProduct use case", () => {
             name: "product",
             brandId: brandId,
             categoryId: "inexistentCateogryID",
-            cost: 12.0,
             description: "description",
-            trending: true,
           },
         },
         productId

@@ -32,9 +32,9 @@ describe("test Get ProductsUseCase", () => {
       name: "product",
       brandId: brandId,
       categoryId: categoryId,
-      cost: 12.0,
+  
       description: "description",
-      trending: true,
+    
     });
   });
 

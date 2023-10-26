@@ -53,9 +53,7 @@ model Size {
 model Product {
   id          String        @id @default(uuid())
   name        String        @unique
-  cost        Decimal
   description String
-  trending    Boolean       @default(false)
   brand_id    String
   brand       Brand         @relation(fields: [brand_id], references: [id])
   category_id String

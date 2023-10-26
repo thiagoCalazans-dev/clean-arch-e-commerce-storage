@@ -5,9 +5,7 @@ export interface CreateProductInputDTO {
     name: string;
     brandId: string;
     categoryId: string;
-    cost: number;
     description: string;
-    trending: boolean;
   };
 }
 
@@ -16,9 +14,7 @@ export interface ProductInputDTO {
     name: string;
     brandId: string;
     categoryId: string;
-    cost: number;
     description: string;
-    trending: boolean;
   };
 }
 
@@ -27,9 +23,7 @@ export interface UpdateProductInputDTO {
     name: string;
     brandId: string;
     categoryId: string;
-    cost: number;
     description: string;
-    trending: boolean;
   };
 }
 

@@ -14,13 +14,11 @@ import {
 import { AlertModal } from "@/client/components/alert-modal";
 import {
   DotsHorizontalIcon,
-  ImageIcon,
-  Pencil2Icon,
   TrashIcon,
 } from "@radix-ui/react-icons";
 import { ProductActions } from "@/client/actions/product-actions";
 import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
-import { CreateProductImageModal } from "@/client/components/modal/create-product-image-modal";
+
 
 interface CellActionProps {
   data: {

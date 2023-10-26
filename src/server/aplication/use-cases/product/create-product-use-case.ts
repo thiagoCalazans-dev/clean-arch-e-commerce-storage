@@ -17,7 +17,7 @@ export class CreateProductUseCase {
   ) {}
 
   async execute({ data }: CreateProductInputDTO) {
-    const { name, brandId, categoryId, cost, description, trending } =
+    const { name, brandId, categoryId,  description  } =
       new Product(data);
 
     const nameExists = await this.productRepository.findByName(name);
@@ -33,9 +33,7 @@ export class CreateProductUseCase {
       name,
       brandId,
       categoryId,
-      cost,
-      description,
-      trending,
+      description,   
     });
   }
 }

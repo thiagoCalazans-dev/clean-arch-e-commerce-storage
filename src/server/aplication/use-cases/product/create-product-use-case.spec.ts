@@ -43,9 +43,9 @@ describe("test CreateProduct use case", () => {
         name: "product",
         brandId: brandId,
         categoryId: categoryId,
-        cost: 12.0,
+
         description: "description",
-        trending: true,
+  
       },
     });
 
@@ -61,9 +61,9 @@ describe("test CreateProduct use case", () => {
         name: "product",
         brandId: brandId,
         categoryId: categoryId,
-        cost: 12.0,
+    
         description: "description",
-        trending: true,
+      
       },
     });
 
@@ -73,9 +73,9 @@ describe("test CreateProduct use case", () => {
           name: "product",
           brandId: brandId,
           categoryId: categoryId,
-          cost: 12.0,
+       
           description: "description",
-          trending: true,
+      
         },
       })
     ).rejects.toBeInstanceOf(NameAlreadyExistError);
@@ -88,9 +88,9 @@ describe("test CreateProduct use case", () => {
           name: "product2",
           brandId: "inexistent",
           categoryId: categoryId,
-          cost: 12.0,
+      
           description: "description",
-          trending: true,
+         
         },
       })
     ).rejects.toBeInstanceOf(BrandNotFoundError);
@@ -102,9 +102,9 @@ describe("test CreateProduct use case", () => {
           name: "product2",
           brandId: brandId,
           categoryId: "inexistent",
-          cost: 12.0,
+   
           description: "description",
-          trending: true,
+        
         },
       })
     ).rejects.toBeInstanceOf(CategoryNotFoundError);

@@ -10,10 +10,9 @@ export interface EntryProps {
   colorId: string;
   price: number;
   descount?: number;
-  quantity: number;
 }
 
-export class Entry {
+export class ProductItem {
   readonly id: string;
   readonly productId: string;
   readonly code: string;
@@ -21,7 +20,6 @@ export class Entry {
   readonly colorId: string;
   readonly price: number;
   readonly descount: number;
-  readonly quantity: number;
 
   constructor(props: EntryProps, id?: string) {
     this.id = id ?? randomUUID();
@@ -37,9 +35,6 @@ export class Entry {
 
     if (props.colorId.length < 1) throw new IsRequiredError("color");
     this.colorId = props.colorId;
-
-    if (props.quantity < 1) throw new IsRequiredError("quantity");
-    this.quantity = props.quantity;
 
     this.price = Currency.validate(props.price);
 

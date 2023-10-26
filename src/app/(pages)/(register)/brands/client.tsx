@@ -7,8 +7,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/client/components/ui/button";
 import { Separator } from "@/client/components/ui/separator";
 import { PlusIcon } from "@radix-ui/react-icons";
-import { useQuery } from "@tanstack/react-query";
-import { BrandActions } from "@/client/actions/brand-actions";
+import { Suspense } from "react";
 
 export function BrandsPage({ data }: any) {
   const router = useRouter();
@@ -23,8 +22,9 @@ export function BrandsPage({ data }: any) {
           </Button>
         </div>
         <Separator />
-
-        <DataTable searchKey="name" columns={columns} data={data} />
+        <Suspense fallback={<div>Carregando...</div>}>
+          <DataTable searchKey="name" columns={columns} data={data} />
+        </Suspense>
       </div>
     </div>
   );

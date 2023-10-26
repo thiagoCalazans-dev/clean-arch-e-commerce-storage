@@ -31,7 +31,7 @@ export default function SizesPage() {
           </Button>
         </div>
         <Separator />
-        {isLoading ? (
+        {isLoading  ? (
           <div>carrgando</div>
         ) : (
           <DataTable searchKey="name" columns={columns} data={data!.data} />

@@ -5,9 +5,7 @@ import { Currency } from "../value-object/currency";
 
 interface ProductProps {
   name: string;
-  cost: number;
   description: string;
-  trending?: boolean;
   categoryId: string;
   brandId: string;
 }
@@ -15,9 +13,7 @@ interface ProductProps {
 export class Product {
   readonly id: string;
   readonly name: string;
-  readonly cost: number;
   readonly description: string;
-  readonly trending: boolean;
   readonly categoryId: string;
   readonly brandId: string;
 
@@ -35,8 +31,5 @@ export class Product {
 
     if (props.brandId.length < 1) throw new IsRequiredError("brandId");
     this.brandId = props.brandId;
-
-    this.cost = Currency.validate(props.cost);
-    this.trending = props.trending || false;
   }
 }

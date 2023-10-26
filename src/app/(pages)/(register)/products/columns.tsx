@@ -2,7 +2,6 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { CellAction } from "./cell-action";
-import { CheckCircledIcon, CrossCircledIcon } from "@radix-ui/react-icons";
 
 export type ProductsColumn = {
   id: string;
@@ -35,15 +34,6 @@ export const columns: ColumnDef<ProductsColumn>[] = [
   {
     accessorKey: "category.name",
     header: "Category",
-  },
-  {
-    accessorKey: "trending",
-    header: "Trending",
-    cell: ({ row }) => {
-      if (row.original.trending)
-        return <CheckCircledIcon className="text-emerald-500" />;
-      return <CrossCircledIcon className="text-destructive" />;
-    },
   },
   {
     id: "actions",

@@ -19,7 +19,7 @@ export default async function ProductPage({
 
   const initialData = response ? response.data : null;
 
-  console.log(initialData);
+
 
   return (
     <div className="flex-col ">

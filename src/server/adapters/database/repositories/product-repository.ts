@@ -6,9 +6,7 @@ export interface RepositoryCreateProduct {
   name: string;
   brandId: string;
   categoryId: string;
-  cost: number;
   description: string;
-  trending: boolean;
 }
 
 export interface RepositoryProduct {
@@ -18,9 +16,7 @@ export interface RepositoryProduct {
   brand?: RepositoryBrand;
   categoryId: string;
   category?: RepositoryCategory;
-  cost: number;
   description: string;
-  trending: boolean;
   productItem?: RepositoryProductItem[];
 }
 
