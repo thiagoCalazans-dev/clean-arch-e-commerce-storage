@@ -1,7 +1,5 @@
 import { randomUUID } from "node:crypto";
 import { IsRequiredError } from "../errors/isRequiredError";
-import { isCurrencyTypeValueError } from "../errors/isCurrencyTypeValueError";
-import { Currency } from "../value-object/currency";
 
 interface ProductProps {
   name: string;

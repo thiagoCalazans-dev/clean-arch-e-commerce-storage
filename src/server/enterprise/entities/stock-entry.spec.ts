@@ -1,23 +1,23 @@
 import { describe, it, expect } from "vitest";
 import { IsRequiredError } from "../errors/isRequiredError";
-import { Incoming } from "./incoming";
+import { StockEntry } from "./strock-entry";
 
 describe("teste Incoming Entity rules", () => {
   it("should instance Product", () => {
-    const baseIncoming: Incoming = {
+    const baseEntry: StockEntry = {
       date: new Date(),
       productItemId: "productItemId",
       quantity: 1,
       value: 12.65,
     };
 
-    const incoming = new Incoming(baseIncoming);
+    const entry = new StockEntry(baseEntry);
 
-    expect(incoming.productItemId).toBeDefined();
+    expect(entry.productItemId).toBeDefined();
   });
 
   it("should throw an error if productItemId does not exists", async () => {
-    const baseIncoming: Incoming = {
+    const baseEntry: StockEntry = {
       date: new Date(),
       productItemId: "",
       quantity: 1,
@@ -25,7 +25,7 @@ describe("teste Incoming Entity rules", () => {
     };
 
     await expect(() => {
-      const incoming = new Incoming(baseIncoming);
+      const entry = new StockEntry(baseEntry);
     }).toThrow(IsRequiredError);
   });
 });
