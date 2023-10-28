@@ -17,32 +17,20 @@ export class EntryStockUseCase {
   async execute({ data }: StockEntryDTO) {
     const entry = new StockEntry(data);
 
-    const productItemExists = await this.productItemRepository.findById(
-      entry.productItemId
-    );
-
-    if (!productItemExists)
-      throw new ResourceNotFoundError("produto não existe");
-
     const stockProduct = await this.stockRepository.findByProductItemId(
       entry.productItemId
     );
 
-    const defaultStock = new Stock({
-      productItemId: entry.productItemId,
-      quantity: 0,
-    });
+    if (!stockProduct) throw new ResourceNotFoundError("produto não existe");
 
-    if (!stockProduct) await this.stockRepository.create(defaultStock);
-
-    const newStockQuantity = stockProduct!.quantity + entry.quantity;
+    const newStockQuantity = stockProduct.quantity + entry.quantity;
 
     const newStock = new Stock(
       {
         productItemId: entry.productItemId,
         quantity: newStockQuantity,
       },
-      stockProduct!.id
+      stockProduct.id
     );
 
     await this.entryRepository.createEntryAndUpdateStock(entry, newStock);

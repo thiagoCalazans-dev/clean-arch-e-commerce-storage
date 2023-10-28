@@ -6,16 +6,31 @@ import {
 } from "../product-item-repository";
 
 export class PrismaProductItemRepository implements ProductItemRepository {
-  async create(data: RepositoryCreateProductItem) {
-    await prisma.productItem.create({
-      data: {
-        price: data.price,
-        code: data.code,
-        color_id: data.colorId,
-        product_id: data.productId,
-        size_id: data.sizeId,
-        descont: data.descount,
-      },
+  async createAndStock(data: RepositoryCreateProductItem) {
+    await prisma.$transaction(async (trx) => {
+      await trx.productItem.create({
+        data: {
+          price: data.price,
+          code: data.code,
+          color_id: data.colorId,
+          product_id: data.productId,
+          size_id: data.sizeId,
+          descont: data.descount,
+        },
+      });
+
+      const productItemId = await trx.productItem.findUniqueOrThrow({
+        where: {
+          code: data.code,
+        },
+      });
+
+      await trx.stock.create({
+        data: {
+          product_item_id: productItemId.id,
+          quantity: 0,
+        },
+      });
     });
   }
 

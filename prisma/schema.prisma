@@ -79,7 +79,7 @@ model ProductItem {
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
   ProductImages ProductImage[]
-
+  Stock Stock[]
   @@index([product_id, size_id, color_id], name: "unique_contract")
   @@map("product_item")
 }
@@ -90,7 +90,6 @@ model ProductImage {
   product_item    ProductItem @relation(fields: [product_item_id], references: [id], onDelete: Cascade)
   product_item_id String
   image_url       String
-
   @@index([product_item_id, image_url], name: "unique_image_contract")
   @@map("product_image")
 }
@@ -100,6 +99,15 @@ model Image {
   name          String
   url           String         @unique
   ProductImages ProductImage[]
-
   @@map("image")
 }
+
+
+model Stock {
+  id            String         @id @default(uuid())
+  product_item    ProductItem @relation(fields: [product_item_id], references: [id], onDelete: Cascade)
+  product_item_id String
+  quantity      Int
+  @@map("stock")
+}
+

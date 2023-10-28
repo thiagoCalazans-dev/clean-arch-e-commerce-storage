@@ -26,7 +26,7 @@ export interface RepositoryProductItem {
 }
 
 export interface ProductItemRepository {
-  create: (data: RepositoryCreateProductItem) => Promise<void>;
+  createAndStock: (data: RepositoryCreateProductItem) => Promise<void>;
   update: (data: RepositoryProductItem) => Promise<void>;
   remove: (id: string) => Promise<void>;
   findManyByProductId: (productId: string) => Promise<RepositoryProductItem[]>;
