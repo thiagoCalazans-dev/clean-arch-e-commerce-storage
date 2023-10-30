@@ -6,6 +6,7 @@ import { InMemoryProductItemRepository } from "@/server/adapters/database/reposi
 import { InMemorySizeRepository } from "@/server/adapters/database/repositories/in-memory-repositories/size-in-memory-repository";
 import { InMemoryColorRepository } from "@/server/adapters/database/repositories/in-memory-repositories/color-in-memory-repository";
 import { RemoveProductItemUseCase } from "./remove-product-item-use-case";
+import { ProductItem } from "@/server/enterprise/entities/product-item";
 
 let sut: RemoveProductItemUseCase;
 let productRepository: InMemoryProductRepository;
@@ -38,10 +39,8 @@ describe("test CreateProducItem use case suite", () => {
     await productRepository.create({
       name: "product",
       brandId: brandId,
-      categoryId: categoryId,      
-      cost: 12.0,
+      categoryId: categoryId,
       description: "description",
-      trending: true,
     });
 
     const brand = await brandRepository.findByName("brand");
@@ -56,16 +55,16 @@ describe("test CreateProducItem use case suite", () => {
     colorId = color!.id;
     sizeId = size!.id;
 
-    const item = {
+    const item = new ProductItem({
       productId,
       colorId,
       sizeId,
       price: 12.98,
       descount: 0,
       code: "XXX-9999",
-    };
+    });
 
-    productItemRepository.create(item);
+    productItemRepository.createAndStock(item);
     const [fistItem] = await productItemRepository.findManyByProductId(
       productId
     );

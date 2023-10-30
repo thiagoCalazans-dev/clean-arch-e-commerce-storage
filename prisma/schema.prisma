@@ -79,7 +79,7 @@ model ProductItem {
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
   ProductImages ProductImage[]
-  Stock         Stock[]
+  Stock         Stock?
   EntryStock    EntryStock[]
 
   @@index([product_id, size_id, color_id], name: "unique_contract")
@@ -108,8 +108,8 @@ model Image {
 
 model Stock {
   id              String      @id @default(uuid())
-  product_item    ProductItem @relation(fields: [product_item_id], references: [id], onDelete: Cascade)
-  product_item_id String
+  product_item    ProductItem @relation(fields: [product_item_id], references: [id])
+  product_item_id String      @unique
   quantity        Int
 
   @@map("stock")

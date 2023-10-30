@@ -6,7 +6,7 @@ import {
 } from "../entry-stock-repository";
 
 export class InMemoryentryEntryStockRepository implements EntryStockRepository {
-  public entryEntryStocks: RepositoryEntryStock[] = [];
+  public EntryStocks: RepositoryEntryStock[] = [];
 
   async createEntryAndUpdateStock(data: RepositoryCreateEntryStock) {
     const id = randomUUID();
@@ -15,20 +15,19 @@ export class InMemoryentryEntryStockRepository implements EntryStockRepository {
       id,
     };
 
-    this.entryEntryStocks.push(entryEntryStock);
+    this.EntryStocks.push(entryEntryStock);
   }
 
   async findMany() {
-    return this.entryEntryStocks;
+    return this.EntryStocks;
   }
 
-  async findByProductItemId(
+  async findManyByProductItemId(
     productItemId: string
-  ): Promise<RepositoryEntryStock | null> {
-    const entryStocks = this.entryEntryStocks.find(
-      (item) => item.productItemId === productItemId
-    );
-    return entryStocks || null;
+  ): Promise<RepositoryEntryStock[]> {
+    const filteredEntrySotcks = await this.EntryStocks.filter((entry) => {
+      entry.productItemId = productItemId;
+    });
+    return filteredEntrySotcks;
   }
-
 }

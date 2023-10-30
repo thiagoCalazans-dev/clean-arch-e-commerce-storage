@@ -1,4 +1,5 @@
-import { RepositoryStock } from "./stock-repository";
+import { RepositoryCreateStock } from "./stock-repository";
+
 
 export interface RepositoryEntryStock {
   id: string;
@@ -18,10 +19,10 @@ export interface RepositoryCreateEntryStock {
 export interface EntryStockRepository {
   createEntryAndUpdateStock: (
     entry: RepositoryCreateEntryStock,
-    stock: RepositoryStock
+    stock: RepositoryCreateStock
   ) => Promise<void>;
   findMany: () => Promise<RepositoryEntryStock[]>;
-  findByProductItemId: (
+  findManyByProductItemId: (
     productItemId: string
-  ) => Promise<RepositoryEntryStock | null>;
+  ) => Promise<RepositoryEntryStock[]>;
 }

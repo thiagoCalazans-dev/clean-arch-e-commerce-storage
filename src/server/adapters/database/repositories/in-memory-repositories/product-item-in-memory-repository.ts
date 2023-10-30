@@ -4,11 +4,14 @@ import {
   RepositoryCreateProductItem,
   RepositoryProductItem,
 } from "../product-item-repository";
+import { InMemoryStockRepository } from "./stock-in-memory-repository";
 
 export class InMemoryProductItemRepository implements ProductItemRepository {
   public productsItems: RepositoryProductItem[] = [];
 
-  async create(data: RepositoryCreateProductItem) {
+  readonly stock = new InMemoryStockRepository();
+
+  async createAndStock(data: RepositoryCreateProductItem) {
     const id = randomUUID();
     const item = {
       ...data,
@@ -16,6 +19,10 @@ export class InMemoryProductItemRepository implements ProductItemRepository {
     };
 
     this.productsItems.push(item);
+    this.stock.create({
+      productItemId: id,
+      quantity: 0,
+    });
   }
 
   async findManyByProductId(productId: string) {

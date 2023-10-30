@@ -1,7 +1,10 @@
+import { RepositoryProductItem } from "./product-item-repository";
+
 export interface RepositoryStock {
   id: string;
   productItemId: string;
   quantity: number;
+  productItem?: RepositoryProductItem
 }
 
 export interface RepositoryCreateStock {
@@ -10,10 +13,6 @@ export interface RepositoryCreateStock {
 }
 
 export interface StockRepository {
-  create: (data: RepositoryCreateStock) => Promise<void>;
   findMany: () => Promise<RepositoryStock[]>;
-  findByProductItemId: (
-    ProductItemId: string
-  ) => Promise<RepositoryStock | null>;
-  findById: (id: string) => Promise<RepositoryStock | null>;
+  findByProductItemId: (productItemId: string) => Promise<RepositoryStock | null>
 }

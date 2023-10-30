@@ -58,7 +58,7 @@ export function Navbar() {
       </NavigationMenuItem>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuLink href="/storage" className="w-full">
+          <NavigationMenuLink href="/stock" className="w-full">
             Estoque
           </NavigationMenuLink>
         </NavigationMenuItem>

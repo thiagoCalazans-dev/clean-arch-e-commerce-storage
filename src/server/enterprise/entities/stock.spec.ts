@@ -16,7 +16,7 @@ describe("teste Stock Entity rules", () => {
 
   it("should throw an error if productItemId does not exists", async () => {
     const data: Stock = {
-      productItemId: "productItemId",
+      productItemId: "",
       quantity: 1,
     };
 

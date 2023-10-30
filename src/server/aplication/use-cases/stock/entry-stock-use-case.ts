@@ -1,21 +1,18 @@
-import { StockEntryDTO } from "../dto/stock-entry-DTO";
+import { StockEntryDTO } from "../../dto/stock-entry-DTO";
 import { StockRepository } from "@/server/adapters/database/repositories/stock-repository";
-import { ResourceNotFoundError } from "../error/ResourceNotFoundError";
-import { StockEntry } from "@/server/enterprise/entities/strock-entry";
-
-import { ProductItemRepository } from "@/server/adapters/database/repositories/product-item-repository";
+import { ResourceNotFoundError } from "../../error/ResourceNotFoundError";
 import { Stock } from "@/server/enterprise/entities/stock";
 import { EntryStockRepository } from "@/server/adapters/database/repositories/entry-stock-repository";
+import { EntryStock } from "@/server/enterprise/entities/entry-stock";
 
 export class EntryStockUseCase {
   constructor(
     private stockRepository: StockRepository,
-    private entryRepository: EntryStockRepository,
-    private productItemRepository: ProductItemRepository
+    private entryRepository: EntryStockRepository
   ) {}
 
   async execute({ data }: StockEntryDTO) {
-    const entry = new StockEntry(data);
+    const entry = new EntryStock(data);
 
     const stockProduct = await this.stockRepository.findByProductItemId(
       entry.productItemId

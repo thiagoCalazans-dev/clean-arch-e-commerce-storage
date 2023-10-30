@@ -52,7 +52,7 @@ export default async function ProductsPage({
           </div>
         </div>
         <Separator />
-        <DataTable searchKey="name" columns={columns} data={data.productItem} />
+        <DataTable searchKey="code" columns={columns} data={data.productItem} />
       </div>
     </div>
   );

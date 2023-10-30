@@ -7,7 +7,7 @@ interface StockProps {
 }
 
 export class Stock {
-  readonly id: string;
+  readonly id?: string;
   readonly productItemId: string;
   readonly quantity: number;
 

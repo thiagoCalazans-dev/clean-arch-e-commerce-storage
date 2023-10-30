@@ -2,21 +2,21 @@ import { randomUUID } from "node:crypto";
 import { IsRequiredError } from "../errors/isRequiredError";
 import { Currency } from "../value-object/currency";
 
-interface StockEntryProps {
+interface EntryStockProps {
   productItemId: string;
   date: Date;
   value: number;
   quantity: number;
 }
 
-export class StockEntry {
+export class EntryStock {
   readonly id?: string;
   readonly productItemId: string;
   readonly date: Date;
   readonly value: number;
   readonly quantity: number;
 
-  constructor(props: StockEntryProps, id?: string) {
+  constructor(props: EntryStockProps, id?: string) {
     this.id = id ?? randomUUID();
 
     if (props.productItemId.length < 1)

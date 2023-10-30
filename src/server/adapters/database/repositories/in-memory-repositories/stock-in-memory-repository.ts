@@ -5,7 +5,7 @@ import {
   RepositoryCreateStock,
 } from "../stock-repository";
 
-export class InMemorystockRepository implements StockRepository {
+export class InMemoryStockRepository implements StockRepository {
   public stocks: RepositoryStock[] = [];
 
   async create(data: RepositoryCreateStock) {

@@ -6,10 +6,12 @@ import { InMemoryProductImageRepository } from "@/server/adapters/database/repos
 import { CreateProductImageInputDTO } from "../../dto/product-image-dto";
 import { ProductImageAlreadyExistError } from "../../error/ProductImageExistError";
 import { InMemoryImageRepository } from "@/server/adapters/database/repositories/in-memory-repositories/image-in-memory-repository";
+import { ProductItem } from "@/server/enterprise/entities/product-item";
 
 let productItemRepository: InMemoryProductItemRepository;
 let productImageRepository: InMemoryProductImageRepository;
 let imageRepository: InMemoryImageRepository;
+let item: ProductItem;
 let sut: CreateProductImageUseCase;
 
 describe("test CreateProducItem use case suite", () => {
@@ -26,10 +28,8 @@ describe("test CreateProducItem use case suite", () => {
       name: "xxxx.jpg",
       url: "imageUrl",
     });
-  });
 
-  it("should create a product image", async () => {
-    await productItemRepository.create({
+    item = new ProductItem({
       productId: "productId",
       code: "XXX-9999",
       colorId: "colorId",
@@ -37,6 +37,10 @@ describe("test CreateProducItem use case suite", () => {
       price: 12.98,
       descount: 0,
     });
+  });
+
+  it("should create a product image", async () => {
+    await productItemRepository.createAndStock(item);
 
     const x = await productItemRepository.findByCode("XXX-9999");
 
@@ -69,14 +73,7 @@ describe("test CreateProducItem use case suite", () => {
   });
 
   it("should not create a product image equals", async () => {
-    await productItemRepository.create({
-      productId: "productId",
-      code: "XXX-9999",
-      colorId: "colorId",
-      sizeId: "sizeId",
-      price: 12.98,
-      descount: 0,
-    });
+    await productItemRepository.createAndStock(item);
 
     const x = await productItemRepository.findByCode("XXX-9999");
 
