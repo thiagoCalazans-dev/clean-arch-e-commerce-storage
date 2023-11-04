@@ -16,7 +16,9 @@ import { AlertModal } from "@/client/components/alert-modal";
 import { StockColumn } from "./columns";
 import {
   DotsHorizontalIcon,
+  MinusIcon,
   Pencil2Icon,
+  PlusIcon,
   TrashIcon,
 } from "@radix-ui/react-icons";
 import { BrandActions } from "@/client/actions/brand-actions";
@@ -33,54 +35,14 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
-  const { mutate: deleteBrand, isLoading } = useMutation({
-    mutationFn: (data: string) => BrandActions.remove(data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["brands"] });
-    },
-  });
-
-  const onDeleteConfirm = async () => {
-    try {
-      await deleteBrand(data.id);
-      onSuccess("Brand deleted");
-    } catch (error: Error | any) {
-      onError(error.message);
-    } finally {
-      setOpen(false);
-    }
-  };
-
   return (
-    <div className="flex justify-end">
-      <AlertModal
-        isOpen={open}
-        onClose={() => setOpen(false)}
-        onConfirm={onDeleteConfirm}
-        loading={isLoading}
-      />
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="ghost" className="h-8 w-8 p-0">
-            <span className="sr-only">Open menu</span>
-            <DotsHorizontalIcon className="h-4 w-4" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Actions</DropdownMenuLabel>
-          <DropdownMenuItem
-            onClick={() => window.location.assign(`/brands/${data.id}`)}
-          >
-            <Pencil2Icon className="mr-2 h-4 w-4" /> Update
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            className="text-red-500"
-            onClick={() => setOpen(true)}
-          >
-            <TrashIcon className="mr-2 h-4 w-4" /> Delete
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+    <div className="flex  gap-4">
+      <Button variant="destructive">
+        <MinusIcon />
+      </Button>
+      <Button>
+        <PlusIcon />
+      </Button>
     </div>
   );
 };

@@ -59,6 +59,7 @@ export const columns: ColumnDef<StockColumn>[] = [
   },
   {
     id: "actions",
+    header: "Movimento",
     cell: ({ row }) => <CellAction data={row.original} />,
   },
 ];
