@@ -1,4 +1,4 @@
-import { ProductRepository } from "@/server/adapters/database/repositories/product-repository";
+import { ProductRepository } from "@/server/aplication/database/repositories/product-repository";
 import { ProductNotFoundError } from "../../error/ProductNotFoundError";
 
 export class FetchProductsWithItemsUseCase {

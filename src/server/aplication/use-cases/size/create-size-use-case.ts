@@ -3,7 +3,7 @@ import { Size } from "@/server/enterprise/entities/size";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 import { CreateSizeInputDTO } from "../../dto/sizeDTO";
 import { ValueAlreadyExistError } from "../../error/ValueAlreadyExistError";
-import { SizeRepository } from "@/server/adapters/database/repositories/size-repository";
+import { SizeRepository } from "@/server/aplication/database/repositories/size-repository";
 
 export class CreateSizeUseCase {
   constructor(private sizeRepository: SizeRepository) {}

@@ -1,11 +1,11 @@
 import { Product } from "@/server/enterprise/entities/product";
-import { ProductRepository } from "@/server/adapters/database/repositories/product-repository";
+import { ProductRepository } from "@/server/aplication/database/repositories/product-repository";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 
 import { CodeAlreadyExistError } from "../../error/CodeAlreadyExistError";
 import { CreateProductInputDTO } from "../../dto/productDTO";
-import { BrandRepository } from "@/server/adapters/database/repositories/brand-repository";
-import { CategoryRepository } from "@/server/adapters/database/repositories/category-repository";
+import { BrandRepository } from "@/server/aplication/database/repositories/brand-repository";
+import { CategoryRepository } from "@/server/aplication/database/repositories/category-repository";
 import { BrandNotFoundError } from "../../error/BrandNotFoundError";
 import { CategoryNotFoundError } from "../../error/CategoryNotFoundError";
 
@@ -17,8 +17,7 @@ export class CreateProductUseCase {
   ) {}
 
   async execute({ data }: CreateProductInputDTO) {
-    const { name, brandId, categoryId,  description  } =
-      new Product(data);
+    const { name, brandId, categoryId, description } = new Product(data);
 
     const nameExists = await this.productRepository.findByName(name);
     if (nameExists) throw new NameAlreadyExistError();
@@ -33,7 +32,7 @@ export class CreateProductUseCase {
       name,
       brandId,
       categoryId,
-      description,   
+      description,
     });
   }
 }

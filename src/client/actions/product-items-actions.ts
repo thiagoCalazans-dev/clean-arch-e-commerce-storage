@@ -2,6 +2,8 @@ import { ProductItemHttp } from "../gateways/products-item-http";
 import {
   CreateProductItem,
   CreateProductItemSchema,
+  fetchProductItemByIdParams,
+  fetchProductItemByIdParamsSchema,
   removeProductItemByIdParams,
   removeProductItemByIdParamsSchema,
 } from "../schema/actions/product-item-actions-schema";
@@ -38,8 +40,26 @@ async function remove(params: removeProductItemByIdParams) {
   await productItemHttp.Delete(productId, productItemId);
 }
 
+async function fetchById({
+  productId,
+  productItemId,
+}: fetchProductItemByIdParams) {
+  const parsedParams = fetchProductItemByIdParamsSchema.safeParse({
+    productId,
+    productItemId,
+  });
+
+  if (!parsedParams.success) {
+    console.log(parsedParams.error);
+    return;
+  }
+
+  return await productItemHttp.GetById(parsedParams.data);
+}
+
 export const ProductItemActions = {
   fetchItemsByProduct,
   create,
   remove,
+  fetchById,
 };

@@ -1,4 +1,4 @@
-import { ImageRepository } from "@/server/adapters/database/repositories/image-repository";
+import { ImageRepository } from "@/server/aplication/database/repositories/image-repository";
 import { Image } from "@/server/enterprise/entities/image";
 import { UrlAlreadyExistError } from "../../error/UrlAlreadyExistError";
 import { CreateImageInputDTO } from "../../dto/image-dto";

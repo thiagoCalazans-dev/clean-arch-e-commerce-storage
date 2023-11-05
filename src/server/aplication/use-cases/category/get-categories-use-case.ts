@@ -1,4 +1,4 @@
-import { CategoryRepository } from "@/server/adapters/database/repositories/category-repository";
+import { CategoryRepository } from "@/server/aplication/database/repositories/category-repository";
 
 export class GetCategoriesUseCase {
   constructor(private categoryRepository: CategoryRepository) {}

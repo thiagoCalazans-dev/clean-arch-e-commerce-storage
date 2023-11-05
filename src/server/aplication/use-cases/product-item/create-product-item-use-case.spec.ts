@@ -1,10 +1,10 @@
-import { InMemoryBrandRepository } from "@/server/adapters/database/repositories/in-memory-repositories/brand-in-memory-repository";
-import { InMemoryCategoryRepository } from "@/server/adapters/database/repositories/in-memory-repositories/category-in-memory-repository";
-import { InMemoryProductRepository } from "@/server/adapters/database/repositories/in-memory-repositories/product-in-memory-repository";
+import { InMemoryBrandRepository } from "@/server/aplication/database/repositories/in-memory-repositories/brand-in-memory-repository";
+import { InMemoryCategoryRepository } from "@/server/aplication/database/repositories/in-memory-repositories/category-in-memory-repository";
+import { InMemoryProductRepository } from "@/server/aplication/database/repositories/in-memory-repositories/product-in-memory-repository";
 import { describe, it, expect, beforeEach } from "vitest";
-import { InMemorySizeRepository } from "@/server/adapters/database/repositories/in-memory-repositories/size-in-memory-repository";
-import { InMemoryColorRepository } from "@/server/adapters/database/repositories/in-memory-repositories/color-in-memory-repository";
-import { InMemoryProductItemRepository } from "@/server/adapters/database/repositories/in-memory-repositories/product-item-in-memory-repository";
+import { InMemorySizeRepository } from "@/server/aplication/database/repositories/in-memory-repositories/size-in-memory-repository";
+import { InMemoryColorRepository } from "@/server/aplication/database/repositories/in-memory-repositories/color-in-memory-repository";
+import { InMemoryProductItemRepository } from "@/server/aplication/database/repositories/in-memory-repositories/product-item-in-memory-repository";
 import { CreateProductItemUseCase } from "./create-product-item-use-case";
 import { ProductNotFoundError } from "../../error/ProductNotFoundError";
 import { ColorNotFoundError } from "../../error/ColorNotFoundError";
@@ -46,7 +46,7 @@ describe("test CreateProducItem use case suite", () => {
     await productRepository.create({
       name: "product",
       brandId: brandId,
-      categoryId: categoryId, 
+      categoryId: categoryId,
       description: "description",
     });
 

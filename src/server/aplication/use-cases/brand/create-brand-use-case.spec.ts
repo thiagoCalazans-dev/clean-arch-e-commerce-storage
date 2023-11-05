@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { CreateBrandUseCase } from "./create-brand-use-case";
-import { InMemoryBrandRepository } from "../../../adapters/database/repositories/in-memory-repositories/brand-in-memory-repository";
+import { InMemoryBrandRepository } from "../../database/repositories/in-memory-repositories/brand-in-memory-repository";
 
 let repository: InMemoryBrandRepository;
 let sut: CreateBrandUseCase;

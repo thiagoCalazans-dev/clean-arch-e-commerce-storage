@@ -1,5 +1,5 @@
 import { Brand } from "@/server/enterprise/entities/brand";
-import { BrandRepository } from "@/server/adapters/database/repositories/brand-repository";
+import { BrandRepository } from "@/server/aplication/database/repositories/brand-repository";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 import { CreateBrandInputDTO } from "../../dto/brandDTO";
 

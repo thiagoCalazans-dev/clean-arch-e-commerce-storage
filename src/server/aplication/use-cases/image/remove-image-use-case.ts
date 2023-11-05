@@ -1,4 +1,4 @@
-import { ImageRepository } from "@/server/adapters/database/repositories/image-repository";
+import { ImageRepository } from "@/server/aplication/database/repositories/image-repository";
 import { ImageNotFoundError } from "../../error/ImageNotFoundError";
 import { ImageStorage } from "@/server/adapters/storage/image-storage-supabase";
 

@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { InMemoryProductImageRepository } from "@/server/adapters/database/repositories/in-memory-repositories/product-image-in-repository";
+import { InMemoryProductImageRepository } from "@/server/aplication/database/repositories/in-memory-repositories/product-image-in-repository";
 import { RemoveProductImageUseCase } from "./remove-product-image-use-case";
 
 let productImageRepository: InMemoryProductImageRepository;

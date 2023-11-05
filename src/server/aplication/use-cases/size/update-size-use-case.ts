@@ -4,7 +4,7 @@ import { UpdateSizeInputDTO } from "../../dto/sizeDTO";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 import { SizeNotFoundError } from "../../error/SizeNotFoundError";
 import { ValueAlreadyExistError } from "../../error/ValueAlreadyExistError";
-import { SizeRepository } from "@/server/adapters/database/repositories/size-repository";
+import { SizeRepository } from "@/server/aplication/database/repositories/size-repository";
 
 export class UpdateSizeUseCase {
   constructor(private sizeRepository: SizeRepository) {}

@@ -1,5 +1,5 @@
 import { Color } from "@/server/enterprise/entities/color";
-import { ColorRepository } from "@/server/adapters/database/repositories/color-repository";
+import { ColorRepository } from "@/server/aplication/database/repositories/color-repository";
 import { UpdateColorInputDTO } from "../../dto/colorDTO";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 import { ColorNotFoundError } from "../../error/ColorNotFoundError";

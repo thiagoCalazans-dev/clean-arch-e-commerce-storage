@@ -1,4 +1,4 @@
-import { ProductImageRepository } from "@/server/adapters/database/repositories/produt-image-repository";
+import { ProductImageRepository } from "@/server/aplication/database/repositories/produt-image-repository";
 import { ProductImageNotFoundError } from "../../error/ProductImageNotFoundError";
 
 export class RemoveProductImageUseCase {

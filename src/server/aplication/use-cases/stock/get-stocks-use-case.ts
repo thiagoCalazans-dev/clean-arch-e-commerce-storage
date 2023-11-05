@@ -1,4 +1,4 @@
-import { StockRepository } from "@/server/adapters/database/repositories/stock-repository";
+import { StockRepository } from "@/server/aplication/database/repositories/stock-repository";
 
 export class GetStocksUseCase {
   constructor(private stockRepository: StockRepository) {}

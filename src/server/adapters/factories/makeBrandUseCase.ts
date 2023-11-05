@@ -1,5 +1,5 @@
 import { CreateBrandUseCase } from "@/server/aplication/use-cases/brand/create-brand-use-case";
-import { PrismaBrandRepository } from "../database/repositories/prisma/brand-prisma-repository";
+import { PrismaBrandRepository } from "../../aplication/database/repositories/prisma/brand-prisma-repository";
 import { RemoveBrandUseCase } from "@/server/aplication/use-cases/brand/remove-brand-use-case";
 import { FetchBrandUseCase } from "@/server/aplication/use-cases/brand/fetch-brand-use-case";
 import { UpdateBrandUseCase } from "@/server/aplication/use-cases/brand/update-brand-use-case";

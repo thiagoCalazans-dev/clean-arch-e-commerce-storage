@@ -1,5 +1,5 @@
+import { ProductItemRepository } from "../../database/repositories/product-item-repository";
 import { ProductNotFoundError } from "../../error/ProductNotFoundError";
-import { ProductItemRepository } from "@/server/adapters/database/repositories/product-item-repository";
 
 export class FetchProductItemUseCase {
   constructor(private productItemRepository: ProductItemRepository) {}

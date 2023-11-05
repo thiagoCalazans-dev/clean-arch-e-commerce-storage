@@ -1,5 +1,5 @@
 import { CreateSizeUseCase } from "@/server/aplication/use-cases/size/create-size-use-case";
-import { PrismaSizeRepository } from "../database/repositories/prisma/size-prisma-repository";
+import { PrismaSizeRepository } from "../../aplication/database/repositories/prisma/size-prisma-repository";
 import { RemoveSizeUseCase } from "@/server/aplication/use-cases/size/remove-size-use-case";
 import { FetchSizeUseCase } from "@/server/aplication/use-cases/size/fetch-size-use-case";
 import { UpdateSizeUseCase } from "@/server/aplication/use-cases/size/update-size-use-case";

@@ -1,8 +1,8 @@
 import { ProductItemRepository } from "@/server/adapters/database/repositories/product-item-repository";
 import { ColorNotFoundError } from "../../error/ColorNotFoundError";
-import { ColorRepository } from "@/server/adapters/database/repositories/color-repository";
-import { SizeRepository } from "@/server/adapters/database/repositories/size-repository";
-import { ProductRepository } from "@/server/adapters/database/repositories/product-repository";
+import { ColorRepository } from "@/server/aplication/database/repositories/color-repository";
+import { SizeRepository } from "@/server/aplication/database/repositories/size-repository";
+import { ProductRepository } from "@/server/aplication/database/repositories/product-repository";
 import { ProductNotFoundError } from "../../error/ProductNotFoundError";
 import { SizeNotFoundError } from "../../error/SizeNotFoundError";
 import { ProductItem } from "@/server/enterprise/entities/product-item";
@@ -32,7 +32,9 @@ export class CreateProductItemUseCase {
     );
     if (!productExists) throw new ProductNotFoundError();
 
-    const colorExists = await this.colorRepository.findById(productItem.colorId);
+    const colorExists = await this.colorRepository.findById(
+      productItem.colorId
+    );
     if (!colorExists) throw new ColorNotFoundError();
 
     const sizeExists = await this.sizeRepository.findById(productItem.sizeId);

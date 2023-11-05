@@ -1,7 +1,7 @@
 import { CreateProductUseCase } from "@/server/aplication/use-cases/product/create-product-use-case";
-import { PrismaProductRepository } from "../database/repositories/prisma/product-prisma-repository";
-import { PrismaBrandRepository } from "../database/repositories/prisma/brand-prisma-repository";
-import { PrismaCategoryRepository } from "../database/repositories/prisma/category-prisma-repository";
+import { PrismaProductRepository } from "../../aplication/database/repositories/prisma/product-prisma-repository";
+import { PrismaBrandRepository } from "../../aplication/database/repositories/prisma/brand-prisma-repository";
+import { PrismaCategoryRepository } from "../../aplication/database/repositories/prisma/category-prisma-repository";
 import { RemoveProductUseCase } from "@/server/aplication/use-cases/product/remove-product-use-case";
 import { GetProductsUseCase } from "@/server/aplication/use-cases/product/get-products-use-case";
 import { FetchProductUseCase } from "@/server/aplication/use-cases/product/fetch-product-use-case";

@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { InMemoryProductRepository } from "../../../adapters/database/repositories/in-memory-repositories/product-in-memory-repository";
+import { InMemoryProductRepository } from "../../database/repositories/in-memory-repositories/product-in-memory-repository";
 import { RemoveProductUseCase } from "./remove-product-use-case";
-import { InMemoryBrandRepository } from "@/server/adapters/database/repositories/in-memory-repositories/brand-in-memory-repository";
-import { InMemoryCategoryRepository } from "@/server/adapters/database/repositories/in-memory-repositories/category-in-memory-repository";
+import { InMemoryBrandRepository } from "@/server/aplication/database/repositories/in-memory-repositories/brand-in-memory-repository";
+import { InMemoryCategoryRepository } from "@/server/aplication/database/repositories/in-memory-repositories/category-in-memory-repository";
 
 let productRepository: InMemoryProductRepository;
 let brandRepository: InMemoryBrandRepository;
@@ -32,9 +32,8 @@ describe("test RemoveProduct use case", () => {
       name: "product",
       brandId: brandId,
       categoryId: categoryId,
-   
+
       description: "description",
-  
     });
 
     const product = await productRepository.findByName("product");

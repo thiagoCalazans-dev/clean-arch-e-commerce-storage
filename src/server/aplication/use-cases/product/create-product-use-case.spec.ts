@@ -1,11 +1,11 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { CreateProductUseCase } from "./create-product-use-case";
-import { InMemoryProductRepository } from "../../../adapters/database/repositories/in-memory-repositories/product-in-memory-repository";
+import { InMemoryProductRepository } from "../../database/repositories/in-memory-repositories/product-in-memory-repository";
 import { ValueAlreadyExistError } from "../../error/ValueAlreadyExistError";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 import { CodeAlreadyExistError } from "../../error/CodeAlreadyExistError";
-import { InMemoryCategoryRepository } from "@/server/adapters/database/repositories/in-memory-repositories/category-in-memory-repository";
-import { InMemoryBrandRepository } from "@/server/adapters/database/repositories/in-memory-repositories/brand-in-memory-repository";
+import { InMemoryCategoryRepository } from "@/server/aplication/database/repositories/in-memory-repositories/category-in-memory-repository";
+import { InMemoryBrandRepository } from "@/server/aplication/database/repositories/in-memory-repositories/brand-in-memory-repository";
 import { BrandNotFoundError } from "../../error/BrandNotFoundError";
 import { CategoryNotFoundError } from "../../error/CategoryNotFoundError";
 
@@ -45,7 +45,6 @@ describe("test CreateProduct use case", () => {
         categoryId: categoryId,
 
         description: "description",
-  
       },
     });
 
@@ -61,9 +60,8 @@ describe("test CreateProduct use case", () => {
         name: "product",
         brandId: brandId,
         categoryId: categoryId,
-    
+
         description: "description",
-      
       },
     });
 
@@ -73,9 +71,8 @@ describe("test CreateProduct use case", () => {
           name: "product",
           brandId: brandId,
           categoryId: categoryId,
-       
+
           description: "description",
-      
         },
       })
     ).rejects.toBeInstanceOf(NameAlreadyExistError);
@@ -88,9 +85,8 @@ describe("test CreateProduct use case", () => {
           name: "product2",
           brandId: "inexistent",
           categoryId: categoryId,
-      
+
           description: "description",
-         
         },
       })
     ).rejects.toBeInstanceOf(BrandNotFoundError);
@@ -102,9 +98,8 @@ describe("test CreateProduct use case", () => {
           name: "product2",
           brandId: brandId,
           categoryId: "inexistent",
-   
+
           description: "description",
-        
         },
       })
     ).rejects.toBeInstanceOf(CategoryNotFoundError);

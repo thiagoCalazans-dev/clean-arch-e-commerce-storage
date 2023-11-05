@@ -1,4 +1,4 @@
-import { ImageRepository } from "@/server/adapters/database/repositories/image-repository";
+import { ImageRepository } from "@/server/aplication/database/repositories/image-repository";
 
 export class GetImagesUseCase {
   constructor(private imageRepository: ImageRepository) {}

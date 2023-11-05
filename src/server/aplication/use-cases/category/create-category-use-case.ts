@@ -1,5 +1,5 @@
 import { Category } from "@/server/enterprise/entities/category";
-import { CategoryRepository } from "@/server/adapters/database/repositories/category-repository";
+import { CategoryRepository } from "@/server/aplication/database/repositories/category-repository";
 import {
   CreateCategoryInputDTO,
   CreateCategoryOutputDTO,

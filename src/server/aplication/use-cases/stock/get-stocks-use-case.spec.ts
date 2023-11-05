@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { InMemoryStockRepository } from "../../../adapters/database/repositories/in-memory-repositories/stock-in-memory-repository";
+import { InMemoryStockRepository } from "../../database/repositories/in-memory-repositories/stock-in-memory-repository";
 import { GetStocksUseCase } from "./get-stocks-use-case";
 
 let repository: InMemoryStockRepository;

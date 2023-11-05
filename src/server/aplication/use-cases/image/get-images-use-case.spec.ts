@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { CreateImageUseCase } from "./create-image-use-case";
-import { InMemoryImageRepository } from "../../../adapters/database/repositories/in-memory-repositories/image-in-memory-repository";
+import { InMemoryImageRepository } from "../../database/repositories/in-memory-repositories/image-in-memory-repository";
 import { GetImagesUseCase } from "./get-images-use-case";
 
 let repository: InMemoryImageRepository;

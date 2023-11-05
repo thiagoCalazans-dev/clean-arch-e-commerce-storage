@@ -40,10 +40,13 @@ export class ProductItemHttp {
     await response.json();
   }
 
-  async GetById(productId: GetByIdParams) {
-    const response = await fetch(`${env.API_BASE_URL}/product/${productId}`, {
-      cache: "no-store",
-    });
+  async GetById({ productId, productItemId }: GetByIdParams) {
+    const response = await fetch(
+      `${env.API_BASE_URL}/product/${productId}/item/${productItemId}`,
+      {
+        cache: "no-store",
+      }
+    );
 
     const json = await response.json();
 

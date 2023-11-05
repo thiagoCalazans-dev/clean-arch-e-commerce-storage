@@ -1,6 +1,5 @@
-import { StockEntry } from "@/server/enterprise/entities/strock-entry";
-
+import { EntryStock } from "@/server/enterprise/entities/entry-stock";
 
 export interface StockEntryDTO {
-  data: StockEntry;
+  data: EntryStock;
 }

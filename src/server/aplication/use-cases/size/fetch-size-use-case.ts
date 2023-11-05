@@ -1,4 +1,4 @@
-import { SizeRepository } from "../../../adapters/database/repositories/size-repository";
+import { SizeRepository } from "../../database/repositories/size-repository";
 import { SizeNotFoundError } from "../../error/SizeNotFoundError";
 
 export class FetchSizeUseCase {

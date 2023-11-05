@@ -1,8 +1,8 @@
 import { StockEntryDTO } from "../../dto/stock-entry-DTO";
-import { StockRepository } from "@/server/adapters/database/repositories/stock-repository";
+import { StockRepository } from "@/server/aplication/database/repositories/stock-repository";
 import { ResourceNotFoundError } from "../../error/ResourceNotFoundError";
 import { Stock } from "@/server/enterprise/entities/stock";
-import { EntryStockRepository } from "@/server/adapters/database/repositories/entry-stock-repository";
+import { EntryStockRepository } from "@/server/aplication/database/repositories/entry-stock-repository";
 import { EntryStock } from "@/server/enterprise/entities/entry-stock";
 
 export class EntryStockUseCase {

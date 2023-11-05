@@ -1,5 +1,5 @@
 import { CreateColorUseCase } from "@/server/aplication/use-cases/color/create-color-use-case";
-import { PrismaColorRepository } from "../database/repositories/prisma/color-prisma-repository";
+import { PrismaColorRepository } from "../../aplication/database/repositories/prisma/color-prisma-repository";
 import { RemoveColorUseCase } from "@/server/aplication/use-cases/color/remove-color-use-case";
 import { FetchColorUseCase } from "@/server/aplication/use-cases/color/fetch-color-use-case";
 import { UpdateColorUseCase } from "@/server/aplication/use-cases/color/update-color-use-case";

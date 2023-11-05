@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 
-import { InMemoryBrandRepository } from "../../../adapters/database/repositories/in-memory-repositories/brand-in-memory-repository";
+import { InMemoryBrandRepository } from "../../database/repositories/in-memory-repositories/brand-in-memory-repository";
 import { GetBrandsUseCase } from "./get-brands-use-case";
 import { UpdateBrandUseCase } from "./update-brand-use-case";
 

@@ -1,11 +1,11 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { InMemoryProductItemRepository } from "@/server/adapters/database/repositories/in-memory-repositories/product-item-in-memory-repository";
+import { InMemoryProductItemRepository } from "@/server/aplication/database/repositories/in-memory-repositories/product-item-in-memory-repository";
 import { CreateProductImageUseCase } from "./create-product-image-use-case";
 import { ProductNotFoundError } from "../../error/ProductNotFoundError";
-import { InMemoryProductImageRepository } from "@/server/adapters/database/repositories/in-memory-repositories/product-image-in-repository";
+import { InMemoryProductImageRepository } from "@/server/aplication/database/repositories/in-memory-repositories/product-image-in-repository";
 import { CreateProductImageInputDTO } from "../../dto/product-image-dto";
 import { ProductImageAlreadyExistError } from "../../error/ProductImageExistError";
-import { InMemoryImageRepository } from "@/server/adapters/database/repositories/in-memory-repositories/image-in-memory-repository";
+import { InMemoryImageRepository } from "@/server/aplication/database/repositories/in-memory-repositories/image-in-memory-repository";
 import { ProductItem } from "@/server/enterprise/entities/product-item";
 
 let productItemRepository: InMemoryProductItemRepository;

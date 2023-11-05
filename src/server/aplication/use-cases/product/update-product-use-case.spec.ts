@@ -1,11 +1,11 @@
 import { describe, it, expect, beforeEach } from "vitest";
 
-import { InMemoryProductRepository } from "../../../adapters/database/repositories/in-memory-repositories/product-in-memory-repository";
+import { InMemoryProductRepository } from "../../database/repositories/in-memory-repositories/product-in-memory-repository";
 import { ValueAlreadyExistError } from "../../error/ValueAlreadyExistError";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
 import { CodeAlreadyExistError } from "../../error/CodeAlreadyExistError";
-import { InMemoryCategoryRepository } from "@/server/adapters/database/repositories/in-memory-repositories/category-in-memory-repository";
-import { InMemoryBrandRepository } from "@/server/adapters/database/repositories/in-memory-repositories/brand-in-memory-repository";
+import { InMemoryCategoryRepository } from "@/server/aplication/database/repositories/in-memory-repositories/category-in-memory-repository";
+import { InMemoryBrandRepository } from "@/server/aplication/database/repositories/in-memory-repositories/brand-in-memory-repository";
 import { BrandNotFoundError } from "../../error/BrandNotFoundError";
 import { CategoryNotFoundError } from "../../error/CategoryNotFoundError";
 import { UpdateProductUseCase } from "./update-product-use-case";

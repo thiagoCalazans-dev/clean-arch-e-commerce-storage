@@ -26,7 +26,10 @@ export const CreateProductItemSchema = schema.object({
 
 export type CreateProductItem = schema.infer<typeof CreateProductItemSchema>;
 
-export const fetchProductItemByIdParamsSchema = schema.string();
+export const fetchProductItemByIdParamsSchema = schema.object({
+  productId: schema.string(),
+  productItemId: schema.string(),
+});
 
 export type fetchProductItemByIdParams = schema.infer<
   typeof fetchProductItemByIdParamsSchema
@@ -35,7 +38,7 @@ export type fetchProductItemByIdParams = schema.infer<
 export const removeProductItemByIdParamsSchema = schema.object({
   productId: string(),
   productItemId: string(),
-})
+});
 
 export type removeProductItemByIdParams = schema.infer<
   typeof removeProductItemByIdParamsSchema

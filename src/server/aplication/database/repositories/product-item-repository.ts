@@ -16,7 +16,7 @@ export interface RepositoryCreateProductItem {
 export interface RepositoryProductItem {
   id: string;
   productId: string;
-  product?: RepositoryProduct
+  product?: RepositoryProduct;
   code: string;
   colorId: string;
   color?: RepositoryColor;

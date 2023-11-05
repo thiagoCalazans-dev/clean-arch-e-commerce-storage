@@ -1,4 +1,4 @@
-import { BrandRepository } from "@/server/adapters/database/repositories/brand-repository";
+import { BrandRepository } from "@/server/aplication/database/repositories/brand-repository";
 
 export class GetBrandsUseCase {
   constructor(private brandRepository: BrandRepository) {}

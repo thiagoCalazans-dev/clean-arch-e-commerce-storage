@@ -13,7 +13,10 @@ export type PutProductParams = {
   data: ProductItem;
 };
 
-export type GetByIdParams = string;
+export type GetByIdParams = {
+  productId: string;
+  productItemId: string;
+};
 
 export type GetParams = {
   productId: string;

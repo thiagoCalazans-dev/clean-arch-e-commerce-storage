@@ -1,4 +1,4 @@
-import { ProductRepository } from "@/server/adapters/database/repositories/product-repository";
+import { ProductRepository } from "@/server/aplication/database/repositories/product-repository";
 import { GetProductsOutputDTO } from "../../dto/productDTO";
 
 export class GetProductsUseCase {

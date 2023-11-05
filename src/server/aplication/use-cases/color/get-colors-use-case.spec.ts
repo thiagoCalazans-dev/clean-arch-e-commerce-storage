@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { CreateColorUseCase } from "./create-color-use-case";
-import { InMemoryColorRepository } from "../../../adapters/database/repositories/in-memory-repositories/color-in-memory-repository";
+import { InMemoryColorRepository } from "../../database/repositories/in-memory-repositories/color-in-memory-repository";
 import { GetColorsUseCase } from "./get-colors-use-case";
 
 let repository: InMemoryColorRepository;

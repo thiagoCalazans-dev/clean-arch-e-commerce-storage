@@ -1,4 +1,4 @@
-import { BrandRepository } from "@/server/adapters/database/repositories/brand-repository";
+import { BrandRepository } from "@/server/aplication/database/repositories/brand-repository";
 import { BrandNotFoundError } from "../../error/BrandNotFoundError";
 import { BrandAlreadyUsedError } from "../../error/BrandAlreadyUsedError";
 import { Console } from "console";

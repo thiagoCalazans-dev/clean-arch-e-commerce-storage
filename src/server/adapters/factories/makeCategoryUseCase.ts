@@ -1,5 +1,5 @@
 import { RemoveCategoryUseCase } from "@/server/aplication/use-cases/category/remove-category-use-case";
-import { PrismaCategoryRepository } from "../database/repositories/prisma/category-prisma-repository";
+import { PrismaCategoryRepository } from "../../aplication/database/repositories/prisma/category-prisma-repository";
 import { CreateCategoryUseCase } from "@/server/aplication/use-cases/category/create-category-use-case";
 import { GetCategoriesUseCase } from "@/server/aplication/use-cases/category/get-categories-use-case";
 import { FetchCategoryUseCase } from "@/server/aplication/use-cases/category/fetch-category-use-case";
