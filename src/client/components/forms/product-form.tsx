@@ -15,13 +15,13 @@ import {
 import { useRouter } from "next/navigation";
 import { ProductActions } from "@/client/actions/product-actions";
 import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
-import { Product } from "@/client/schema/actions/product-actions-schema";
-import { FormProductSchema } from "@/client/schema/forms/product-form-schema";
+import { Product } from "@/client/actions/schema/product-actions-schema";
+import { FormProductSchema } from "@/client/components/forms/schema/product-form-schema";
 import { Textarea } from "../ui/text-area";
 
 import { Combobox } from "../ui/combobox";
-import { Brand } from "@/client/schema/actions/brand-actions-schema";
-import { Category } from "@/client/schema/actions/category-actions-schema";
+import { Brand } from "@/client/actions/schema/brand-actions-schema";
+import { Category } from "@/client/actions/schema/category-actions-schema";
 import { Checkbox } from "../ui/checkbox";
 
 interface ProductFormProps {

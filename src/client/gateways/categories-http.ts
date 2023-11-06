@@ -1,10 +1,10 @@
-import { env } from "../schema/env";
+import { env } from "../lib/schema/env";
 import {
   GetByIdReponseSchema,
   GetByIdParams,
   PostCategoryParams,
   PutCategoryParams,
-} from "../schema/gateway/category-gateway-schema";
+} from "./schema/category-gateway-schema";
 
 export class CategoryHttp {
   constructor() {}

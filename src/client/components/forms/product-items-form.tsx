@@ -15,20 +15,20 @@ import {
 import { useRouter } from "next/navigation";
 import { ProductActions } from "@/client/actions/product-actions";
 import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
-import { Product } from "@/client/schema/actions/product-actions-schema";
+import { Product } from "@/client/actions/schema/product-actions-schema";
 import { Textarea } from "../ui/text-area";
 
 import { Combobox } from "../ui/combobox";
-import { Brand } from "@/client/schema/actions/brand-actions-schema";
-import { Category } from "@/client/schema/actions/category-actions-schema";
+import { Brand } from "@/client/actions/schema/brand-actions-schema";
+import { Category } from "@/client/actions/schema/category-actions-schema";
 import { Checkbox } from "../ui/checkbox";
 import {
   FormProductItem,
   FormProductItemSchema,
-} from "@/client/schema/forms/product-item-form";
-import { ProductItem } from "@/client/schema/actions/product-item-actions-schema";
-import { Color } from "@/client/schema/actions/color-actions-schema";
-import { Size } from "@/client/schema/actions/size-actions-schema";
+} from "@/client/components/forms/schema/product-item-form";
+import { ProductItem } from "@/client/actions/schema/product-item-actions-schema";
+import { Color } from "@/client/actions/schema/color-actions-schema";
+import { Size } from "@/client/actions/schema/size-actions-schema";
 import { ProductItemActions } from "@/client/actions/product-items-actions";
 
 interface ProductItemFormProps {

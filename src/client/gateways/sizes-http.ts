@@ -1,11 +1,11 @@
-import { env } from "../schema/env";
+import { env } from "../lib/schema/env";
 import {
   GetByIdReponseSchema,
   GetByIdParams,
   PostSizeParams,
   PutSizeParams,
   GetSize,
-} from "../schema/gateway/size-gateway-schema";
+} from "./schema/size-gateway-schema";
 
 export class SizeHttp {
   constructor() {}

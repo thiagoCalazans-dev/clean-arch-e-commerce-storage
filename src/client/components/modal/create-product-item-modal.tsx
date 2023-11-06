@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { Modal } from "@/client/components/ui/modal";
 import { Button } from "@/client/components/ui/button";
 import { ProductItemForm } from "../forms/product-items-form";
-import { Size } from "@/client/schema/actions/size-actions-schema";
-import { Color } from "@/client/schema/actions/color-actions-schema";
+import { Size } from "@/client/actions/schema/size-actions-schema";
+import { Color } from "@/client/actions/schema/color-actions-schema";
 
 interface CreateProductItemModalProps {
   productId: string;

@@ -17,7 +17,7 @@ import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
 import {
   FormStockEntry,
   FormStockEntrySchema,
-} from "@/client/schema/actions/stock-action-schema";
+} from "@/client/actions/schema/stock-action-schema";
 import { StockActions } from "@/client/actions/stock-actions";
 
 interface StockEntryParams {
@@ -36,8 +36,6 @@ export function StockEntryForm({ productItemId }: StockEntryParams) {
   });
 
   const { isSubmitting, errors } = form.formState;
-
-  console.log(errors);
 
   async function onSubmit(formValues: FormStockEntry) {
     try {
@@ -95,7 +93,7 @@ export function StockEntryForm({ productItemId }: StockEntryParams) {
                   <Input
                     disabled={isSubmitting}
                     type="number"
-                    placeholder="Type"
+                    placeholder="Quantidade"
                     {...field}
                   />
                 </FormControl>
@@ -108,12 +106,12 @@ export function StockEntryForm({ productItemId }: StockEntryParams) {
             name="value"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Valor</FormLabel>
+                <FormLabel>Valor de aquisição</FormLabel>
                 <FormControl>
                   <Input
                     type="number"
                     disabled={isSubmitting}
-                    placeholder="Type"
+                    placeholder="€ 00.00"
                     {...field}
                   />
                 </FormControl>

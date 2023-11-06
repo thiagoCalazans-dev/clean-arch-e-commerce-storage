@@ -6,7 +6,7 @@ import {
   fetchCategoryByIdParamsSchema,
   removeCategoryByIdParams,
   removeCategoryByIdParamsSchema,
-} from "../schema/actions/category-actions-schema";
+} from "./schema/category-actions-schema";
 import { CategoryHttp } from "../gateways/categories-http";
 
 const categoryHttp = new CategoryHttp();

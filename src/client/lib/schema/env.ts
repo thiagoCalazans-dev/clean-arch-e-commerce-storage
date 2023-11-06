@@ -1,4 +1,4 @@
-import schema from "../lib/schema";
+import schema from "../schema";
 
 const envSchema = schema.object({
   DATABASE_URL: schema.string(),

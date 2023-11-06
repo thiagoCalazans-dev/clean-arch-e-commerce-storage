@@ -1,5 +1,5 @@
-import { env } from "../schema/env";
-import { PostProductImageParams } from "../schema/gateway/product-image-gateway-schema";
+import { env } from "../lib/schema/env";
+import { PostProductImageParams } from "./schema/product-image-gateway-schema";
 
 export class ProductImageHttp {
   constructor() {}

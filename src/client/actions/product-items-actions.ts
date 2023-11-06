@@ -6,7 +6,7 @@ import {
   fetchProductItemByIdParamsSchema,
   removeProductItemByIdParams,
   removeProductItemByIdParamsSchema,
-} from "../schema/actions/product-item-actions-schema";
+} from "./schema/product-item-actions-schema";
 
 const productItemHttp = new ProductItemHttp();
 

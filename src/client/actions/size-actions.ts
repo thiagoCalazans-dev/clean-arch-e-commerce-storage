@@ -8,7 +8,7 @@ import {
   fetchSizeByIdParamsSchema,
   removeSizeByIdParams,
   removeSizeByIdParamsSchema,
-} from "../schema/actions/size-actions-schema";
+} from "./schema/size-actions-schema";
 
 const sizeHttp = new SizeHttp();
 

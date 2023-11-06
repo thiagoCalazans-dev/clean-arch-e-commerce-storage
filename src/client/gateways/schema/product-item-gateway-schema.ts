@@ -1,9 +1,9 @@
-import schema from "@/client/lib/schema";
 import {
   CreateProductItem,
   ProductItem,
   ProductItemSchema,
-} from "../actions/product-item-actions-schema";
+} from "@/client/actions/schema/product-item-actions-schema";
+import schema from "@/client/lib/schema";
 
 export type PostProductParams = {
   data: CreateProductItem;

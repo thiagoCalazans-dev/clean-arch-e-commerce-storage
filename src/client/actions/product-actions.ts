@@ -8,7 +8,7 @@ import {
   fetchProductByIdParamsSchema,
   removeProductByIdParams,
   removeProductByIdParamsSchema,
-} from "../schema/actions/product-actions-schema";
+} from "./schema/product-actions-schema";
 
 const productHttp = new ProductHttp();
 

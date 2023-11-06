@@ -2,9 +2,9 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { CellAction } from "./cell-action";
-import { Product } from "@/client/schema/actions/product-actions-schema";
-import { Color } from "@/client/schema/actions/color-actions-schema";
-import { Size } from "@/client/schema/actions/size-actions-schema";
+import { Product } from "@/client/actions/schema/product-actions-schema";
+import { Color } from "@/client/actions/schema/color-actions-schema";
+import { Size } from "@/client/actions/schema/size-actions-schema";
 
 export type StockColumn = {
   id: string;

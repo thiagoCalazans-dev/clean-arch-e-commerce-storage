@@ -11,11 +11,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/client/components/ui/form";
-import { FormColorSchema } from "@/client/schema/forms/color-form-schema";
+import { FormColorSchema } from "@/client/components/forms/schema/color-form-schema";
 import { useRouter } from "next/navigation";
 import { ColorActions } from "@/client/actions/color-actions";
 import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
-import { Color } from "@/client/schema/actions/color-actions-schema";
+import { Color } from "@/client/actions/schema/color-actions-schema";
 
 interface ColorFormProps {
   initialData: Color | null;

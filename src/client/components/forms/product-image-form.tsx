@@ -18,7 +18,7 @@ import Image from "next/image";
 import {
   FormProductImage,
   FormProductImageSchema,
-} from "@/client/schema/forms/product-image-form";
+} from "@/client/components/forms/schema/product-image-form";
 import { ProductImageActions } from "@/client/actions/product-image-actions";
 
 interface ProductImageFormProps {

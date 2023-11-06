@@ -16,7 +16,7 @@ import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
 import {
   FormImage,
   FormImageSchema,
-} from "@/client/schema/forms/image-form-schema";
+} from "@/client/components/forms/schema/image-form-schema";
 import { ImageAction } from "@/client/actions/image.actions";
 import { useState } from "react";
 

@@ -1,5 +1,5 @@
-import { StockEntry } from "../schema/actions/stock-action-schema";
-import { env } from "../schema/env";
+import { env } from "../lib/schema/env";
+import { PostStockEntyParams } from "./schema/stock-gateway-schema";
 
 export class StockHttp {
   constructor() {}
@@ -15,7 +15,7 @@ export class StockHttp {
     return json;
   }
 
-  async Post(data: StockEntry) {
+  async Post(data: PostStockEntyParams) {
     const URL = `${env.API_BASE_URL}/stock`;
     console.log(URL);
 

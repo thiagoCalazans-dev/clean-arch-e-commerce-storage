@@ -12,21 +12,16 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const router = useRouter();
 
   return (
-    <div className="flex  gap-4">
-      <Button
-        variant="outline"
-        type="button"
-        onClick={() =>
-          router.push(
-            `/incoming/${data.productItem?.productId}/${data.productItemId}`
-          )
-        }
-      >
-        <EnterIcon />
-      </Button>
-      <Button variant="destructive">
-        <ExitIcon />
-      </Button>
-    </div>
+    <Button
+      variant="outline"
+      type="button"
+      onClick={() =>
+        router.push(
+          `/incoming/${data.productItem?.productId}/${data.productItemId}`
+        )
+      }
+    >
+      <EnterIcon />
+    </Button>
   );
 };

@@ -5,13 +5,12 @@ import { DataTable } from "@/client/components/data-table";
 import { Button } from "@/client/components/ui/button";
 import { Heading } from "@/client/components/ui/heading";
 import { Separator } from "@/client/components/ui/separator";
-import { Size } from "@/client/schema/actions/size-actions-schema";
 import { PlusIcon } from "@radix-ui/react-icons";
 
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { columns } from "./columns";
-import { GetSize } from "@/client/schema/gateway/size-gateway-schema";
+import { GetSize } from "@/client/gateways/schema/size-gateway-schema";
 
 export default function SizesPage() {
   const { data, isLoading } = useQuery<GetSize>({
@@ -31,7 +30,7 @@ export default function SizesPage() {
           </Button>
         </div>
         <Separator />
-        {isLoading  ? (
+        {isLoading ? (
           <div>carrgando</div>
         ) : (
           <DataTable searchKey="name" columns={columns} data={data!.data} />

@@ -1,11 +1,11 @@
-import { env } from "../schema/env";
+import { env } from "../lib/schema/env";
 import {
   GetParams,
   GetByIdParams,
   GetByIdReponseSchema,
   PostProductParams,
   PutProductParams,
-} from "../schema/gateway/product-item-gateway-schema";
+} from "./schema/product-item-gateway-schema";
 
 export class ProductItemHttp {
   constructor() {}

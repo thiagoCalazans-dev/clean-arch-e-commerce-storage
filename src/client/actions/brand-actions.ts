@@ -6,7 +6,7 @@ import {
   fetchBrandByIdParamsSchema,
   removeBrandByIdParams,
   removeBrandByIdParamsSchema,
-} from "../schema/actions/brand-actions-schema";
+} from "./schema/brand-actions-schema";
 import { BrandHttp } from "../gateways/brands-http";
 
 const brandHttp = new BrandHttp();

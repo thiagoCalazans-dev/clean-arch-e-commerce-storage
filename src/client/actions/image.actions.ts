@@ -4,8 +4,11 @@ import {
   CreateImageParamsSchema,
   RemoveImageByIdParams,
   removeImageByIdParamsSchema,
-} from "../schema/actions/image-actions-schema";
-import { FormImage, InputFile } from "../schema/forms/image-form-schema";
+} from "./schema/image-actions-schema";
+import {
+  FormImage,
+  InputFile,
+} from "../components/forms/schema/image-form-schema";
 
 const imageHttp = new ImageHttp();
 

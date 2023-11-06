@@ -2,7 +2,7 @@ import { ProductImageHttp } from "../gateways/products-image-http";
 import {
   CreateProductImage,
   CreateProductImageSchema,
-} from "../schema/actions/product-image-actions-schema";
+} from "./schema/product-image-actions-schema";
 
 const productImageHttp = new ProductImageHttp();
 

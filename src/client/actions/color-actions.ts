@@ -6,7 +6,7 @@ import {
   fetchColorByIdParamsSchema,
   removeColorByIdParams,
   removeColorByIdParamsSchema,
-} from "../schema/actions/color-actions-schema";
+} from "./schema/color-actions-schema";
 import { ColorHttp } from "../gateways/colors-http";
 
 const colorHttp = new ColorHttp();

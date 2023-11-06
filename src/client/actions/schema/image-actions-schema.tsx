@@ -1,5 +1,8 @@
 import schema from "../../lib/schema";
-import { FormImageSchema, InputFileSchema } from "../forms/image-form-schema";
+import {
+  FormImageSchema,
+  InputFileSchema,
+} from "../../components/forms/schema/image-form-schema";
 
 export const ImageSchema = schema.object({
   id: schema.string(),

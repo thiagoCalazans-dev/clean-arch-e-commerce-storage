@@ -11,11 +11,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/client/components/ui/form";
-import { FormSizeSchema } from "@/client/schema/forms/size-form-schema";
+import { FormSizeSchema } from "@/client/components/forms/schema/size-form-schema";
 import { useRouter } from "next/navigation";
 import { SizeActions } from "@/client/actions/size-actions";
 import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
-import { Size } from "@/client/schema/actions/size-actions-schema";
+import { Size } from "@/client/actions/schema/size-actions-schema";
 
 interface SizeFormProps {
   initialData: Size | null;

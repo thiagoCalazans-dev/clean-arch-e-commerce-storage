@@ -1,9 +1,5 @@
-import { StockEntryForm } from "../components/forms/entry-form";
 import { StockHttp } from "../gateways/stock-http";
-import {
-  FormStockEntry,
-  StockEntrySchema,
-} from "../schema/actions/stock-action-schema";
+import { FormStockEntry, StockEntrySchema } from "./schema/stock-action-schema";
 
 const stockHttp = new StockHttp();
 
@@ -23,7 +19,7 @@ async function entry(entry: FormStockEntry) {
     throw new Error(parsedParams.error.message);
   }
 
-  await console.log(parsedParams.data);
+  await stockHttp.Post({ data: parsedParams.data });
 }
 
 export const StockActions = {

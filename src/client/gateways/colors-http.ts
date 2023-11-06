@@ -3,8 +3,8 @@ import {
   GetByIdParams,
   PostColorParams,
   PutColorParams,
-} from "../schema/gateway/color-gateway-schema";
-import { env } from "../schema/env";
+} from "./schema/color-gateway-schema";
+import { env } from "../lib/schema/env";
 
 export class ColorHttp {
   constructor() {}

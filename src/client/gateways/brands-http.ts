@@ -1,10 +1,10 @@
-import { env } from "../schema/env";
+import { env } from "../lib/schema/env";
 import {
   GetByIdReponseSchema,
   GetByIdParams,
   PostBrandParams,
   PutBrandParams,
-} from "../schema/gateway/brand-gateway-schema";
+} from "./schema/brand-gateway-schema";
 
 export class BrandHttp {
   constructor() {}
