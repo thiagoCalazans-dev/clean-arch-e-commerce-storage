@@ -1,7 +1,6 @@
 import { CategoryActions } from "@/client/actions/category-actions";
 import { CategoryForm } from "@/client/components/forms/category-form";
 import { Heading } from "@/client/components/ui/heading";
-
 import { Separator } from "@/client/components/ui/separator";
 
 export default async function CategoryPage({
