@@ -1,15 +1,19 @@
+"use client";
 import { DataTable } from "@/client/components/data-table";
 import { columns } from "./columns";
 import { Heading } from "@/client/components/ui/heading";
 import { Button } from "@/client/components/ui/button";
 import { Separator } from "@/client/components/ui/separator";
-import { Suspense } from "react";
 import { BrandActions } from "@/client/actions/brand-actions";
 import Link from "next/link";
 import { Loading } from "@/client/components/ui/loading";
+import { useQuery } from "@tanstack/react-query";
 
-export default async function Page() {
-  const { data } = await BrandActions.getAll();
+export default function Page() {
+  const { data: response, isLoading } = useQuery({
+    queryKey: ["brands"],
+    queryFn: BrandActions.getAll,
+  });
 
   return (
     <div className="flex-col">
@@ -23,9 +27,11 @@ export default async function Page() {
           </Button>
         </div>
         <Separator />
-        <Suspense fallback={<Loading />}>
-          <DataTable searchKey="name" columns={columns} data={data} />
-        </Suspense>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <DataTable searchKey="name" columns={columns} data={response.data} />
+        )}
       </div>
     </div>
   );
