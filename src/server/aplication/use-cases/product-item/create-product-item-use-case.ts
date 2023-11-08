@@ -1,4 +1,3 @@
-import { ProductItemRepository } from "@/server/adapters/database/repositories/product-item-repository";
 import { ColorNotFoundError } from "../../error/ColorNotFoundError";
 import { ColorRepository } from "@/server/aplication/database/repositories/color-repository";
 import { SizeRepository } from "@/server/aplication/database/repositories/size-repository";
@@ -9,6 +8,7 @@ import { ProductItem } from "@/server/enterprise/entities/product-item";
 
 import { CodeAlreadyExistError } from "../../error/CodeAlreadyExistError";
 import { CreateProductItemInputDTO } from "../../dto/product-item-dto";
+import { ProductItemRepository } from "../../database/repositories/product-item-repository";
 
 export class CreateProductItemUseCase {
   constructor(

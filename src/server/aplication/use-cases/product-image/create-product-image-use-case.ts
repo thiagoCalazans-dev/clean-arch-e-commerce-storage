@@ -1,10 +1,9 @@
-import { ProductItemRepository } from "@/server/adapters/database/repositories/product-item-repository";
-
 import { ProductImageRepository } from "@/server/aplication/database/repositories/produt-image-repository";
 import { ProductImage } from "@/server/enterprise/entities/product-image";
 import { CreateProductImageInputDTO } from "../../dto/product-image-dto";
 import { ProductNotFoundError } from "../../error/ProductNotFoundError";
 import { ProductImageAlreadyExistError } from "../../error/ProductImageExistError";
+import { ProductItemRepository } from "../../database/repositories/product-item-repository";
 
 export class CreateProductImageUseCase {
   constructor(

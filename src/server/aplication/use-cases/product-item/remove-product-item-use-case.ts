@@ -1,5 +1,5 @@
 import { ProductNotFoundError } from "../../error/ProductNotFoundError";
-import { ProductItemRepository } from "@/server/adapters/database/repositories/product-item-repository";
+import { ProductItemRepository } from "@/server/aplication/database/repositories/product-item-repository";
 
 export class RemoveProductItemUseCase {
   constructor(private productItemRepository: ProductItemRepository) {}
