@@ -15,8 +15,6 @@ export class PrismaProductRepository implements ProductRepository {
         name: data.name,
         brand_id: data.brandId,
         category_id: data.categoryId,
-        cost: data.cost,
-        trending: data.trending,
         description: data.description,
       },
     });
@@ -42,10 +40,8 @@ export class PrismaProductRepository implements ProductRepository {
       id: product.id,
       brandId: product.brand_id,
       categoryId: product.category_id,
-      cost: Number(product.cost),
       description: product.description,
       name: product.name,
-      trending: product.trending,
     };
 
     return parsedProduct;
@@ -64,10 +60,8 @@ export class PrismaProductRepository implements ProductRepository {
       id: product.id,
       brandId: product.brand_id,
       categoryId: product.category_id,
-      cost: Number(product.cost),
       description: product.description,
       name: product.name,
-      trending: product.trending,
     };
 
     return parsedProduct;
@@ -144,10 +138,8 @@ export class PrismaProductRepository implements ProductRepository {
       brandId: product.brand_id,
       category: categoryMapped,
       categoryId: product.category_id,
-      cost: Number(product.cost),
       description: product.description,
       name: product.name,
-      trending: product.trending,
       productItem: productItemMapped,
     };
 
@@ -160,8 +152,6 @@ export class PrismaProductRepository implements ProductRepository {
         name: data.name,
         brand_id: data.brandId,
         category_id: data.categoryId,
-        cost: data.cost,
-        trending: data.trending,
         description: data.description,
       },
     });
@@ -181,10 +171,8 @@ export class PrismaProductRepository implements ProductRepository {
         brand: product.brand,
         categoryId: product.category_id,
         category: product.category,
-        cost: Number(product.cost),
         description: product.description,
         name: product.name,
-        trending: product.trending,
       };
     });
     return productsMapped;
