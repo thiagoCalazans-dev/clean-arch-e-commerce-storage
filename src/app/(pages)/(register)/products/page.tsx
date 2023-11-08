@@ -10,7 +10,7 @@ import { Loading } from "@/client/components/ui/loading";
 import Link from "next/link";
 
 export default async function ProductsPage() {
-  const { data } = await ProductActions.getAll();
+  const response = await ProductActions.getAll();
 
   return (
     <div className="flex-col">
@@ -25,7 +25,7 @@ export default async function ProductsPage() {
         </div>
         <Separator />
         <Suspense fallback={<Loading />}>
-          <DataTable searchKey="name" columns={columns} data={data} />
+          <DataTable searchKey="name" columns={columns} data={response.data} />
         </Suspense>
       </div>
     </div>

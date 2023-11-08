@@ -1,8 +1,6 @@
 import { Product } from "@/server/enterprise/entities/product";
 import { ProductRepository } from "@/server/aplication/database/repositories/product-repository";
 import { NameAlreadyExistError } from "../../error/NameAlreadyExistError";
-
-import { CodeAlreadyExistError } from "../../error/CodeAlreadyExistError";
 import { UpdateProductInputDTO } from "../../dto/productDTO";
 import { BrandRepository } from "@/server/aplication/database/repositories/brand-repository";
 import { CategoryRepository } from "@/server/aplication/database/repositories/category-repository";
