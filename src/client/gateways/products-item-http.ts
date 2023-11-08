@@ -17,7 +17,7 @@ export class ProductItemHttp {
         next: {
           tags: [`${productId}-items`],
         },
-        cache: "no-cache",
+        cache: "no-store",
       }
     );
     const json = await response.json();

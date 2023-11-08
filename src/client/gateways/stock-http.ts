@@ -1,5 +1,6 @@
+import { Stock } from "../actions/schema/stock-action-schema";
 import { env } from "../lib/schema/env";
-import { PostStockEntyParams } from "./schema/stock-gateway-schema";
+import { GetStock, PostStockEntyParams } from "./schema/stock-gateway-schema";
 
 export class StockHttp {
   constructor() {}
@@ -9,9 +10,9 @@ export class StockHttp {
       next: {
         tags: ["stocks"],
       },
-      cache: "no-cache",
+      cache: "no-store",
     });
-    const json = await response.json();
+    const json: GetStock = await response.json();
     return json;
   }
 

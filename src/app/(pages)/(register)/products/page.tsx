@@ -10,7 +10,7 @@ import { Loading } from "@/client/components/ui/loading";
 import Link from "next/link";
 
 export default async function ProductsPage() {
-  const response = { data: [] };
+  const response = await ProductActions.getAll();
 
   return (
     <div className="flex-col">

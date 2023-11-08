@@ -9,7 +9,7 @@ import { Separator } from "@/client/components/ui/separator";
 import { Loading } from "@/client/components/ui/loading";
 
 export default async function Page() {
-  const response = { data: [] };
+  const response = await CategoryActions.getAll();
 
   return (
     <div className="flex-col">

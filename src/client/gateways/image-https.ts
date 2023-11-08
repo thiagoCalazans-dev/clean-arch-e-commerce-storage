@@ -9,7 +9,7 @@ export class ImageHttp {
       next: {
         tags: ["images"],
       },
-      cache: "no-cache",
+      cache: "no-store",
     });
     const json = await response.json();
     return json;

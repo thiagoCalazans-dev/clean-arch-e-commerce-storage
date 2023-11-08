@@ -6,7 +6,7 @@ import { DataTable } from "@/client/components/data-table";
 import { columns } from "./columns";
 
 export default async function Page() {
-  const response = { data: [] };
+  const response = await StockActions.getAll();
 
   return (
     <>

@@ -123,5 +123,5 @@ model EntryStock {
   date            DateTime
   value           Decimal
 
-  @@map("pentry_stock")
+  @@map("entry_stock")
 }
