@@ -10,8 +10,8 @@ export default async function BrandPage({
 }) {
   const response = await BrandActions.fetchById(params.brandId);
 
-  const title = "Brand";
-  const description = response ? "Edit a brand." : "Add a new brand";
+  const title = "Marca";
+  const description = response ? "Edite sua marca." : "Cadastre uma nova marca";
 
   const initialData = response ? response.data : null;
 

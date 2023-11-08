@@ -10,8 +10,8 @@ export default async function ColorPage({
 }) {
   const response = await ColorActions.fetchById(params.colorId);
 
-  const title = "Color";
-  const description = response ? "Edit a color." : "Add a new color";
+  const title = "Cor";
+  const description = response ? "Edite sua cor." : "Cadastre uma nova cor";
 
   const initialData = response ? response.data : null;
 

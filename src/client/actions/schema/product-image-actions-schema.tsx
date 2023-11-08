@@ -1,6 +1,4 @@
-import schema from "../../lib/schema";
-import { BrandSchema } from "./brand-actions-schema";
-import { CategorySchema } from "./category-actions-schema";
+import schema from "@/client/lib/schema";
 
 export const ProductImageSchema = schema.object({
   id: schema.string(),

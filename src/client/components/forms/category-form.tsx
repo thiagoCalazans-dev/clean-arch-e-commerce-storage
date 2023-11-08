@@ -11,11 +11,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/client/components/ui/form";
-import { FormCategorySchema } from "@/client/schema/forms/category-form-schema";
+
 import { useRouter } from "next/navigation";
 import { CategoryActions } from "@/client/actions/category-actions";
 import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
 import { Category } from "@/client/actions/schema/category-actions-schema";
+import { FormCategorySchema } from "./schema/category-form-schema";
 
 interface CategoryFormProps {
   initialData: Category | null;

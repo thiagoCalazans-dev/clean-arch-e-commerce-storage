@@ -1,6 +1,7 @@
 import { CategoryActions } from "@/client/actions/category-actions";
 import { CategoryForm } from "@/client/components/forms/category-form";
 import { Heading } from "@/client/components/ui/heading";
+
 import { Separator } from "@/client/components/ui/separator";
 
 export default async function CategoryPage({
@@ -10,8 +11,10 @@ export default async function CategoryPage({
 }) {
   const response = await CategoryActions.fetchById(params.categoryId);
 
-  const title = "Category";
-  const description = response ? "Edit a category." : "Add a new category";
+  const title = "Categoria";
+  const description = response
+    ? "Edite sua categoria."
+    : "Cadastre uma nova categoria";
 
   const initialData = response ? response.data : null;
 

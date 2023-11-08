@@ -46,7 +46,6 @@ export class BrandHttp {
       next: {
         tags: ["brands"],
       },
-      cache: "no-cache",
     });
     const json = await response.json();
     return json;

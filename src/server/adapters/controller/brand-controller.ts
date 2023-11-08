@@ -56,8 +56,6 @@ class BrandController {
   async Post(request: Request) {
     const body = await request.json();
 
-    console.log(body);
-
     try {
       const createBrandUseCase = makeCreateBrandUseCase();
       await createBrandUseCase.execute(body);

@@ -54,12 +54,8 @@ export const columns: ColumnDef<StockColumn>[] = [
     header: "Preço",
   },
   {
-    accessorKey: "quantity",
+    id: "quantity",
     header: "Quantidade",
-  },
-  {
-    id: "actions",
-    header: "Movimento",
     cell: ({ row }) => <CellAction data={row.original} />,
   },
 ];
