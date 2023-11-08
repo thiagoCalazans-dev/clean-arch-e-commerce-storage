@@ -1,4 +1,4 @@
-import { CreateProductImage } from "../actions/product-image-actions-schema";
+import { CreateProductImage } from "@/client/actions/schema/product-image-actions-schema";
 
 export type PostProductImageParams = {
   data: CreateProductImage;

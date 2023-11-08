@@ -1,5 +1,5 @@
 import schema from "@/client/lib/schema";
-import { Size, CreateSize } from "../actions/size-actions-schema";
+import { Size, CreateSize } from "@/client/actions/schema/size-actions-schema";
 
 export type PostSizeParams = {
   data: CreateSize;

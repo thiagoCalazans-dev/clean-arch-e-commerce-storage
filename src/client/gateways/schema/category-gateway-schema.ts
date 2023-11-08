@@ -1,5 +1,5 @@
 import schema from "@/client/lib/schema";
-import { Category, CreateCategory } from "../actions/category-actions-schema";
+import { Category, CreateCategory } from "@/client/actions/schema/category-actions-schema";
 
 export type PostCategoryParams = {
   data: CreateCategory;

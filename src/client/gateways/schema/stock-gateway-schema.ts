@@ -1,4 +1,4 @@
-import { Stock, StockEntry } from "../../actions/schema/stock-action-schema";
+import { Stock, StockEntry } from "@/client/actions/schema/stock-action-schema";
 
 export type GetStock = {
   data: Stock[];

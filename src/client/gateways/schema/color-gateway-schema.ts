@@ -1,5 +1,8 @@
 import schema from "@/client/lib/schema";
-import { Color, CreateColor } from "../actions/color-actions-schema";
+import {
+  Color,
+  CreateColor,
+} from "@/client/actions/schema/color-actions-schema";
 
 export type PostColorParams = {
   data: CreateColor;

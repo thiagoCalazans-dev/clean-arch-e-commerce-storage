@@ -1,5 +1,8 @@
+import {
+  Brand,
+  CreateBrand,
+} from "@/client/actions/schema/brand-actions-schema";
 import schema from "@/client/lib/schema";
-import { Brand, CreateBrand } from "../actions/brand-actions-schema";
 
 export type PostBrandParams = {
   data: CreateBrand;
