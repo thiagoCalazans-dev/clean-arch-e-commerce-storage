@@ -11,6 +11,9 @@ export type PostBrandParams = {
 export type PutBrandParams = {
   data: Brand;
 };
+export type GetBrandsResponse = {
+  data: Brand[];
+};
 
 export type GetByIdParams = string;
 

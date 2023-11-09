@@ -1,9 +1,11 @@
+import { Brand } from "../actions/schema/brand-actions-schema";
 import { env } from "../lib/schema/env";
 import {
   GetByIdReponseSchema,
   GetByIdParams,
   PostBrandParams,
   PutBrandParams,
+  GetBrandsResponse,
 } from "./schema/brand-gateway-schema";
 
 export class BrandHttp {
@@ -41,13 +43,18 @@ export class BrandHttp {
     return parsedReponse.data;
   }
 
-  async Get() {
+  async Get(): Promise<GetBrandsResponse> {
     const response = await fetch(`${env.API_BASE_URL}/brand`, {
       next: {
         tags: ["brands"],
       },
     });
-    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    const json: GetBrandsResponse = await response.json();
     return json;
   }
 

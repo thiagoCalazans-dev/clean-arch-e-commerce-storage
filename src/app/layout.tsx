@@ -3,7 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "@/client/components/ui/toaster";
-import { TanstackQueryProvider } from "@/client/hook/queryClientProvider";
+import { TanstackQueryProvider } from "@/client/hooks/queryClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 

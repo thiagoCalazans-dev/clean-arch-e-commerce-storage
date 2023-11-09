@@ -15,6 +15,8 @@ export default function Page() {
     queryFn: BrandActions.getAll,
   });
 
+  console.log(response)
+
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
@@ -30,7 +32,7 @@ export default function Page() {
         {isLoading ? (
           <Loading />
         ) : (
-          <DataTable searchKey="name" columns={columns} data={response.data} />
+          <DataTable searchKey="name" columns={columns} data={response!.data} />
         )}
       </div>
     </div>

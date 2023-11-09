@@ -12,14 +12,14 @@ import {
   FormMessage,
 } from "@/client/components/ui/form";
 import { useRouter } from "next/navigation";
-import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
+import { useOnResponseStatus } from "@/client/hooks/use-on-response-status";
 import Image from "next/image";
 
 import {
   FormProductImage,
   FormProductImageSchema,
 } from "@/client/components/forms/schema/product-image-form";
-import { ProductImageActions } from "@/client/actions/product-image-actions";
+import { ProductImageActions } from "@/client/server-actions/product-image-actions";
 
 interface ProductImageFormProps {
   productId: string;

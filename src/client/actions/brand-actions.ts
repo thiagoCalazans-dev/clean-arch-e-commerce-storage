@@ -12,7 +12,7 @@ import { BrandHttp } from "../gateways/brands-http";
 const brandHttp = new BrandHttp();
 
 async function getAll() {
-  return brandHttp.Get();
+  return await brandHttp.Get();
 }
 
 async function fetchById(brandId: string) {
@@ -40,7 +40,7 @@ async function update(brand: Brand) {
   await brandHttp.Put(body);
 }
 
-async function create(brand: CreateBrand) {
+async function create(brand: CreateBrand, onSuccess?: () => void) {
   const parsedParams = CreateBrandSchema.safeParse(brand);
 
   if (!parsedParams.success) {
@@ -51,7 +51,7 @@ async function create(brand: CreateBrand) {
     data: brand,
   };
 
-  await brandHttp.Post(body);
+  return brandHttp.Post(body);
 }
 
 async function remove(brandId: removeBrandByIdParams) {

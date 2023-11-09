@@ -14,7 +14,7 @@ import {
 import { FormSizeSchema } from "@/client/components/forms/schema/size-form-schema";
 import { useRouter } from "next/navigation";
 import { SizeActions } from "@/client/actions/size-actions";
-import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
+import { useOnResponseStatus } from "@/client/hooks/use-on-response-status";
 import { Size } from "@/client/actions/schema/size-actions-schema";
 
 interface SizeFormProps {

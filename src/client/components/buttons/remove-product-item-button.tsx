@@ -1,6 +1,6 @@
 "use client";
 import { ProductItemActions } from "@/client/actions/product-items-actions";
-import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
+import { useOnResponseStatus } from "@/client/hooks/use-on-response-status";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { AlertModal } from "../alert-modal";

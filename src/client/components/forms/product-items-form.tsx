@@ -14,7 +14,7 @@ import {
 
 import { useRouter } from "next/navigation";
 import { ProductActions } from "@/client/actions/product-actions";
-import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
+import { useOnResponseStatus } from "@/client/hooks/use-on-response-status";
 import { Product } from "@/client/actions/schema/product-actions-schema";
 import { Textarea } from "../ui/text-area";
 

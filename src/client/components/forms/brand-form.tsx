@@ -14,9 +14,10 @@ import {
 import { FormBrandSchema } from "@/client/components/forms/schema/brand-form-schema";
 import { useRouter } from "next/navigation";
 import { BrandActions } from "@/client/actions/brand-actions";
-import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
+import { useOnResponseStatus } from "@/client/hooks/use-on-response-status";
 import { Brand } from "@/client/actions/schema/brand-actions-schema";
 import { useMutation } from "@tanstack/react-query";
+import { queryClient } from "@/client/lib/tanstack-query";
 
 interface BrandFormProps {
   initialData: Brand | null;
@@ -35,26 +36,35 @@ export function BrandForm({ initialData }: BrandFormProps) {
 
   const { isSubmitting, errors } = form.formState;
 
-  // const mutation = useMutation({
-  //   mutationFn: postTodo,
-  //   onSuccess: () => {
-  //     // Invalidate and refetch
-  //     queryClient.invalidateQueries({ queryKey: ['todos'] })
-  //   },
-  // })
+  const mutation = useMutation({
+    mutationFn: (formValues: Brand) => {
+      return BrandActions.create(formValues);
+    },
+    onSuccess: () => {
+      onSuccess("Brand Created");
+      form.reset();
+      queryClient.invalidateQueries({ queryKey: ["brands"] });
+    },
+  });
+
+  const mutationUpdate = useMutation({
+    mutationFn: (formValues: Brand) => {
+      return BrandActions.update(formValues);
+    },
+    onSuccess: () => {
+      onSuccess("Brand Created");
+      form.reset();
+      queryClient.invalidateQueries({ queryKey: ["brands"] });
+    },
+  });
 
   async function onSubmit(formValues: Brand) {
     try {
       if (initialData) {
-        await BrandActions.update(formValues);
-        onSuccess("Brand Updated");
-        await router.prefetch("/brands");
+        mutationUpdate.mutate(formValues);
         return;
       }
-      await BrandActions.create(formValues);
-      onSuccess("Brand Created");
-      form.reset();
-      router.prefetch("/brands");
+      mutation.mutate(formValues);
     } catch (error: Error | any) {
       onError(error.message);
     }

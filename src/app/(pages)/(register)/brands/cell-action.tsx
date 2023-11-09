@@ -20,7 +20,7 @@ import {
   TrashIcon,
 } from "@radix-ui/react-icons";
 import { BrandActions } from "@/client/actions/brand-actions";
-import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
+import { useOnResponseStatus } from "@/client/hooks/use-on-response-status";
 
 interface CellActionProps {
   data: BrandsColumn;

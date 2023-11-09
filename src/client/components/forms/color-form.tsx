@@ -14,7 +14,7 @@ import {
 import { FormColorSchema } from "@/client/components/forms/schema/color-form-schema";
 import { useRouter } from "next/navigation";
 import { ColorActions } from "@/client/actions/color-actions";
-import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
+import { useOnResponseStatus } from "@/client/hooks/use-on-response-status";
 import { Color } from "@/client/actions/schema/color-actions-schema";
 
 interface ColorFormProps {

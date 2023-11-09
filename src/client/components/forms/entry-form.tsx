@@ -13,7 +13,7 @@ import {
 } from "@/client/components/ui/form";
 
 import { useRouter } from "next/navigation";
-import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
+import { useOnResponseStatus } from "@/client/hooks/use-on-response-status";
 import {
   FormStockEntry,
   FormStockEntrySchema,

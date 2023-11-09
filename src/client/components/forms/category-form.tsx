@@ -14,7 +14,7 @@ import {
 
 import { useRouter } from "next/navigation";
 import { CategoryActions } from "@/client/actions/category-actions";
-import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
+import { useOnResponseStatus } from "@/client/hooks/use-on-response-status";
 import { Category } from "@/client/actions/schema/category-actions-schema";
 import { FormCategorySchema } from "./schema/category-form-schema";
 

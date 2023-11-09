@@ -6,7 +6,7 @@ import { Card } from "@/client/components/ui/card";
 import { CopyButton } from "@/client/components/ui/copy-button";
 import { Input } from "@/client/components/ui/input";
 import { ToolTip } from "@/client/components/ui/tooltip";
-import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
+import { useOnResponseStatus } from "@/client/hooks/use-on-response-status";
 import { MagnifyingGlassIcon, TrashIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

@@ -20,7 +20,7 @@ import {
   TrashIcon,
 } from "@radix-ui/react-icons";
 import { SizeActions } from "@/client/actions/size-actions";
-import { useOnResponseStatus } from "@/client/hook/use-on-response-status";
+import { useOnResponseStatus } from "@/client/hooks/use-on-response-status";
 
 interface CellActionProps {
   data: SizesColumn;
