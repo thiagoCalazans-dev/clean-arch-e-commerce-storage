@@ -16,8 +16,7 @@ import { useRouter } from "next/navigation";
 import { BrandActions } from "@/client/actions/brand-actions";
 import { useOnResponseStatus } from "@/client/hooks/use-on-response-status";
 import { Brand } from "@/client/actions/schema/brand-actions-schema";
-import { useMutation } from "@tanstack/react-query";
-import { queryClient } from "@/client/lib/tanstack-query";
+import { useMutate } from "@/client/hooks/useMutation";
 
 interface BrandFormProps {
   initialData: Brand | null;
@@ -36,35 +35,35 @@ export function BrandForm({ initialData }: BrandFormProps) {
 
   const { isSubmitting, errors } = form.formState;
 
-  const mutation = useMutation({
-    mutationFn: (formValues: Brand) => {
-      return BrandActions.create(formValues);
-    },
+  const { mutate: CreateBrandMutation } = useMutate({
+    queryKey: ["brands"],
+    mutationFn: BrandActions.create,
     onSuccess: () => {
-      onSuccess("Brand Created");
-      form.reset();
-      queryClient.invalidateQueries({ queryKey: ["brands"] });
+      onSuccess("Brand Created"), form.reset;
+    },
+    onError: (error: Error) => {
+      onError(error.message);
     },
   });
 
-  const mutationUpdate = useMutation({
-    mutationFn: (formValues: Brand) => {
-      return BrandActions.update(formValues);
-    },
+  const { mutate: UpdateBrandMutation } = useMutate({
+    queryKey: ["brands"],
+    mutationFn: BrandActions.create,
     onSuccess: () => {
-      onSuccess("Brand Created");
-      form.reset();
-      queryClient.invalidateQueries({ queryKey: ["brands"] });
+      onSuccess("Brand Updated"), form.reset;
+    },
+    onError: (error: Error) => {
+      onError(error.message);
     },
   });
 
   async function onSubmit(formValues: Brand) {
     try {
       if (initialData) {
-        mutationUpdate.mutate(formValues);
+        UpdateBrandMutation(formValues);
         return;
       }
-      mutation.mutate(formValues);
+      CreateBrandMutation(formValues);
     } catch (error: Error | any) {
       onError(error.message);
     }

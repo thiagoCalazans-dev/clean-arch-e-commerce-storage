@@ -7,15 +7,15 @@ import { Separator } from "@/client/components/ui/separator";
 import { BrandActions } from "@/client/actions/brand-actions";
 import Link from "next/link";
 import { Loading } from "@/client/components/ui/loading";
-import { useQuery } from "@tanstack/react-query";
+
+import { useFetch } from "@/client/hooks/useFetch";
+import { Brand } from "@/client/actions/schema/brand-actions-schema";
 
 export default function Page() {
-  const { data: response, isLoading } = useQuery({
+  const { data: response, isLoading } = useFetch<Brand[]>({
     queryKey: ["brands"],
     queryFn: BrandActions.getAll,
   });
-
-  console.log(response)
 
   return (
     <div className="flex-col">
