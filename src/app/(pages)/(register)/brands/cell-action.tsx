@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 
 import { Button } from "@/client/components/ui/button";
 import {
@@ -21,7 +20,7 @@ import {
 } from "@radix-ui/react-icons";
 import { BrandActions } from "@/client/actions/brand-actions";
 import { useOnResponseStatus } from "@/client/hooks/use-on-response-status";
-import { useMutate } from "@/client/hooks/useMutation";
+import { useDeleteMutate, useMutate } from "@/client/hooks/useMutation";
 
 interface CellActionProps {
   data: BrandsColumn;
@@ -31,7 +30,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const { onError, onSuccess } = useOnResponseStatus();
   const [open, setOpen] = useState(false);
 
-  const { mutate: RemoveBrandMutation, isLoading } = useMutate({
+  const { mutate: RemoveBrandMutation, isLoading } = useDeleteMutate({
     queryKey: ["brands"],
     mutationFn: BrandActions.remove,
     onSuccess: () => {

@@ -50,7 +50,7 @@ export function BrandForm({ initialData }: BrandFormProps) {
     queryKey: ["brands"],
     mutationFn: BrandActions.create,
     onSuccess: () => {
-      onSuccess("Brand Updated"), form.reset;
+      onSuccess("Brand Updated");
     },
     onError: (error: Error) => {
       onError(error.message);
@@ -66,6 +66,8 @@ export function BrandForm({ initialData }: BrandFormProps) {
       CreateBrandMutation(formValues);
     } catch (error: Error | any) {
       onError(error.message);
+    } finally {
+      form.reset();
     }
   }
 
