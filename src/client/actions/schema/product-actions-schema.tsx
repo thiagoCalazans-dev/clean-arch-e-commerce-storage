@@ -20,9 +20,7 @@ export const CreateProductSchema = schema.object({
   name: schema.string().min(3),
   brandId: schema.string(),
   categoryId: schema.string(),
-  cost: schema.string(),
   description: schema.string(),
-  trending: schema.boolean().default(false),
 });
 
 export type CreateProduct = schema.infer<typeof CreateProductSchema>;

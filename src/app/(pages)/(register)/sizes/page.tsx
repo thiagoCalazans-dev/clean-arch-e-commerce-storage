@@ -1,3 +1,4 @@
+"use client";
 import { SizeActions } from "@/client/actions/size-actions";
 import { DataTable } from "@/client/components/data-table";
 import { Button } from "@/client/components/ui/button";
@@ -7,9 +8,13 @@ import { columns } from "./columns";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Loading } from "@/client/components/ui/loading";
+import { useFetch } from "@/client/hooks/useFetch";
 
-export default async function SizesPage() {
-  const { data } = await SizeActions.getAll();
+export default function SizesPage() {
+  const { data: response, isLoading } = useFetch({
+    queryKey: ["sizes"],
+    queryFn: SizeActions.getAll,
+  });
 
   return (
     <div className="flex-col">
@@ -23,9 +28,12 @@ export default async function SizesPage() {
           </Button>
         </div>
         <Separator />
-        <Suspense fallback={<Loading />}>
-          <DataTable searchKey="name" columns={columns} data={data} />
-        </Suspense>
+        <Separator />
+        {isLoading || !response ? (
+          <Loading />
+        ) : (
+          <DataTable searchKey="name" columns={columns} data={response.data} />
+        )}
       </div>
     </div>
   );

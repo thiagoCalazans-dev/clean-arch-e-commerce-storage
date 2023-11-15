@@ -21,6 +21,7 @@ import {
 } from "@radix-ui/react-icons";
 import { ColorActions } from "@/client/actions/color-actions";
 import { useOnResponseStatus } from "@/client/hooks/use-on-response-status";
+import { useDeleteMutate } from "@/client/hooks/useMutation";
 
 interface CellActionProps {
   data: ColorsColumn;
@@ -28,21 +29,26 @@ interface CellActionProps {
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const { onError, onSuccess } = useOnResponseStatus();
-  const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
+
+  const { mutate: RemoveMutation, isLoading } = useDeleteMutate({
+    queryKey: ["colors"],
+    mutationFn: ColorActions.remove,
+    onSuccess: () => {
+      onSuccess("Color Removed");
+    },
+    onError: (error: Error) => {
+      onError(error.message);
+    },
+  });
 
   const onDeleteConfirm = async () => {
     try {
-      setLoading(true);
-      await ColorActions.remove(data.id);
-      onSuccess("Color deleted");
-      router.refresh();
+      await RemoveMutation(data.id);
     } catch (error: Error | any) {
       onError(error.message);
     } finally {
       setOpen(false);
-      setLoading(false);
     }
   };
 
@@ -52,7 +58,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         isOpen={open}
         onClose={() => setOpen(false)}
         onConfirm={onDeleteConfirm}
-        loading={loading}
+        loading={isLoading}
       />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

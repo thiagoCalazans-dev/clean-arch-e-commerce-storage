@@ -44,12 +44,13 @@ export function ProductForm({
       name: "",
       brandId: "",
       categoryId: "",
-
       description: "",
     },
   });
 
   const { isSubmitting, errors } = form.formState;
+
+  console.log(errors);
 
   async function onSubmit(formValues: Product) {
     try {
@@ -106,25 +107,6 @@ export function ProductForm({
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="trending"
-          render={({ field }) => (
-            <FormItem>
-              <div className="flex items-center space-x-2 mt-2">
-                <FormControl>
-                  <Checkbox
-                    checked={field.value}
-                    // @ts-ignore
-                    onCheckedChange={field.onChange}
-                  />
-                </FormControl>
-                <FormLabel className="">Trending</FormLabel>
-              </div>
               <FormMessage />
             </FormItem>
           )}

@@ -18,7 +18,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         type="button"
         onClick={() =>
           router.push(
-            `/incoming/${data.productItem?.productId}/${data.productItemId}`
+            `/outgoing/${data.productItem?.productId}/${data.productItemId}`
           )
         }
       >

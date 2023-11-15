@@ -1,3 +1,4 @@
+"use client";
 import { CategoryActions } from "@/client/actions/category-actions";
 import { Heading } from "@/client/components/ui/heading";
 import { Button } from "@/client/components/ui/button";
@@ -7,9 +8,13 @@ import { DataTable } from "@/client/components/data-table";
 import { columns } from "./columns";
 import { Separator } from "@/client/components/ui/separator";
 import { Loading } from "@/client/components/ui/loading";
+import { useFetch } from "@/client/hooks/useFetch";
 
-export default async function Page() {
-  const response = await CategoryActions.getAll();
+export default function Page() {
+  const { data: response, isLoading } = useFetch({
+    queryKey: ["categories"],
+    queryFn: CategoryActions.getAll,
+  });
 
   return (
     <div className="flex-col">
@@ -23,9 +28,11 @@ export default async function Page() {
           </Button>
         </div>
         <Separator />
-        <Suspense fallback={<Loading />}>
+        {isLoading || !response ? (
+          <Loading />
+        ) : (
           <DataTable searchKey="name" columns={columns} data={response.data} />
-        </Suspense>
+        )}
       </div>
     </div>
   );

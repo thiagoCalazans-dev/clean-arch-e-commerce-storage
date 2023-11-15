@@ -7,9 +7,6 @@ import { Separator } from "@/client/components/ui/separator";
 import { BrandActions } from "@/client/actions/brand-actions";
 import Link from "next/link";
 import { Loading } from "@/client/components/ui/loading";
-
-import { queryClient } from "@/client/lib/tanstack-query";
-import { useQuery } from "@tanstack/react-query";
 import { useFetch } from "@/client/hooks/useFetch";
 
 export default function Page() {

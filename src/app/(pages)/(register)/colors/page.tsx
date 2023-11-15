@@ -1,3 +1,4 @@
+"use client";
 import { DataTable } from "@/client/components/data-table";
 import { columns } from "./columns";
 import { Heading } from "@/client/components/ui/heading";
@@ -7,9 +8,13 @@ import { ColorActions } from "@/client/actions/color-actions";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Loading } from "@/client/components/ui/loading";
+import { useFetch } from "@/client/hooks/useFetch";
 
-export default async function ColorsPage() {
-  const { data } = await ColorActions.getAll();
+export default function ColorsPage() {
+  const { data: response, isLoading } = useFetch({
+    queryKey: ["colors"],
+    queryFn: ColorActions.getAll,
+  });
 
   return (
     <div className="flex-col">
@@ -23,9 +28,11 @@ export default async function ColorsPage() {
           </Button>
         </div>
         <Separator />
-        <Suspense fallback={<Loading />}>
-          <DataTable searchKey="name" columns={columns} data={data} />
-        </Suspense>
+        {isLoading || !response ? (
+          <Loading />
+        ) : (
+          <DataTable searchKey="name" columns={columns} data={response.data} />
+        )}
       </div>
     </div>
   );
