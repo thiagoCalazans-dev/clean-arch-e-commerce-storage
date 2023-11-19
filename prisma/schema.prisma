@@ -81,6 +81,7 @@ model ProductItem {
   ProductImages ProductImage[]
   Stock         Stock?
   EntryStock    EntryStock[]
+  StockOut      StockOut[]
 
   @@index([product_id, size_id, color_id], name: "unique_contract")
   @@map("product_item")
@@ -124,4 +125,16 @@ model EntryStock {
   value           Decimal
 
   @@map("entry_stock")
+}
+
+model StockOut {
+  id              String      @id @default(uuid())
+  product_item    ProductItem @relation(fields: [product_item_id], references: [id], onDelete: Cascade)
+  product_item_id String
+  quantity        Int
+  date            DateTime
+  price           Decimal
+  discount        Decimal
+
+  @@map("stock_out")
 }
